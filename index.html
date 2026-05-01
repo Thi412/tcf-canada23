@@ -706,7 +706,6 @@ const Speaking=({plan,aiUsage,setAiUsage,onUpgrade,ct,onAdd,userApiKey})=>{
   const [r2,setR2]=useState(false);const [r3,setR3]=useState(false);
   const [showTpl,setShowTpl]=useState(false);const [openTpl,setOpenTpl]=useState("i");
   const [showAdd,setShowAdd]=useState(false);
-  const [openThemes,setOpenThemes]=useState({});
   const [openCats,setOpenCats]=useState({});
   const [openSitCats,setOpenSitCats]=useState({});
   const [aiInp,setAiInp]=useState("");const [aiRes,setAiRes]=useState("");const [aiLoad,setAiLoad]=useState(false);
@@ -1054,6 +1053,7 @@ const Writing=({plan,aiUsage,setAiUsage,onUpgrade,cw,onAdd,userApiKey})=>{
   const all=[...WRITING_PROMPTS,...cw];
   const [sel,setSel]=useState(all.find(p=>p.task==="tache1")||all[0]);
   const [ans,setAns]=useState("");const [fb,setFb]=useState(null);const [loading,setLoading]=useState(false);const [saved,setSaved]=useState(false);const [showAdd,setShowAdd]=useState(false);
+  const [openThemes,setOpenThemes]=useState({});
   const p=PLANS[plan];const isPaid=plan!=="starter";
   const prompts=all.filter(pr=>pr.task===tab);
   const getFeedback=async()=>{
