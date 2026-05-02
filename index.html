@@ -462,9 +462,27 @@ const Sidebar=({page,setPage,plan,aiUsage,onUpgrade})=>{const p=PLANS[plan];retu
 );};
 
 // ─── DASHBOARD ────────────────────────────────────────────────────────────────
-const Dashboard=({plan,aiUsage,setPage,ct,cw})=>{const p=PLANS[plan];return(
+const Dashboard=({plan,aiUsage,setPage,ct,cw,ctests,gramData})=>{const p=PLANS[plan];return(
   <div>
-    <Ttl ch="Bonjour 👋" sub={`Plan : ${p.name} · ${TOPICS.length+ct.length} topics · ${SITS.length} situations`}/>
+    <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1.5rem"}}>
+      <Ttl ch="Bonjour 👋" sub={`Plan : ${p.name} · ${TOPICS.length+ct.length} topics · ${SITS.length} situations`}/>
+      <button onClick={()=>{
+        const data={
+          custom_topics:ct||[],
+          custom_writing:cw||[],
+          custom_tests:ctests||[],
+          exported_at:new Date().toISOString(),
+          version:"1.0"
+        };
+        const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+        const url=URL.createObjectURL(blob);
+        const a=document.createElement("a");
+        a.href=url;a.download="tcf-canada-custom-data.json";
+        a.click();URL.revokeObjectURL(url);
+      }} style={{display:"flex",alignItems:"center",gap:6,background:"none",border:`1px solid ${C.green}`,borderRadius:8,padding:"7px 14px",fontSize:12,color:C.green,cursor:"pointer",fontWeight:500,flexShrink:0}}>
+        ⬇️ Exporter mes données
+      </button>
+    </div>
     <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:"1.5rem"}}>
       {[{label:"Topics EO",value:TOPICS.length+ct.length,color:C.green},{label:"Situations T2",value:SITS.length,color:C.amber},{label:"Tests CE/CO",value:`${p.tests*2}`,color:C.purple},{label:"IA restants",value:p.speakAI-aiUsage.speak+p.writeAI-aiUsage.write,color:C.green}].map(s=>(
         <div key={s.label} style={{background:"#f4f3f0",borderRadius:8,padding:"12px"}}><div style={{fontSize:11,color:C.gray,marginBottom:4}}>{s.label}</div><div style={{fontSize:24,fontWeight:500,color:s.color}}>{s.value}</div></div>
@@ -801,7 +819,7 @@ const Speaking=({plan,aiUsage,setAiUsage,onUpgrade,ct,onAdd,userApiKey})=>{
               {openTpl===s.id&&<div style={{padding:"10px 12px",display:"flex",flexDirection:"column",gap:5}}>{s.lines.map((line,i)=><div key={i} style={{fontSize:12,padding:"7px 10px",background:s.color+"0d",borderRadius:7,lineHeight:1.6}}>{line}</div>)}</div>}
             </div>)}
           </div>}
-          <SpeakingCoach topic={topic} userApiKey={userApiKey} plan={plan} onUpgrade={onUpgrade}/>
+          <SpeakingCoach topic={topic} userApiKey={userApiKey} plan={plan} onUpgrade={onUpgrade} aiUsage={aiUsage} setAiUsage={setAiUsage}/>
           {isPaid?<Card sx={{marginTop:12,borderColor:C.purple+"44"}} ch={<div>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}><div style={{fontSize:13,fontWeight:500,color:C.purple}}>🚀 Améliorer au niveau B2/C1</div><Badge ch={`${p.speakAI-aiUsage.speak} restant${p.speakAI-aiUsage.speak!==1?"s":""}`} color={C.purple}/></div>
             <div style={{display:"flex",gap:8}}><input value={aiInp} onChange={e=>setAiInp(e.target.value)} placeholder="Tapez votre phrase simple..." style={{flex:1,padding:"8px 12px",borderRadius:8,border:`1px solid ${C.border}`,fontSize:13,background:"#f4f3f0",color:"#1a1a1a"}} onKeyDown={e=>e.key==="Enter"&&callAI()}/><Btn ch={aiLoad?"...":"Améliorer"} v="purple" sm onClick={callAI} dis={aiLoad||!aiInp.trim()}/></div>
@@ -842,7 +860,7 @@ const Speaking=({plan,aiUsage,setAiUsage,onUpgrade,ct,onAdd,userApiKey})=>{
               <span style={{fontSize:13,flex:1,lineHeight:1.5}}>{q}</span>
               <button onClick={()=>setQList(l=>l.filter((_,j)=>j!==i))} style={{background:"none",border:"none",color:C.gray,cursor:"pointer",fontSize:16}}>×</button>
             </div>)}</div>} sx={{marginBottom:12}}/>}
-            <SpeakingCoach sit={sit} userApiKey={userApiKey} plan={plan} onUpgrade={onUpgrade}/>
+            <SpeakingCoach sit={sit} userApiKey={userApiKey} plan={plan} onUpgrade={onUpgrade} aiUsage={aiUsage} setAiUsage={setAiUsage}/>
             <div style={{fontSize:12,color:C.gray,marginBottom:8,marginTop:16,fontWeight:500}}>CATÉGORIES DE QUESTIONS</div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:6}}>
               {CATS.map(cat=><div key={cat.id} onClick={()=>addQ(cat)} style={{background:"#fff",border:`1px solid ${C.border}`,borderRadius:10,padding:"8px 10px",cursor:"pointer",display:"flex",gap:8,alignItems:"center",transition:"border .15s"}}
@@ -885,12 +903,25 @@ const Speaking=({plan,aiUsage,setAiUsage,onUpgrade,ct,onAdd,userApiKey})=>{
 };
 
 // ─── TESTS ────────────────────────────────────────────────────────────────────
-const TestList=({type,plan,onStart,onAddTest,onEditTest,onDeleteTest,customTests,onUpgrade})=>{
+const TestList=({type,plan,onStart,onAddTest,onEditTest,onDeleteTest,customTests,onUpgrade,testResults,onRefresh})=>{
   const p=PLANS[plan];
   const builtIn=MOCK_TESTS.filter(t=>t.type===type);
   const custom=(customTests||[]).filter(t=>t.type===type);
   const tests=[...builtIn,...custom];
   return(<div>
+    {(()=>{
+      const done=(testResults||[]).filter(r=>r.type===type);
+      const avg=done.length?Math.round(done.reduce((s,r)=>s+r.pct,0)/done.length):null;
+      return done.length>0&&<div style={{display:"flex",gap:8,marginBottom:12,flexWrap:"wrap"}}>
+        <div style={{background:C.green+"15",border:`1px solid ${C.green}44`,borderRadius:10,padding:"8px 14px",fontSize:12}}>
+          <span style={{color:C.green,fontWeight:600}}>{done.length}</span><span style={{color:C.gray}}> test{done.length>1?"s":""} complété{done.length>1?"s":""}</span>
+        </div>
+        <div style={{background:C.purple+"15",border:`1px solid ${C.purple}44`,borderRadius:10,padding:"8px 14px",fontSize:12}}>
+          <span style={{color:C.purple,fontWeight:600}}>{avg}%</span><span style={{color:C.gray}}> moyenne</span>
+        </div>
+        <button onClick={()=>{if(window.confirm("Effacer l'historique ?")){{try{const all=JSON.parse(localStorage.getItem("tcf_results")||"[]");localStorage.setItem("tcf_results",JSON.stringify(all.filter(r=>r.type!==type)));onRefresh&&onRefresh();}catch(e){}}}}} style={{background:"none",border:`1px solid ${C.border}`,borderRadius:10,padding:"8px 12px",fontSize:11,cursor:"pointer",color:C.gray}}>🗑 Effacer</button>
+      </div>;
+    })()}
     <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:"1.5rem"}}>
       <Ttl ch={type==="CE"?"Compréhension écrite":"Compréhension orale"} sub={`${tests.length} tests`}/>
       <Btn ch="➕ Ajouter un test" v="secondary" sm onClick={()=>onAddTest(type)}/>
@@ -904,7 +935,8 @@ const TestList=({type,plan,onStart,onAddTest,onEditTest,onDeleteTest,customTests
           <Badge ch={type} color={type==="CE"?C.green:C.purple}/>
           {isCustom&&<Badge ch="Perso" color={C.amber}/>}
           <span style={{fontWeight:500,fontSize:14}}>{t.title}</span>
-        </div><div style={{fontSize:12,color:C.gray}}>{t.questions.length} questions</div></div>
+          {(()=>{const r=(testResults||[]).find(x=>x.testId===t.id);return r?<span style={{fontSize:10,background:r.pct>=80?C.green+"22":r.pct>=60?C.amber+"22":C.red+"22",color:r.pct>=80?C.green:r.pct>=60?C.amber:C.red,borderRadius:20,padding:"2px 8px",fontWeight:600}}>{r.pct}% ✓</span>:null;})()}
+        </div><div style={{fontSize:12,color:C.gray}}>{t.questions.length} questions{(testResults||[]).find(x=>x.testId===t.id)?<span style={{color:C.gray}}> · fait le {new Date((testResults||[]).find(x=>x.testId===t.id)?.date).toLocaleDateString("fr-CA")}</span>:null}</div></div>
         <div style={{display:"flex",gap:6}}>
           {isCustom&&<><Btn ch="✏️" v="ghost" sm onClick={()=>onEditTest(t)}/><Btn ch="🗑" v="ghost" sm onClick={()=>onDeleteTest(t.id)}/></>}
           {locked
@@ -1023,7 +1055,24 @@ const TestRunner=({test,onBack,onEditQuestion})=>{
       </div>}/>)}
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"1rem"}}>
         <span style={{fontSize:12,color:C.gray}}>{Object.keys(ans).length}/{test.questions.length} réponses</span>
-        <Btn ch="Soumettre" onClick={()=>setDone(true)} dis={Object.keys(ans).length<test.questions.length}/>
+        <Btn ch="Soumettre" onClick={()=>{
+          setDone(true);
+          const result={
+            testId:test.id,
+            testTitle:test.title,
+            type:test.type,
+            score:test.questions.filter((q,i)=>ans[i]===q.ans).length,
+            total:test.questions.length,
+            pct:Math.round((test.questions.filter((q,i)=>ans[i]===q.ans).length/test.questions.length)*100),
+            date:new Date().toISOString(),
+            answers:{...ans}
+          };
+          try{
+            const prev=JSON.parse(localStorage.getItem('tcf_results')||'[]');
+            const filtered=prev.filter(r=>r.testId!==test.id);
+            localStorage.setItem('tcf_results',JSON.stringify([result,...filtered].slice(0,200)));
+          }catch(e){}
+        }} dis={Object.keys(ans).length<test.questions.length}/>
       </div>
     </div>:<div>
       <Card sx={{textAlign:"center",padding:"2rem 1rem",marginBottom:"1.5rem"}} ch={<div>
@@ -1471,7 +1520,7 @@ function App(){
   const [showUpgrade,setShowUpgrade]=useState(false);
   const [upgradeReason,setUpgradeReason]=useState("");
   const [activeTest,setActiveTest]=useState(null);
-  const [aiUsage,setAiUsage]=useState({speak:0,write:0});
+  const [aiUsage,setAiUsage]=useState({speak:0,write:0,coach:0});
   const [ct,setCt]=useState([]);
   const [cw,setCw]=useState([]);
   const [ctests,setCtests]=useState([]);
@@ -1495,20 +1544,26 @@ function App(){
   const handleEditTest=t=>setTestModal({type:t.type,editTest:t});
   const handleDeleteTest=id=>setCtests(ts=>ts.filter(t=>t.id!==id));
   const handleSaveTest=t=>setCtests(ts=>{const i=ts.findIndex(x=>x.id===t.id);return i>=0?ts.map(x=>x.id===t.id?t:x):[...ts,t];});
-  const [editedQs,setEditedQs]=useState({}); // {testId: {qi: question}}
+  const [editedQs,setEditedQs]=useState({});
+  const [testResults,setTestResults]=useState(()=>{
+    try{return JSON.parse(localStorage.getItem('tcf_results')||'[]');}catch{return[];}
+  });
+  const refreshResults=()=>{
+    try{setTestResults(JSON.parse(localStorage.getItem('tcf_results')||'[]'));}catch{}
+  }; // {testId: {qi: question}}
   const handleEditQuestion=(testId,qi,q)=>setEditedQs(eq=>({...eq,[testId]:{...(eq[testId]||{}),[qi]:q}}));
   const getMergedTest=t=>{const edits=editedQs[t.id]||{};if(!Object.keys(edits).length)return t;return {...t,questions:t.questions.map((q,i)=>edits[i]?{...q,...edits[i]}:q)};};
 
   const renderPage=()=>{
     if((page==="reading"||page==="listening")&&activeTest)return <TestRunner test={getMergedTest(activeTest)} onBack={()=>setActiveTest(null)} onEditQuestion={(qi,q)=>handleEditQuestion(activeTest.id,qi,q)}/>;
     switch(page){
-      case "dashboard":return <Dashboard plan={plan} aiUsage={aiUsage} setPage={nav} ct={ct} cw={cw}/>;
+      case "dashboard":return <Dashboard plan={plan} aiUsage={aiUsage} setPage={nav} ct={ct} cw={cw} ctests={ctests} gramData={null}/>;
       case "speaking":return <Speaking plan={plan} aiUsage={aiUsage} setAiUsage={setAiUsage} onUpgrade={()=>openUpgrade("Améliorez vos phrases au niveau B2/C1")} ct={ct} onAdd={handleAdd} userApiKey={userApiKey}/>;
-      case "reading":return <TestList type="CE" plan={plan} onStart={t=>safeStart(t,"CE")} onAddTest={handleAddTest} onEditTest={handleEditTest} onDeleteTest={handleDeleteTest} customTests={ctests} onUpgrade={openUpgrade}/>;
-      case "listening":return <TestList type="CO" plan={plan} onStart={t=>safeStart(t,"CO")} onAddTest={handleAddTest} onEditTest={handleEditTest} onDeleteTest={handleDeleteTest} customTests={ctests} onUpgrade={openUpgrade}/>;
+      case "reading":return <TestList type="CE" plan={plan} onStart={t=>safeStart(t,"CE")} onAddTest={handleAddTest} onEditTest={handleEditTest} onDeleteTest={handleDeleteTest} customTests={ctests} onUpgrade={openUpgrade} testResults={testResults} onRefresh={refreshResults}/>;
+      case "listening":return <TestList type="CO" plan={plan} onStart={t=>safeStart(t,"CO")} onAddTest={handleAddTest} onEditTest={handleEditTest} onDeleteTest={handleDeleteTest} customTests={ctests} onUpgrade={openUpgrade} testResults={testResults} onRefresh={refreshResults}/>;
       case "writing":return <Writing plan={plan} aiUsage={aiUsage} setAiUsage={setAiUsage} onUpgrade={()=>openUpgrade("Feedback IA expression écrite")} cw={cw} onAdd={handleAdd} userApiKey={userApiKey}/>;
       case "grammaire":return <Grammaire/>;
-      case "pricing":return <Pricing plan={plan} setPlan={p=>{setPlan(p);setAiUsage({speak:0,write:0});}} onUpgrade={key=>openUpgrade("",key)}/>;
+      case "pricing":return <Pricing plan={plan} setPlan={p=>{setPlan(p);setAiUsage({speak:0,write:0,coach:0});}} onUpgrade={key=>openUpgrade("",key)}/>;
       default:return <Dashboard plan={plan} aiUsage={aiUsage} setPage={nav} ct={ct} cw={cw}/>;
     }
   };
@@ -1517,7 +1572,7 @@ function App(){
     <div style={{display:"flex",minHeight:"100vh",background:"#f4f3f0",fontFamily:"-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"}}>
       <Sidebar page={page} setPage={nav} plan={plan} aiUsage={aiUsage} onUpgrade={()=>openUpgrade()}/>
       <main style={{flex:1,padding:"1.75rem 2rem",overflowY:"auto",minWidth:0}}>{renderPage()}</main>
-      {showUpgrade&&<UpgradeModal onClose={()=>setShowUpgrade(false)} currentPlan={plan} setPlan={p=>{setPlan(p);setAiUsage({speak:0,write:0});}} reason={upgradeReason} initialPlan={upgradeTarget}/>}
+      {showUpgrade&&<UpgradeModal onClose={()=>setShowUpgrade(false)} currentPlan={plan} setPlan={p=>{setPlan(p);setAiUsage({speak:0,write:0,coach:0});}} reason={upgradeReason} initialPlan={upgradeTarget}/>}
       {testModal&&<TestAdminPanel type={testModal.type} editTest={testModal.editTest} onSave={handleSaveTest} onClose={()=>setTestModal(null)}/>}
     </div>
   );
