@@ -558,48 +558,89 @@ const AdminPanel=({type,onAdd,onClose})=>{
 };
 
 // ─── SPEAKING ─────────────────────────────────────────────────────────────────
-const SpeakingCoach=({topic,sit,userApiKey,plan,onUpgrade})=>{
-  const [status,setStatus]=useState("idle"); // idle | listening | thinking | done
+const SpeakingCoach=({topic,sit,userApiKey,plan,onUpgrade,aiUsage,setAiUsage})=>{
+  const [status,setStatus]=useState("idle"); // idle|recording|transcribing|thinking|done
   const [transcript,setTranscript]=useState("");
   const [feedback,setFeedback]=useState(null);
   const [err,setErr]=useState("");
-  const recRef=useRef(null);
+  const [duration,setDuration]=useState(0);
+  const mediaRef=useRef(null);
+  const chunksRef=useRef([]);
+  const timerRef=useRef(null);
   const isPaid=plan!=="starter";
 
-  const startRec=()=>{
-    const SpeechRec=window.SpeechRecognition||window.webkitSpeechRecognition;
-    if(!SpeechRec){setErr("Votre navigateur ne supporte pas la reconnaissance vocale. Utilisez Chrome.");return;}
-    if(!isPaid&&!userApiKey){onUpgrade();return;}
-    setErr("");setTranscript("");setFeedback(null);
-    const rec=new SpeechRec();
-    rec.lang="fr-FR";
-    rec.continuous=true;
-    rec.interimResults=true;
-    rec.maxAlternatives=1;
-    recRef.current=rec;
-    rec.onstart=()=>setStatus("listening");
-    rec.onresult=e=>{
-      let final="";
-      for(let i=0;i<e.results.length;i++){
-        if(e.results[i].isFinal)final+=e.results[i][0].transcript+" ";
-      }
-      setTranscript(final.trim()||Array.from(e.results).map(r=>r[0].transcript).join(" "));
-    };
-    rec.onerror=e=>{setErr("Erreur micro: "+e.error);setStatus("idle");};
-    rec.onend=()=>{if(status==="listening")setStatus("idle");};
-    rec.start();
-    setStatus("listening");
+  const p=PLANS[plan];
+  const coachLimit=p?.coachAI||0;
+  const coachUsed=aiUsage?.coach||0;
+  const canUse=userApiKey||(isPaid&&coachUsed<coachLimit);
+
+  const startRec=async()=>{
+    if(!canUse){onUpgrade(isPaid?"Limite quotidienne atteinte — passez au plan supérieur":"Débloquez le Coach vocal IA");return;}
+    setErr("");setTranscript("");setFeedback(null);setDuration(0);
+    try{
+      const stream=await navigator.mediaDevices.getUserMedia({audio:{channelCount:1,sampleRate:16000}});
+      const mr=new MediaRecorder(stream,{mimeType:MediaRecorder.isTypeSupported("audio/webm;codecs=opus")?"audio/webm;codecs=opus":"audio/webm"});
+      chunksRef.current=[];
+      mr.ondataavailable=e=>{if(e.data.size>0)chunksRef.current.push(e.data);};
+      mr.start(250);
+      mediaRef.current=mr;
+      setStatus("recording");
+      timerRef.current=setInterval(()=>setDuration(d=>d+1),1000);
+    }catch(e){setErr("Impossible d'accéder au microphone. Vérifiez les permissions.");setStatus("idle");}
   };
 
-  const stopAndAnalyze=async()=>{
-    if(recRef.current){recRef.current.stop();recRef.current=null;}
-    if(!transcript.trim()){setStatus("idle");return;}
-    setStatus("thinking");
+  const stopAndTranscribe=async()=>{
+    clearInterval(timerRef.current);
+    if(!mediaRef.current)return;
+    setStatus("transcribing");
+    await new Promise(resolve=>{
+      mediaRef.current.onstop=resolve;
+      mediaRef.current.stop();
+      mediaRef.current.stream.getTracks().forEach(t=>t.stop());
+    });
+    const blob=new Blob(chunksRef.current,{type:"audio/webm"});
+    if(blob.size<1000){setErr("Enregistrement trop court. Parlez plus longtemps.");setStatus("idle");return;}
+
+    try{
+      let text="";
+      if(userApiKey){
+        // Direct Whisper call with user key
+        const fd=new FormData();
+        fd.append("file",blob,"audio.webm");
+        fd.append("model","whisper-1");
+        fd.append("language","fr");
+        const r=await fetch("https://api.openai.com/v1/audio/transcriptions",{
+          method:"POST",
+          headers:{"Authorization":`Bearer ${userApiKey}`},
+          body:fd
+        });
+        const d=await r.json();
+        text=d.text||"";
+      } else {
+        // Via server proxy
+        const fd=new FormData();
+        fd.append("audio",blob,"audio.webm");
+        const r=await fetch("/api/transcribe",{method:"POST",body:fd});
+        const d=await r.json();
+        text=d.text||"";
+      }
+
+      if(!text.trim()){setErr("Aucune parole détectée. Réessayez.");setStatus("idle");return;}
+      setTranscript(text);
+      setStatus("thinking");
+      await analyze(text);
+    }catch(e){
+      setErr("Erreur de transcription. Vérifiez votre connexion.");
+      setStatus("idle");
+    }
+  };
+
+  const analyze=async(text)=>{
     const context=topic?`Sujet TCF: "${topic.title}" — Question: "${topic.q}"`:sit?`Situation TCF: "${sit}"`:"Expression orale TCF Canada";
     const prompt=`Tu es un examinateur TCF Canada expert. Analyse cette réponse orale d'un candidat.
 
 Contexte: ${context}
-Réponse transcrite: "${transcript}"
+Réponse transcrite: "${text}"
 
 Donne un feedback structuré en JSON avec exactement ce format:
 {
@@ -623,12 +664,15 @@ Réponds UNIQUEMENT avec le JSON, sans texte avant ou après.`;
       const clean=txt.replace(/```json|```/g,"").trim();
       setFeedback(JSON.parse(clean));
       setStatus("done");
+      if(!userApiKey&&setAiUsage)setAiUsage(u=>({...u,coach:(u.coach||0)+1}));
     }catch(e){
       setErr("Erreur d'analyse. Vérifiez votre connexion.");
       setStatus("idle");
     }
   };
 
+  const reset=()=>{setStatus("idle");setTranscript("");setFeedback(null);setErr("");setDuration(0);};
+  const fmt=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
   const scoreColor=s=>s>=8?C.green:s>=6?C.amber:C.red;
   const niveauColor=n=>n==="C1"?C.purple:n==="B2"?C.green:n==="B1"?C.amber:C.red;
 
@@ -637,36 +681,47 @@ Réponds UNIQUEMENT avec le JSON, sans texte avant ou après.`;
       <div style={{display:"flex",gap:10,alignItems:"center"}}>
         <span style={{fontSize:20}}>🎤</span>
         <div>
-          <div style={{fontWeight:600,fontSize:13,color:"#0ea5e9"}}>Coach vocal IA</div>
-          <div style={{fontSize:11,color:C.gray}}>Parlez en français — l'IA analyse votre réponse</div>
+          <div style={{fontWeight:600,fontSize:13,color:"#0ea5e9"}}>Coach vocal IA — Whisper</div>
+          <div style={{fontSize:11,color:C.gray}}>Parlez en français — transcription précise + analyse IA</div>
         </div>
       </div>
-      {(!isPaid&&!userApiKey)&&<Btn ch="Débloquer →" v="ghost" sm onClick={onUpgrade} sx={{borderColor:"#0ea5e9",color:"#0ea5e9"}}/>}
+      {!canUse&&<Btn ch="Débloquer →" v="ghost" sm onClick={()=>onUpgrade("Débloquez le Coach vocal IA")} sx={{borderColor:"#0ea5e9",color:"#0ea5e9"}}/>}
+      {canUse&&!userApiKey&&<span style={{fontSize:11,color:C.gray}}>{coachLimit-coachUsed} restant{coachLimit-coachUsed>1?"s":""}</span>}
     </div>
     <div style={{padding:"14px 16px"}}>
       {err&&<div style={{fontSize:12,color:C.red,background:C.red+"0d",padding:"8px 12px",borderRadius:8,marginBottom:10}}>{err}</div>}
-      <div style={{display:"flex",gap:10,alignItems:"center",marginBottom:12}}>
-        {status==="idle"&&<button onClick={startRec} disabled={!isPaid&&!userApiKey} style={{display:"flex",alignItems:"center",gap:8,background:"#0ea5e9",color:"#fff",border:"none",borderRadius:10,padding:"10px 20px",fontSize:14,fontWeight:600,cursor:"pointer",opacity:(!isPaid&&!userApiKey)?0.5:1}}>
+      <div style={{display:"flex",gap:10,alignItems:"center",marginBottom:12,flexWrap:"wrap"}}>
+        {status==="idle"&&<button onClick={startRec} disabled={!canUse}
+          style={{display:"flex",alignItems:"center",gap:8,background:"#0ea5e9",color:"#fff",border:"none",borderRadius:10,padding:"10px 20px",fontSize:14,fontWeight:600,cursor:canUse?"pointer":"not-allowed",opacity:canUse?1:0.5}}>
           🎙 Commencer à parler
         </button>}
-        {status==="listening"&&<>
-          <button onClick={stopAndAnalyze} style={{display:"flex",alignItems:"center",gap:8,background:C.red,color:"#fff",border:"none",borderRadius:10,padding:"10px 20px",fontSize:14,fontWeight:600,cursor:"pointer"}}>
-            ⏹ Arrêter et analyser
+        {status==="recording"&&<>
+          <button onClick={stopAndTranscribe}
+            style={{display:"flex",alignItems:"center",gap:8,background:C.red,color:"#fff",border:"none",borderRadius:10,padding:"10px 20px",fontSize:14,fontWeight:600,cursor:"pointer"}}>
+            ⏹ Arrêter
           </button>
-          <div style={{display:"flex",gap:4,alignItems:"center"}}>
-            {[0,1,2].map(i=><div key={i} style={{width:6,height:6,borderRadius:"50%",background:"#0ea5e9",animation:`pulse ${0.6+i*0.2}s ease-in-out infinite alternate`}}/>)}
-            <span style={{fontSize:12,color:"#0ea5e9",marginLeft:4}}>Écoute en cours...</span>
+          <div style={{display:"flex",gap:8,alignItems:"center"}}>
+            <div style={{width:10,height:10,borderRadius:"50%",background:C.red,animation:"pulse 1s ease-in-out infinite alternate"}}/>
+            <span style={{fontSize:13,color:C.red,fontWeight:600}}>{fmt(duration)}</span>
+            <span style={{fontSize:12,color:C.gray}}>En cours...</span>
           </div>
         </>}
-        {status==="thinking"&&<div style={{display:"flex",gap:8,alignItems:"center",color:C.purple,fontSize:13}}>
-          <span style={{animation:"spin 1s linear infinite",display:"inline-block"}}>⟳</span> Analyse en cours...
+        {status==="transcribing"&&<div style={{display:"flex",gap:8,alignItems:"center",color:"#0ea5e9",fontSize:13}}>
+          <span style={{animation:"spin 1s linear infinite",display:"inline-block"}}>⟳</span> Transcription Whisper...
         </div>}
-        {status==="done"&&<button onClick={()=>{setStatus("idle");setTranscript("");setFeedback(null);}} style={{background:"none",border:`1px solid ${C.border}`,borderRadius:8,padding:"8px 14px",fontSize:12,cursor:"pointer",color:C.gray}}>
+        {status==="thinking"&&<div style={{display:"flex",gap:8,alignItems:"center",color:C.purple,fontSize:13}}>
+          <span style={{animation:"spin 1s linear infinite",display:"inline-block"}}>⟳</span> Analyse IA en cours...
+        </div>}
+        {status==="done"&&<button onClick={reset}
+          style={{background:"none",border:`1px solid ${C.border}`,borderRadius:8,padding:"8px 14px",fontSize:12,cursor:"pointer",color:C.gray}}>
           🔄 Recommencer
         </button>}
       </div>
       {transcript&&<div style={{background:"#f4f3f0",borderRadius:10,padding:"10px 14px",marginBottom:12,fontSize:13,lineHeight:1.6,color:"#333",borderLeft:"3px solid #0ea5e9"}}>
-        <div style={{fontSize:11,color:C.gray,marginBottom:4,fontWeight:500}}>TRANSCRIPTION</div>
+        <div style={{fontSize:11,color:C.gray,marginBottom:4,fontWeight:500,display:"flex",justifyContent:"space-between"}}>
+          <span>TRANSCRIPTION WHISPER</span>
+          <span style={{color:"#0ea5e9"}}>✓ Précis</span>
+        </div>
         {transcript}
       </div>}
       {feedback&&<div style={{display:"flex",flexDirection:"column",gap:10}}>
@@ -685,11 +740,11 @@ Réponds UNIQUEMENT avec le JSON, sans texte avant ou après.`;
         </div>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
           <div style={{background:"#f4f3f0",borderRadius:10,padding:"10px 12px"}}>
-            <div style={{fontSize:11,fontWeight:600,color:C.gray,marginBottom:6}}>📚 VOCABULAIRE</div>
+            <div style={{fontSize:11,fontWeight:600,color:C.gray,marginBottom:4}}>📚 VOCABULAIRE</div>
             <div style={{fontSize:12,lineHeight:1.5}}>{feedback.vocabulaire}</div>
           </div>
           <div style={{background:"#f4f3f0",borderRadius:10,padding:"10px 12px"}}>
-            <div style={{fontSize:11,fontWeight:600,color:C.gray,marginBottom:6}}>🔧 GRAMMAIRE</div>
+            <div style={{fontSize:11,fontWeight:600,color:C.gray,marginBottom:4}}>🔧 GRAMMAIRE</div>
             <div style={{fontSize:12,lineHeight:1.5}}>{feedback.grammaire}</div>
           </div>
         </div>
@@ -707,10 +762,9 @@ Réponds UNIQUEMENT avec le JSON, sans texte avant ou après.`;
         </div>}
       </div>}
     </div>
-    <style>{`@keyframes pulse{to{transform:scaleY(2.5)}}@keyframes spin{to{transform:rotate(360deg)}}`}</style>
+    <style>{`@keyframes pulse{to{opacity:.3}}@keyframes spin{to{transform:rotate(360deg)}}`}</style>
   </div>);
 };
-
 
 const Speaking=({plan,aiUsage,setAiUsage,onUpgrade,ct,onAdd,userApiKey})=>{
   const [tab,setTab]=useState("tache3");
