@@ -3,12 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "nodemailer": "^6.9.9"
-  },
-  "devDependencies": {
-    "javascript-obfuscator": "^4.1.0"
-  },
-  "scripts": {
-    "obfuscate": "node scripts/obfuscate.js"
+    "nodemailer": "^6.9.9",
+    "formidable": "^3.5.1",
+    "node-fetch": "^2.7.0",
+    "form-data": "^4.0.0"
   }
 }
