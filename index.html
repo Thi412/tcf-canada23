@@ -154,6 +154,166 @@ const WRITING_PROMPTS=[
   {id:122,task:"tache3",theme:"🤝 Solidarité & société",title:"L\'aide aux personnes en difficulté",level:"B2-C1",prompt:"La société doit-elle aider les personnes en difficulté financière ? Rédigez un texte argumenté en défendant votre position. (200–240 mots)"}
 ];
 </script>
+<script>
+const MODULES=[
+  {
+    id:"connecteurs",icon:"🔵",label:"Connecteurs",color:"#0e6fa8",
+    desc:"Relier les idées avec précision — éviter 'et… et… et…'",
+    groups:[
+      {name:"Addition",items:["de plus","en outre","par ailleurs","également","qui plus est"]},
+      {name:"Opposition",items:["cependant","pourtant","néanmoins","toutefois","or"]},
+      {name:"Cause",items:["puisque","étant donné que","vu que","car","en raison de"]},
+      {name:"Conséquence",items:["donc","ainsi","c'est pourquoi","par conséquent","de ce fait"]},
+      {name:"Concession",items:["bien que + subj.","même si","quoique + subj.","malgré","bien que"]},
+    ],
+    pattern:{wrong:"Il pleut. Je sors.",right:"Il pleut, cependant je sors."},
+    exercises:[
+      {type:"qcm",q:"Il est fatigué ___ il continue à travailler.",opts:["donc","cependant","puisque"],ans:1,exp:"Opposition entre fatigue et action → 'cependant'"},
+      {type:"qcm",q:"___ il fait froid, je mets un manteau.",opts:["Cependant","Puisque","Ainsi"],ans:1,exp:"Cause → 'Puisque' introduit la raison"},
+      {type:"qcm",q:"Il a bien travaillé, ___ il a réussi.",opts:["pourtant","cependant","donc"],ans:2,exp:"Conséquence logique → 'donc'"},
+      {type:"rewrite",q:"C'est cher. Je l'achète.",hint:"Opposition — utilisez 'cependant' ou 'pourtant'",ans:"C'est cher, cependant je l'achète."},
+      {type:"rewrite",q:"Elle est malade. Elle est venue.",hint:"Concession — utilisez 'bien que' (+ subjonctif)",ans:"Bien qu'elle soit malade, elle est venue."},
+      {type:"fill",q:"Les réseaux sociaux ont des avantages, ___ ils présentent aussi des risques.",ans:"cependant",exp:"Opposition dans une argumentation"},
+    ],
+    tasks:{
+      speaking:{topic:"Les réseaux sociaux",req:["Utiliser ≥ 2 connecteurs différents","Structurer: cause → conséquence ou opposition"]},
+      writing:{sujet:"Rédigez 3 phrases sur les transports en commun",req:["1 phrase avec une cause","1 phrase avec une opposition","1 phrase avec une conséquence"]}
+    }
+  },
+  {
+    id:"subjonctif",icon:"🟡",label:"Subjonctif",color:"#c97a1a",
+    desc:"Exprimer nécessité, doute, sentiment, concession",
+    groups:[
+      {name:"Nécessité",items:["Il faut que","Il est nécessaire que","Il est important que","Il est indispensable que"]},
+      {name:"Concession",items:["Bien que","Quoique","Encore que","Malgré que"]},
+      {name:"But",items:["Pour que","Afin que","De sorte que"]},
+      {name:"Doute / Émotion",items:["Je doute que","Je regrette que","Je souhaite que","Il est possible que"]},
+    ],
+    pattern:{wrong:"Il est important. Tu fais des efforts.",right:"Il est important que tu fasses des efforts."},
+    exercises:[
+      {type:"conjugate",q:"Il faut que tu ___ (faire) des efforts.",ans:"fasses",exp:"faire → fasse, fasses, fasse, fassions, fassiez, fassent"},
+      {type:"conjugate",q:"Bien qu'il ___ (être) fatigué, il travaille.",ans:"soit",exp:"être → soit, sois, soit, soyons, soyez, soient"},
+      {type:"conjugate",q:"Je veux que tu ___ (venir) demain.",ans:"viennes",exp:"venir → vienne, viennes, vienne..."},
+      {type:"rewrite",q:"Il est important. Tu travailles régulièrement.",hint:"Il est important que tu...",ans:"Il est important que tu travailles régulièrement."},
+      {type:"rewrite",q:"Elle est absente. Je le regrette.",hint:"Je regrette que...",ans:"Je regrette qu'elle soit absente."},
+      {type:"qcm",q:"Pour que le projet ___ un succès, il faut s'organiser.",opts:["est","soit","sera"],ans:1,exp:"'Pour que' → subjonctif obligatoire"},
+    ],
+    tasks:{
+      speaking:{topic:"L'éducation des enfants",req:["Utiliser 'Il est important que...'","Utiliser 'Bien que...' pour nuancer"]},
+      writing:{sujet:"Exprimez votre opinion sur le télétravail",req:["1 phrase avec 'Il est essentiel que'","1 phrase avec 'Bien que'"]}
+    }
+  },
+  {
+    id:"conditionnel",icon:"🟣",label:"Conditionnel",color:"#5b3fa6",
+    desc:"Politesse, hypothèse, conseil, souhait",
+    groups:[
+      {name:"Politesse",items:["Je voudrais","Pourriez-vous","Il serait préférable","Auriez-vous"]},
+      {name:"Hypothèse (présent)",items:["Si + imparfait → conditionnel présent"]},
+      {name:"Hypothèse (passé)",items:["Si + plus-que-parfait → conditionnel passé"]},
+      {name:"Conseil",items:["Tu devrais","Il faudrait","Il vaudrait mieux","On pourrait"]},
+    ],
+    pattern:{wrong:"Je choisis ce travail si j'ai le choix.",right:"Si j'avais le choix, je choisirais ce travail."},
+    exercises:[
+      {type:"conjugate",q:"Si j'___ (avoir) le temps, je voyagerais.",ans:"avais",exp:"Hypothèse → Si + imparfait + conditionnel présent"},
+      {type:"conjugate",q:"Il ___ (falloir) partir maintenant.",ans:"faudrait",exp:"falloir → il faudrait (conditionnel présent)"},
+      {type:"rewrite",q:"Je veux un café. (politesse)",hint:"Je voudrais...",ans:"Je voudrais un café, s'il vous plaît."},
+      {type:"rewrite",q:"Il ne travaille pas. Il échoue.",hint:"Si + imparfait → conditionnel",ans:"S'il travaillait, il ne faillirait pas."},
+      {type:"qcm",q:"Si elle avait étudié, elle ___ réussi.",opts:["aurait","a","aura"],ans:0,exp:"Hypothèse passée → Si + plus-que-parfait → conditionnel passé"},
+      {type:"fill",q:"___ -vous m'aider, s'il vous plaît ?",ans:"Pourriez",exp:"Politesse → conditionnel présent"},
+    ],
+    tasks:{
+      speaking:{topic:"Votre travail idéal",req:["Utiliser 'Si j'avais le choix, je...'","Utiliser 'Il serait préférable de...'"]},
+      writing:{sujet:"Donnez 3 conseils à un ami qui cherche du travail",req:["Utiliser 'tu devrais'","Utiliser 'il faudrait'","Utiliser 'il vaudrait mieux'"]}
+    }
+  },
+  {
+    id:"relatives",icon:"🔴",label:"Phrases complexes",color:"#c0392b",
+    desc:"Propositions relatives — qui, que, dont, où",
+    groups:[
+      {name:"Relatifs simples",items:["qui (sujet)","que (COD)","dont (de + nom)","où (lieu/temps)"]},
+      {name:"Relatifs composés",items:["lequel / laquelle","auquel / à laquelle","duquel / de laquelle"]},
+    ],
+    pattern:{wrong:"Je connais une personne. Elle parle français.",right:"Je connais une personne qui parle français."},
+    exercises:[
+      {type:"qcm",q:"C'est le livre ___ j'ai besoin.",opts:["qui","que","dont"],ans:2,exp:"'avoir besoin de' → dont (remplace 'de + nom')"},
+      {type:"qcm",q:"La ville ___ j'habite est magnifique.",opts:["qui","que","où"],ans:2,exp:"Lieu → où"},
+      {type:"qcm",q:"C'est l'étudiante ___ a réussi l'examen.",opts:["qui","que","dont"],ans:0,exp:"Sujet du verbe → qui"},
+      {type:"rewrite",q:"Je connais une personne. Elle parle bien français.",hint:"...qui...",ans:"Je connais une personne qui parle bien français."},
+      {type:"rewrite",q:"C'est un film. Je l'ai vu hier.",hint:"...que...",ans:"C'est un film que j'ai vu hier."},
+      {type:"rewrite",q:"Il a un problème. Il parle de ce problème.",hint:"...dont...",ans:"Il a un problème dont il parle."},
+    ],
+    tasks:{
+      speaking:{topic:"Décrivez votre ville idéale",req:["Utiliser ≥ 2 propositions relatives","Combiner qui, que et où si possible"]},
+      writing:{sujet:"Décrivez un(e) ami(e) en 3 phrases",req:["1 phrase avec 'qui'","1 phrase avec 'que'","1 phrase avec 'dont'"]}
+    }
+  },
+  {
+    id:"opinion",icon:"🟤",label:"Expression d'opinion",color:"#7c5c3a",
+    desc:"Formuler une opinion nuancée et soutenue",
+    groups:[
+      {name:"Opinion personnelle",items:["Je pense que","Il me semble que","J'estime que","Je suis convaincu(e) que"]},
+      {name:"Opinion formelle",items:["On peut considérer que","Il convient de noter que","Force est de constater que"]},
+      {name:"Accord partiel",items:["Certes... mais","Il est vrai que... cependant","Sans doute... mais"]},
+      {name:"Désaccord poli",items:["Je ne partage pas cet avis","Contrairement à cette idée","Il faut relativiser"]},
+    ],
+    pattern:{wrong:"Je pense que c'est bien.",right:"Il me semble que cela présente des avantages non négligeables."},
+    exercises:[
+      {type:"rewrite",q:"Je pense que c'est bien.",hint:"Version plus soutenue avec 'Il me semble que'",ans:"Il me semble que cela présente des avantages."},
+      {type:"rewrite",q:"C'est mauvais.",hint:"Opinion formelle avec nuance",ans:"Force est de constater que cette situation pose certains problèmes."},
+      {type:"qcm",q:"___ les réseaux sociaux soient utiles, ils présentent des risques.",opts:["Certes","Pourtant","Puisque"],ans:0,exp:"'Certes... mais' = accord partiel avant opposition"},
+      {type:"fill",q:"___ de constater que les jeunes lisent moins.",ans:"Force est",exp:"Expression formelle pour introduire un fait difficile à nier"},
+      {type:"rewrite",q:"C'est vrai mais c'est compliqué.",hint:"Formulez de manière plus formelle",ans:"Il est vrai que cela est pertinent, cependant la situation demeure complexe."},
+    ],
+    tasks:{
+      speaking:{topic:"Les avantages du sport",req:["Utiliser ≥ 2 expressions d'opinion","Nuancer avec 'Certes... mais'"]},
+      writing:{sujet:"Votre avis sur le travail à distance",req:["Introduire avec 'Il me semble que'","Nuancer avec 'Certes... cependant'","Conclure avec 'Force est de constater que'"]}
+    }
+  },
+  {
+    id:"nuance",icon:"⚫",label:"Nuance & Débat",color:"#2c3e50",
+    desc:"Structurer un argument équilibré — pour, contre, nuance",
+    groups:[
+      {name:"Présenter deux aspects",items:["D'un côté... de l'autre","D'une part... d'autre part","Si l'on considère... on peut aussi estimer"]},
+      {name:"Nuancer",items:["Il faut nuancer","Il convient de relativiser","Tout dépend de","À condition que"]},
+      {name:"Concéder",items:["Certes","Il est vrai que","Sans doute","Même si"]},
+      {name:"Réfuter poliment",items:["Néanmoins","Il faut cependant noter","Or","Pourtant"]},
+    ],
+    pattern:{wrong:"C'est bien. C'est mauvais.",right:"D'un côté, cela présente des avantages ; de l'autre, certains inconvénients méritent attention."},
+    exercises:[
+      {type:"rewrite",q:"C'est bien. C'est mauvais.",hint:"D'un côté... de l'autre...",ans:"D'un côté, c'est bénéfique ; de l'autre, cela pose des problèmes."},
+      {type:"qcm",q:"___ la technologie facilite la vie, elle crée aussi une dépendance.",opts:["Puisque","Certes","Donc"],ans:1,exp:"Concession avant opposition = Certes... mais"},
+      {type:"fill",q:"Il ___ nuancer : tout dépend du contexte.",ans:"faut",exp:"'Il faut nuancer' = expression clé pour le débat TCF"},
+      {type:"rewrite",q:"Les voitures sont utiles. Elles polluent.",hint:"Utilisez 'Certes... néanmoins'",ans:"Certes, les voitures sont utiles ; néanmoins, elles contribuent à la pollution."},
+    ],
+    tasks:{
+      speaking:{topic:"Les téléphones dans les écoles",req:["Présenter un argument POUR","Présenter un argument CONTRE","Nuancer avec 'Il faut relativiser'"]},
+      writing:{sujet:"Rédigez un paragraphe argumenté sur le végétarisme",req:["D'un côté... de l'autre","Certes... cependant","Conclure avec une nuance"]}
+    }
+  },
+  {
+    id:"structure",icon:"⚪",label:"Structure écrite",color:"#576574",
+    desc:"Organiser un texte argumenté — introduction, développement, conclusion",
+    groups:[
+      {name:"Introduction",items:["Aujourd'hui, la question de... suscite de nombreux débats","De nos jours, ... est un sujet qui préoccupe","La question de ... mérite qu'on s'y attarde"]},
+      {name:"Développement",items:["Dans un premier temps,","En second lieu,","Par ailleurs,","Il convient également de souligner que"]},
+      {name:"Illustration",items:["À titre d'exemple,","C'est le cas de","On peut citer","Prenons l'exemple de"]},
+      {name:"Conclusion",items:["En conclusion,","Pour conclure,","En définitive,","Il ressort de cette analyse que"]},
+    ],
+    pattern:{wrong:"Le télétravail est bien. Les gens aiment ça.",right:"Aujourd'hui, la question du télétravail suscite de nombreux débats. Dans un premier temps, force est de constater que..."},
+    exercises:[
+      {type:"rewrite",q:"Le télétravail est bien. Les gens aiment ça.",hint:"Réécrivez en introduction formelle",ans:"Aujourd'hui, la question du télétravail suscite de nombreux débats dans notre société."},
+      {type:"qcm",q:"___ premier temps, il convient d'analyser les avantages.",opts:["Dans un","En un","À un"],ans:0,exp:"'Dans un premier temps' = marqueur de plan classique"},
+      {type:"fill",q:"___ d'exemple, on peut citer les pays nordiques.",ans:"À titre",exp:"'À titre d'exemple' = introduire une illustration"},
+      {type:"rewrite",q:"C'est la fin. (conclusion)",hint:"Utilisez 'En définitive'",ans:"En définitive, il apparaît que cette question mérite une réflexion approfondie."},
+      {type:"qcm",q:"Pour introduire une illustration : ___",opts:["Par ailleurs","À titre d'exemple","En conclusion"],ans:1,exp:"'À titre d'exemple' ou 'C'est le cas de' → illustration"},
+    ],
+    tasks:{
+      speaking:{topic:"L'importance de l'éducation",req:["Introduire avec une formule","Développer en 2 points","Conclure clairement"]},
+      writing:{sujet:"Sujet: le télétravail — rédigez une introduction + 1 paragraphe",req:["Introduction avec formule appropriée","Un argument illustré","Connecteurs de structure"]}
+    }
+  },
+];
+</script>
 <script type="text/babel">
 const {useState,useEffect,useRef}=React;
 
@@ -341,15 +501,15 @@ const PLANS={
     tests:0,speakAI:0,writeAI:0,coachAI:0,
     badge:null,
     features:["5 tests CE + 5 tests CO","54 topics Tâche 3","Situations Tâche 2","Minuteurs intégrés","Templates C1"]},
-  basic:{name:"Basic",price:"$19",period:"/mois",color:C.amber,
+  basic:{name:"Basic",price:"$29",period:"/mois",color:C.amber,
     tests:15,speakAI:10,writeAI:5,coachAI:5,
     badge:null,
     features:["15 tests CE + 15 tests CO","Coach vocal x5/jour","IA amélioration x10/jour","Feedback écriture x5/jour","Tout Gratuit inclus"]},
-  pro:{name:"Pro",price:"$39",period:"/mois",color:C.green,
+  pro:{name:"Pro",price:"$59",period:"/mois",color:C.green,
     tests:999,speakAI:50,writeAI:30,coachAI:50,
     badge:"Populaire",
     features:["Tous les tests CE + CO","Coach vocal x50/jour","IA amélioration x50/jour","Feedback écriture x30/jour","Tout Basic inclus"]},
-  personal:{name:"Clé API",price:"$9",period:"/mois",color:"#0ea5e9",
+  personal:{name:"Clé API",price:"$12",period:"/mois",color:"#0ea5e9",
     tests:999,speakAI:9999,writeAI:9999,coachAI:9999,
     badge:"Tech",
     features:["Tous les tests CE + CO","IA illimitée (votre clé OpenAI)","Coach vocal illimité","Coût IA ~$1-3/mois à votre charge","Idéal pour les geeks"]}
@@ -433,12 +593,23 @@ const UpgradeModal=({onClose,currentPlan,setPlan,reason,initialPlan})=>{
             placeholder="Mot de passe..." autoFocus
             style={{padding:"10px 14px",borderRadius:8,border:`1.5px solid ${err?C.red:C.border}`,fontSize:14,background:"#f4f3f0",color:"#1a1a1a",outline:"none"}}/>
           {selected==="personal"&&<div>
-            <div style={{fontSize:12,color:C.gray,margin:"4px 0 6px",lineHeight:1.5}}>Votre clé OpenAI API (commence par <code>sk-</code>) — stockée uniquement dans votre navigateur.</div>
+            <div style={{background:"#f0f9ff",borderRadius:10,padding:"10px 12px",marginBottom:10,fontSize:12,lineHeight:1.7,border:"1px solid #0ea5e944"}}>
+              <div style={{fontWeight:600,color:"#0ea5e9",marginBottom:4}}>🔑 Comment obtenir votre clé API ?</div>
+              <div>1. Créez un compte sur <a href="https://platform.openai.com" target="_blank" style={{color:"#0ea5e9"}}>platform.openai.com</a></div>
+              <div>2. Allez dans <strong>API Keys</strong> → <strong>Create new secret key</strong></div>
+              <div>3. Copiez la clé (commence par <code style={{background:"#e0f0ff",padding:"1px 5px",borderRadius:4}}>sk-</code>)</div>
+              <div>4. Collez-la ci-dessous — elle est stockée <strong>uniquement dans votre navigateur</strong></div>
+              <div style={{marginTop:4,color:"#666"}}>💰 Coût estimé : ~<strong>$1-3/mois</strong> selon usage (Whisper + GPT-4o-mini)</div>
+            </div>
             <input type="password" value={apiKey}
               onChange={e=>setApiKey(e.target.value)}
               placeholder="sk-..."
-              style={{padding:"10px 14px",borderRadius:8,border:`1.5px solid ${apiKey?C.border:"#0ea5e9"}`,fontSize:14,background:"#f4f3f0",color:"#1a1a1a",outline:"none",width:"100%",boxSizing:"border-box"}}/>
-            <div style={{fontSize:11,color:C.gray,marginTop:4}}>Obtenez votre clé sur <a href="https://platform.openai.com/api-keys" target="_blank" style={{color:"#0ea5e9"}}>platform.openai.com</a></div>
+              style={{padding:"10px 14px",borderRadius:8,border:`1.5px solid ${apiKey?"#0ea5e9":C.border}`,fontSize:14,background:"#f4f3f0",color:"#1a1a1a",outline:"none",width:"100%",boxSizing:"border-box"}}/>
+            <div style={{fontSize:11,color:C.gray,marginTop:6,display:"flex",gap:6,alignItems:"center"}}>
+              <span>🔒 Jamais envoyée à nos serveurs</span>
+              <span>·</span>
+              <span>✅ Utilisée directement avec OpenAI</span>
+            </div>
           </div>}
           {err&&<div style={{fontSize:12,color:C.red,padding:"8px 12px",background:C.red+"0d",borderRadius:6}}>{err}</div>}
           <Btn ch={verifying?"Vérification...":"Débloquer l'accès"} full onClick={handleUnlock} dis={verifying||!pw.trim()||(selected==="personal"&&!apiKey.trim())}/>
@@ -585,7 +756,10 @@ const SpeakingCoach=({topic,sit,userApiKey,plan,onUpgrade,aiUsage,setAiUsage})=>
       mr.start(250);
       mediaRef.current=mr;
       setStatus("recording");
-      timerRef.current=setInterval(()=>setDuration(d=>d+1),1000);
+      timerRef.current=setInterval(()=>setDuration(d=>{
+        if(d>=89){stopAndTranscribe();return d;}
+        return d+1;
+      }),1000);
     }catch(e){setErr("Impossible d'accéder au microphone. Vérifiez les permissions.");setStatus("idle");}
   };
 
@@ -637,28 +811,16 @@ const SpeakingCoach=({topic,sit,userApiKey,plan,onUpgrade,aiUsage,setAiUsage})=>
 
   const analyze=async(text)=>{
     const context=topic?`Sujet TCF: "${topic.title}" — Question: "${topic.q}"`:sit?`Situation TCF: "${sit}"`:"Expression orale TCF Canada";
-    const prompt=`Tu es un examinateur TCF Canada expert. Analyse cette réponse orale d'un candidat.
-
+    const prompt=`Examinateur TCF Canada. Évalue cette réponse orale.
 Contexte: ${context}
-Réponse transcrite: "${text}"
-
-Donne un feedback structuré en JSON avec exactement ce format:
-{
-  "score": <nombre 0-10>,
-  "niveau": "<A2|B1|B2|C1>",
-  "points_forts": ["<point1>","<point2>"],
-  "a_ameliorer": ["<point1>","<point2>"],
-  "vocabulaire": "<commentaire sur le choix des mots>",
-  "grammaire": "<commentaire sur la structure>",
-  "conseil": "<1 conseil concret pour améliorer>",
-  "phrase_amelioree": "<reformule 1 phrase de la réponse au niveau B2/C1>"
-}
-Réponds UNIQUEMENT avec le JSON, sans texte avant ou après.`;
+Réponse: "${text}"
+JSON uniquement:
+{"score":<0-10>,"niveau":"<A2|B1|B2|C1>","points_forts":["<p1>","<p2>"],"a_ameliorer":["<p1>","<p2>"],"vocabulaire":"<bref>","grammaire":"<bref>","conseil":"<1 conseil>","phrase_amelioree":"<1 phrase B2/C1>"}`;
 
     try{
       const endpoint=userApiKey?"https://api.openai.com/v1/chat/completions":"/api/chat";
       const headers={"Content-Type":"application/json",...(userApiKey?{"Authorization":`Bearer ${userApiKey}`}:{})};
-      const res=await fetch(endpoint,{method:"POST",headers,body:JSON.stringify({model:"gpt-4o-mini",max_tokens:600,messages:[{role:"user",content:prompt}]})});
+      const res=await fetch(endpoint,{method:"POST",headers,body:JSON.stringify({model:"gpt-4o-mini",max_tokens:350,messages:[{role:"user",content:prompt}]})});
       const d=await res.json();
       const txt=d.choices?.[0]?.message?.content||"{}";
       const clean=txt.replace(/```json|```/g,"").trim();
@@ -682,7 +844,7 @@ Réponds UNIQUEMENT avec le JSON, sans texte avant ou après.`;
         <span style={{fontSize:20}}>🎤</span>
         <div>
           <div style={{fontWeight:600,fontSize:13,color:"#0ea5e9"}}>Coach vocal IA — Whisper</div>
-          <div style={{fontSize:11,color:C.gray}}>Parlez en français — transcription précise + analyse IA</div>
+          <div style={{fontSize:11,color:C.gray}}>Whisper + GPT · ~$0.01/analyse · max 90s</div>
         </div>
       </div>
       {!canUse&&<Btn ch="Débloquer →" v="ghost" sm onClick={()=>onUpgrade("Débloquez le Coach vocal IA")} sx={{borderColor:"#0ea5e9",color:"#0ea5e9"}}/>}
@@ -703,7 +865,8 @@ Réponds UNIQUEMENT avec le JSON, sans texte avant ou après.`;
           <div style={{display:"flex",gap:8,alignItems:"center"}}>
             <div style={{width:10,height:10,borderRadius:"50%",background:C.red,animation:"pulse 1s ease-in-out infinite alternate"}}/>
             <span style={{fontSize:13,color:C.red,fontWeight:600}}>{fmt(duration)}</span>
-            <span style={{fontSize:12,color:C.gray}}>En cours...</span>
+            <span style={{fontSize:12,color:C.gray}}>max 90s</span>
+            {duration>=60&&<span style={{fontSize:11,color:C.amber}}>⚠ Bientôt la limite</span>}
           </div>
         </>}
         {status==="transcribing"&&<div style={{display:"flex",gap:8,alignItems:"center",color:"#0ea5e9",fontSize:13}}>
@@ -1278,224 +1441,223 @@ const Writing=({plan,aiUsage,setAiUsage,onUpgrade,cw,onAdd,userApiKey})=>{
 // ─── VOCAB ────────────────────────────────────────────────────────────────────
 const VEXS=[{q:"Choisissez le mot correct : « Ce projet est _____ à la réussite. »",opts:["indispensable","indisposable","indisponible","indisputable"],ans:0,expl:"« Indispensable » signifie absolument nécessaire."},{q:"Quel synonyme de « améliorer » convient dans un texte formel ?",opts:["arranger","optimiser","bricoler","toucher"],ans:1,expl:"« Optimiser » est le terme formel approprié."},{q:"Lequel est un connecteur logique d'opposition ?",opts:["donc","ainsi","néanmoins","c'est pourquoi"],ans:2,expl:"« Néanmoins » introduit une opposition ou une nuance."},{q:"Quel verbe s'emploie avec « une décision » en registre soutenu ?",opts:["faire","prendre","avoir","mettre"],ans:1,expl:"On « prend » une décision."},{q:"Complétez : « Il a pris une décision _____. »",opts:["hasardeuse","hardie","habile","hâtive"],ans:3,expl:"« Hâtive » = prise trop rapidement."}];
 const GEXS=[{q:"Subjonctif : « Il faut que tu _____ (venir) demain. »",opts:["viennes","venais","viens","sois venu"],ans:0,expl:"Après « il faut que », on utilise le subjonctif présent."},{q:"Conditionnel : « Si j'avais le temps, je _____ voyager. »",opts:["vais","irais","irai","allais"],ans:1,expl:"Si + imparfait → conditionnel présent."},{q:"Quel accord est correct ?",opts:["Les gens sont contents","Les gens est content","Les gens sont content","Les gens est contents"],ans:0,expl:"Sujet pluriel → verbe et adjectif au pluriel."},{q:"Voix passive : « Le jury a sélectionné trois candidats. »",opts:["Trois candidats ont été sélectionnés par le jury.","Trois candidats étaient sélectionnés du jury.","Trois candidats ont sélectionné le jury.","Le jury est sélectionné par trois candidats."],ans:0,expl:"Sujet + être (même temps) + participe passé + par + complément."},{q:"Préposition : « Il s'intéresse _____ la politique. »",opts:["à","de","pour","en"],ans:0,expl:"« S'intéresser » se construit avec « à »."}];
-const GRAM_DATA=[
-  {cat:"Temps & modes",icon:"⏰",color:C.green,rules:[
-    {title:"Le présent de l'indicatif",use:"Actions habituelles, vérités générales, actions en cours",ex:[{fr:"Je parle français tous les jours.",note:"habitude"},{fr:"L'eau bout à 100°C.",note:"vérité générale"}],errors:["❌ Je parles → ✓ Je parle","❌ Il fais → ✓ Il fait"]},
-    {title:"Le passé composé",use:"Actions terminées, événements ponctuels dans le passé",ex:[{fr:"J'ai terminé mon rapport hier.",note:"action terminée"},{fr:"Elle est arrivée à 9h.",note:"être + pp"}],errors:["❌ J'ai allé → ✓ Je suis allé","❌ Elle a venue → ✓ Elle est venue"]},
-    {title:"L'imparfait",use:"Descriptions, actions habituelles dans le passé, contexte",ex:[{fr:"Quand j'étais enfant, je jouais au foot.",note:"habitude passée"},{fr:"Il pleuvait et le vent soufflait fort.",note:"description"}],errors:["❌ J'étais mangé → ✓ Je mangeais","❌ Il avait froid → ✓ Il faisait froid (météo)"]},
-    {title:"Le futur simple",use:"Actions futures, prédictions, promesses",ex:[{fr:"Demain, je partirai à 8h.",note:"action future"},{fr:"Tu réussiras si tu travailles.",note:"condition"}],errors:["❌ Je vais partir demain matin → acceptable mais moins formel","❌ Il finira bientôt → ✓ correct"]},
-    {title:"Le conditionnel présent",use:"Politesse, hypothèses, souhaits, conseils",ex:[{fr:"Je voudrais un café, s'il vous plaît.",note:"politesse"},{fr:"Si j'avais le temps, je voyagerais.",note:"hypothèse"}],errors:["❌ Si j'aurais → ✓ Si j'avais","❌ Je voulais → moins poli que je voudrais"]},
-    {title:"Le subjonctif présent",use:"Après il faut que, vouloir que, bien que, pour que...",ex:[{fr:"Il faut que tu sois à l'heure.",note:"obligation"},{fr:"Bien qu'il soit fatigué, il travaille.",note:"concession"}],errors:["❌ Il faut que tu es → ✓ tu sois","❌ Pour que il peut → ✓ pour qu'il puisse"]},
-  ]},
-  {cat:"Accords & genre",icon:"🔤",color:C.purple,rules:[
-    {title:"Accord sujet-verbe",use:"Le verbe s'accorde toujours avec son sujet",ex:[{fr:"Les étudiants apprennent vite.",note:"pluriel"},{fr:"Ni toi ni lui n'est responsable.",note:"ni...ni → singulier"}],errors:["❌ Les gens est → ✓ Les gens sont","❌ C'est eux qui a → ✓ qui ont"]},
-    {title:"Accord du participe passé",use:"Avec avoir : accord avec COD si avant le verbe. Avec être : accord avec le sujet",ex:[{fr:"La lettre que j'ai écrite.",note:"COD avant → accord"},{fr:"Elles sont parties tôt.",note:"être → accord sujet"}],errors:["❌ Je les ai vu → ✓ Je les ai vus","❌ Elle s'est lavée les mains → ✓ lavé (COD après)"]},
-    {title:"Le genre des noms",use:"Masculin / féminin — à mémoriser pour les mots courants TCF",ex:[{fr:"un problème, un système (masc.)",note:"-ème souvent masc."},{fr:"une équipe, une carte (fém.)",note:"-e souvent fém."}],errors:["❌ la problème → ✓ le problème","❌ un chose → ✓ une chose","❌ le page → ✓ la page"]},
-  ]},
-  {cat:"Pronoms",icon:"🔀",color:C.amber,rules:[
-    {title:"Pronoms COD & COI",use:"COD : le, la, les (remplace l'objet direct). COI : lui, leur (remplace à + personne)",ex:[{fr:"Je le vois. (= je vois Paul)",note:"COD"},{fr:"Je lui parle. (= je parle à Marie)",note:"COI"}],errors:["❌ Je parle le → ✓ Je lui parle","❌ Je le donne → ✓ Je le lui donne"]},
-    {title:"Les pronoms relatifs",use:"qui (sujet), que (COD), dont (de + nom), où (lieu/temps)",ex:[{fr:"L'homme qui parle est mon père.",note:"sujet"},{fr:"La ville où je vis est belle.",note:"lieu"}],errors:["❌ La personne qu'il parle → ✓ dont il parle","❌ La chose que j'ai besoin → ✓ dont j'ai besoin"]},
-    {title:"En & Y",use:"EN remplace de + nom. Y remplace à + chose/lieu",ex:[{fr:"J'en ai besoin. (= de ce document)",note:"en = de + chose"},{fr:"J'y pense souvent. (= à ce projet)",note:"y = à + chose"}],errors:["❌ Je pense à lui → y (si chose, pas personne)","❌ J'ai en → ✓ J'en ai"]},
-  ]},
-  {cat:"Connecteurs logiques",icon:"🔗",color:"#0ea5e9",rules:[
-    {title:"Opposition & concession",use:"Exprimer un contraste ou une restriction",ex:[{fr:"Bien que ce soit difficile, il persévère.",note:"subjonctif après bien que"},{fr:"Cependant, les résultats restent positifs.",note:"connecteur formel"}],errors:["❌ Malgré il est fatigué → ✓ Malgré sa fatigue","❌ Bien que c'est → ✓ Bien que ce soit"]},
-    {title:"Cause & conséquence",use:"Expliquer pourquoi et les effets",ex:[{fr:"Étant donné que les délais sont courts, nous devons agir.",note:"cause formelle"},{fr:"Il a donc décidé de démissionner.",note:"conséquence"}],errors:["❌ A cause de il est absent → ✓ En raison de son absence","❌ Parce que + nom → ✓ parce que + sujet + verbe"]},
-    {title:"Addition & énumération",use:"Ajouter des idées, structurer un texte",ex:[{fr:"D'une part... d'autre part...",note:"structure formelle"},{fr:"Par ailleurs, il convient de souligner que...",note:"niveau C1"}],errors:["❌ Et aussi de plus → choisir un seul","❌ Premièrement... deuxièmement → ✓ formel et correct"]},
-  ]},
-];
+// ── GRAMMAR DATA B2 ───────────────────────────────────────────────────────────
+// MODULES loaded from plain script above;
 
 const Grammaire=()=>{
-  const [cats,setCats]=useState(GRAM_DATA.map(c=>({...c,rules:[...c.rules]})));
-  const [cat,setCat]=useState(0);
-  const [rule,setRule]=useState(0);
-  const [showErr,setShowErr]=useState({});
-  const [modal,setModal]=useState(null); // {mode:"cat"|"rule", catIdx, ruleIdx?}
-  const [form,setForm]=useState({});
+  const [mod,setMod]=useState("connecteurs");
+  const [tab,setTab]=useState("learn"); // learn | practice | apply
+  const [answers,setAnswers]=useState({});
+  const [checked,setChecked]=useState({});
+  const [mistakes,setMistakes]=useState(()=>{try{return JSON.parse(localStorage.getItem("tcf_mistakes")||"[]");}catch{return[];}});
+  const [progress,setProgress]=useState(()=>{try{return JSON.parse(localStorage.getItem("tcf_gram_progress")||"{}");}catch{return{};}});
 
-  const curCat=cats[cat];
-  const curRule=curCat?.rules[rule];
+  const current=MODULES.find(m=>m.id===mod)||MODULES[0];
 
-  // ── helpers ──────────────────────────────────────────────────────────────
-  const openAddCat=()=>{
-    setForm({cat:"",icon:"📝",color:C.green});
-    setModal({mode:"cat",catIdx:null});
+  const saveProgress=(modId,done)=>{
+    const p={...progress,[modId]:done};
+    setProgress(p);
+    try{localStorage.setItem("tcf_gram_progress",JSON.stringify(p));}catch{}
   };
-  const openEditCat=(ci)=>{
-    const c=cats[ci];
-    setForm({cat:c.cat,icon:c.icon,color:c.color});
-    setModal({mode:"cat",catIdx:ci});
+
+  const saveMistake=(q,given,correct,exp)=>{
+    const m=[{q,given,correct,exp,date:new Date().toISOString()},...mistakes].slice(0,50);
+    setMistakes(m);
+    try{localStorage.setItem("tcf_mistakes",JSON.stringify(m));}catch{}
   };
-  const openAddRule=(ci)=>{
-    setForm({title:"",use:"",ex:[{fr:"",note:""}],errors:[""]});
-    setModal({mode:"rule",catIdx:ci,ruleIdx:null});
+
+  const checkExercise=(qi,exo)=>{
+    const val=(answers[qi]||"").trim().toLowerCase();
+    let correct=false;
+    if(exo.type==="qcm")correct=parseInt(answers[qi])===exo.ans;
+    else correct=val===exo.ans.toLowerCase()||val===exo.ans.toLowerCase().replace(/[.,!?]/g,"");
+    setChecked(c=>({...c,[qi]:{correct,shown:true}}));
+    if(!correct)saveMistake(exo.q,answers[qi]||"—",exo.ans,exo.exp||"");
+    return correct;
   };
-  const openEditRule=(ci,ri)=>{
-    const r=cats[ci].rules[ri];
-    setForm({title:r.title,use:r.use,ex:r.ex.map(e=>({...e})),errors:[...r.errors]});
-    setModal({mode:"rule",catIdx:ci,ruleIdx:ri});
+
+  const checkAll=()=>{
+    let allCorrect=true;
+    current.exercises.forEach((ex,qi)=>{
+      const r=checkExercise(qi,ex);
+      if(!r)allCorrect=false;
+    });
+    if(allCorrect)saveProgress(mod,true);
   };
-  const deleteCat=(ci)=>{
-    if(!window.confirm("Supprimer cette catégorie ?"))return;
-    setCats(cs=>cs.filter((_,i)=>i!==ci));
-    setCat(c=>Math.min(c,cats.length-2));
-    setRule(0);
-  };
-  const deleteRule=(ci,ri)=>{
-    if(!window.confirm("Supprimer cette règle ?"))return;
-    setCats(cs=>cs.map((c,i)=>i!==ci?c:{...c,rules:c.rules.filter((_,j)=>j!==ri)}));
-    setRule(r=>Math.min(r,cats[ci].rules.length-2));
-  };
-  const saveCat=()=>{
-    if(!form.cat?.trim())return;
-    if(modal.catIdx===null){
-      setCats(cs=>[...cs,{cat:form.cat,icon:form.icon||"📝",color:form.color||C.green,rules:[]}]);
-      setCat(cats.length);setRule(0);
-    } else {
-      setCats(cs=>cs.map((c,i)=>i===modal.catIdx?{...c,cat:form.cat,icon:form.icon,color:form.color}:c));
-    }
-    setModal(null);
-  };
-  const saveRule=()=>{
-    if(!form.title?.trim())return;
-    const newRule={title:form.title,use:form.use||"",ex:(form.ex||[]).filter(e=>e.fr.trim()),errors:(form.errors||[]).filter(e=>e.trim())};
-    const ci=modal.catIdx;
-    if(modal.ruleIdx===null){
-      setCats(cs=>cs.map((c,i)=>i!==ci?c:{...c,rules:[...c.rules,newRule]}));
-      setRule(cats[ci].rules.length);
-    } else {
-      setCats(cs=>cs.map((c,i)=>i!==ci?c:{...c,rules:c.rules.map((r,j)=>j===modal.ruleIdx?newRule:r)}));
-    }
-    setModal(null);
-  };
-  const inp={padding:"8px 12px",borderRadius:8,border:`1px solid ${C.border}`,fontSize:13,background:"#f4f3f0",color:"#1a1a1a",width:"100%",boxSizing:"border-box"};
-  const COLORS=[C.green,C.purple,C.amber,C.red,"#0ea5e9","#64748b"];
+
+  const reset=()=>{setAnswers({});setChecked({});};
+
+  const inp={padding:"8px 12px",borderRadius:8,border:`1px solid ${C.border}`,fontSize:13,background:"#f4f3f0",color:"#1a1a1a",fontFamily:"inherit",outline:"none",width:"100%",boxSizing:"border-box"};
 
   return(<div>
-    <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:"1.5rem"}}>
-      <Ttl ch="Grammaire TCF" sub="Règles essentielles — modifiables et extensibles"/>
-      <Btn ch="➕ Catégorie" v="secondary" sm onClick={openAddCat}/>
+    {/* Header */}
+    <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:"1.25rem"}}>
+      <Ttl ch="Grammaire TCF B2" sub="7 modules — Compréhension + Exercices + Application"/>
+      <div style={{fontSize:12,color:C.gray,textAlign:"right"}}>
+        {MODULES.filter(m=>progress[m.id]).length}/{MODULES.length} modules ✓
+      </div>
     </div>
 
-    {/* Category tabs */}
-    <div style={{display:"flex",gap:8,marginBottom:"1.5rem",flexWrap:"wrap"}}>
-      {cats.map((g,i)=><div key={i} style={{display:"flex",alignItems:"center",gap:4}}>
-        <button onClick={()=>{setCat(i);setRule(0);}} style={{display:"flex",alignItems:"center",gap:6,padding:"7px 13px",borderRadius:20,border:`1.5px solid ${cat===i?g.color:C.border}`,background:cat===i?g.color+"15":"transparent",color:cat===i?g.color:"#555",fontSize:13,fontWeight:500,cursor:"pointer"}}>
-          <span>{g.icon}</span>{g.cat}
-        </button>
-        {cat===i&&<>
-          <button onClick={()=>openEditCat(i)} style={{background:"none",border:`1px solid ${C.border}`,borderRadius:6,padding:"3px 7px",fontSize:11,cursor:"pointer",color:C.gray}}>✏️</button>
-          {cats.length>1&&<button onClick={()=>deleteCat(i)} style={{background:"none",border:`1px solid ${C.red}44`,borderRadius:6,padding:"3px 7px",fontSize:11,cursor:"pointer",color:C.red}}>🗑</button>}
-        </>}
-      </div>)}
+    {/* Module nav */}
+    <div style={{display:"flex",gap:6,marginBottom:"1.25rem",flexWrap:"wrap"}}>
+      {MODULES.map(m=><button key={m.id} onClick={()=>{setMod(m.id);setTab("learn");reset();}} style={{display:"flex",alignItems:"center",gap:6,padding:"7px 13px",borderRadius:20,border:`1.5px solid ${mod===m.id?m.color:C.border}`,background:mod===m.id?m.color+"15":"white",color:mod===m.id?m.color:"#555",fontSize:12,fontWeight:mod===m.id?600:400,cursor:"pointer",position:"relative"}}>
+        <span>{m.icon}</span>{m.label}
+        {progress[m.id]&&<span style={{position:"absolute",top:-4,right:-4,background:C.green,color:"white",borderRadius:"50%",width:14,height:14,fontSize:9,display:"flex",alignItems:"center",justifyContent:"center"}}>✓</span>}
+      </button>)}
     </div>
 
-    <div style={{display:"grid",gridTemplateColumns:"220px 1fr",gap:16}}>
-      {/* Rule list */}
-      <div>
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
-          <div style={{fontSize:11,color:C.gray,fontWeight:500}}>RÈGLES ({curCat?.rules.length})</div>
-          <button onClick={()=>openAddRule(cat)} style={{background:curCat?.color,color:"#fff",border:"none",borderRadius:6,padding:"3px 10px",fontSize:11,cursor:"pointer",fontWeight:500}}>+ Ajouter</button>
-        </div>
-        {curCat?.rules.map((r,i)=><div key={i} style={{display:"flex",gap:4,alignItems:"stretch",marginBottom:6}}>
-          <div onClick={()=>setRule(i)} style={{flex:1,padding:"9px 11px",borderRadius:10,cursor:"pointer",border:`1.5px solid ${rule===i?curCat.color:C.border}`,background:rule===i?curCat.color+"10":"#fff",transition:"all .15s"}}>
-            <div style={{fontSize:12,fontWeight:rule===i?600:400,color:rule===i?curCat.color:"#1a1a1a",lineHeight:1.3}}>{r.title}</div>
-          </div>
-          <div style={{display:"flex",flexDirection:"column",gap:3}}>
-            <button onClick={()=>openEditRule(cat,i)} style={{background:"none",border:`1px solid ${C.border}`,borderRadius:6,padding:"3px 6px",fontSize:10,cursor:"pointer",color:C.gray,flex:1}}>✏️</button>
-            <button onClick={()=>deleteRule(cat,i)} style={{background:"none",border:`1px solid ${C.red}33`,borderRadius:6,padding:"3px 6px",fontSize:10,cursor:"pointer",color:C.red,flex:1}}>🗑</button>
-          </div>
+    {/* Tab bar */}
+    <div style={{display:"flex",gap:4,marginBottom:"1.25rem",borderBottom:`1px solid ${C.border}`,paddingBottom:8}}>
+      {[["learn","📖 Apprendre"],["practice","🧪 S'entraîner"],["apply","🎯 Appliquer"],["mistakes","📌 Mes erreurs"]].map(([t,l])=><button key={t} onClick={()=>setTab(t)} style={{padding:"6px 16px",borderRadius:20,border:"none",background:tab===t?current.color:"transparent",color:tab===t?"white":C.gray,fontSize:12,fontWeight:500,cursor:"pointer"}}>{l}</button>)}
+    </div>
+
+    {/* ── LEARN ── */}
+    {tab==="learn"&&<div>
+      <div style={{background:current.color+"0d",borderLeft:`4px solid ${current.color}`,borderRadius:"0 10px 10px 0",padding:"12px 16px",marginBottom:16}}>
+        <div style={{fontWeight:600,fontSize:14,color:current.color,marginBottom:4}}>{current.icon} {current.label}</div>
+        <div style={{fontSize:13,color:"#444"}}>{current.desc}</div>
+      </div>
+
+      {/* Groups */}
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:16}}>
+        {current.groups.map((g,i)=><div key={i} style={{background:"white",border:`1px solid ${C.border}`,borderRadius:10,padding:"12px 14px"}}>
+          <div style={{fontWeight:600,fontSize:12,color:current.color,marginBottom:8}}>{g.name}</div>
+          {g.items.map((item,j)=><div key={j} style={{fontSize:12,padding:"3px 8px",background:current.color+"0d",borderRadius:6,marginBottom:4,color:"#333"}}>{item}</div>)}
         </div>)}
-        {curCat?.rules.length===0&&<div style={{fontSize:12,color:C.gray,fontStyle:"italic",padding:"10px 0"}}>Aucune règle. Cliquez + Ajouter.</div>}
       </div>
 
-      {/* Rule detail */}
-      {curRule&&<div>
-        <Card sx={{borderColor:curCat.color+"44",marginBottom:12}} ch={<div>
-          <div style={{display:"flex",gap:8,alignItems:"center",marginBottom:10,justifyContent:"space-between",flexWrap:"wrap"}}>
-            <div style={{display:"flex",gap:8,alignItems:"center"}}>
-              <span style={{background:curCat.color,color:"#fff",borderRadius:8,padding:"3px 10px",fontSize:11,fontWeight:600}}>{curCat.cat}</span>
-              <h3 style={{margin:0,fontSize:15,fontWeight:600,color:curCat.color}}>{curRule.title}</h3>
+      {/* Pattern */}
+      <Card ch={<div>
+        <div style={{fontSize:12,fontWeight:600,color:C.gray,marginBottom:10}}>MODÈLE À RETENIR</div>
+        <div style={{display:"flex",gap:10,marginBottom:8,alignItems:"flex-start"}}>
+          <span style={{color:C.red,flexShrink:0,fontSize:16}}>❌</span>
+          <div style={{fontSize:13,color:"#666",textDecoration:"line-through"}}>{current.pattern.wrong}</div>
+        </div>
+        <div style={{display:"flex",gap:10,alignItems:"flex-start"}}>
+          <span style={{color:C.green,flexShrink:0,fontSize:16}}>✅</span>
+          <div style={{fontSize:14,fontWeight:500,color:current.color}}>{current.pattern.right}</div>
+        </div>
+      </div>} sx={{marginBottom:12}}/>
+
+      <div style={{display:"flex",justifyContent:"center"}}>
+        <Btn ch="S'entraîner →" onClick={()=>setTab("practice")} sx={{background:current.color,color:"white",border:"none"}}/>
+      </div>
+    </div>}
+
+    {/* ── PRACTICE ── */}
+    {tab==="practice"&&<div>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
+        <div style={{fontSize:13,fontWeight:500}}>{current.exercises.length} exercices</div>
+        <div style={{display:"flex",gap:6}}>
+          <Btn ch="Vérifier tout" sm onClick={checkAll} sx={{background:current.color,color:"white",border:"none"}}/>
+          <Btn ch="↺ Réinitialiser" sm v="ghost" onClick={reset}/>
+        </div>
+      </div>
+
+      {current.exercises.map((ex,qi)=>{
+        const state=checked[qi];
+        return(<Card key={qi} sx={{marginBottom:10,borderColor:state?state.correct?C.green:C.red:C.border,borderWidth:state?1.5:0.5}} ch={<div>
+          <div style={{display:"flex",gap:8,alignItems:"flex-start",marginBottom:10}}>
+            <span style={{background:current.color,color:"white",borderRadius:"50%",width:22,height:22,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:600,flexShrink:0}}>{qi+1}</span>
+            <div style={{flex:1}}>
+              <div style={{fontSize:11,color:current.color,fontWeight:600,marginBottom:4}}>
+                {ex.type==="qcm"?"CHOIX MULTIPLE":ex.type==="rewrite"?"REFORMULATION":ex.type==="conjugate"?"CONJUGAISON":"COMPLÉTER"}
+              </div>
+              <div style={{fontSize:13,fontWeight:500,lineHeight:1.5}}>{ex.q}</div>
+              {ex.hint&&!state&&<div style={{fontSize:11,color:C.gray,marginTop:4,fontStyle:"italic"}}>💡 {ex.hint}</div>}
             </div>
-            <button onClick={()=>openEditRule(cat,rule)} style={{background:"none",border:`1px solid ${curCat.color}44`,borderRadius:7,padding:"4px 10px",fontSize:11,cursor:"pointer",color:curCat.color}}>✏️ Modifier</button>
           </div>
-          <div style={{background:curCat.color+"0d",borderRadius:8,padding:"10px 14px",marginBottom:14,fontSize:13,lineHeight:1.6,borderLeft:`3px solid ${curCat.color}`}}>
-            <strong>Emploi :</strong> {curRule.use}
-          </div>
-          {curRule.ex?.length>0&&<div style={{marginBottom:14}}>
-            <div style={{fontSize:11,fontWeight:600,color:C.gray,marginBottom:8}}>EXEMPLES</div>
-            {curRule.ex.map((e,i)=><div key={i} style={{display:"flex",gap:10,alignItems:"flex-start",marginBottom:8,background:"#f4f3f0",borderRadius:8,padding:"8px 12px"}}>
-              <span style={{color:curCat.color,fontSize:16,flexShrink:0}}>»</span>
-              <div><div style={{fontSize:13,fontWeight:500,marginBottom:2}}>{e.fr}</div><Badge ch={e.note} color={curCat.color}/></div>
-            </div>)}
-          </div>}
-          {curRule.errors?.length>0&&<div>
-            <button onClick={()=>setShowErr(s=>({...s,[cat+"-"+rule]:!s[cat+"-"+rule]}))} style={{background:"none",border:`1px solid ${C.red}44`,borderRadius:8,padding:"6px 14px",fontSize:12,color:C.red,cursor:"pointer",marginBottom:showErr[cat+"-"+rule]?8:0}}>
-              {showErr[cat+"-"+rule]?"▲ Masquer":"⚠ Erreurs fréquentes"}
-            </button>
-            {showErr[cat+"-"+rule]&&<div style={{background:C.red+"08",borderRadius:8,padding:"10px 14px",borderLeft:`3px solid ${C.red}`}}>
-              {curRule.errors.map((e,i)=><div key={i} style={{fontSize:12,marginBottom:5,lineHeight:1.5,padding:"4px 0",borderBottom:i<curRule.errors.length-1?`0.5px solid ${C.red}22`:"none"}}>{e}</div>)}
+
+          {ex.type==="qcm"?<div style={{display:"flex",flexDirection:"column",gap:5}}>
+            {ex.opts.map((o,oi)=><label key={oi} style={{display:"flex",gap:8,alignItems:"center",padding:"7px 10px",borderRadius:8,cursor:"pointer",background:parseInt(answers[qi])===oi?(state?oi===ex.ans?C.green+"22":C.red+"0d":"#f0f0ff"):"transparent",border:`1px solid ${parseInt(answers[qi])===oi?current.color:C.border}`}}>
+              <input type="radio" name={`q${qi}`} value={oi} checked={parseInt(answers[qi])===oi} onChange={()=>setAnswers(a=>({...a,[qi]:oi}))} style={{accentColor:current.color}}/>
+              <span style={{fontSize:13}}>{o}</span>
+              {state&&oi===ex.ans&&<span style={{marginLeft:"auto",color:C.green,fontSize:12}}>✓ correct</span>}
+            </label>)}
+          </div>:<input style={{...inp,borderColor:state?state.correct?C.green:C.red:C.border}} value={answers[qi]||""} onChange={e=>setAnswers(a=>({...a,[qi]:e.target.value}))} onKeyDown={e=>e.key==="Enter"&&checkExercise(qi,ex)} placeholder="Votre réponse..."/>}
+
+          <div style={{display:"flex",gap:8,marginTop:10,alignItems:"center"}}>
+            {!state&&<Btn ch="Vérifier" sm onClick={()=>checkExercise(qi,ex)} sx={{background:current.color+"22",color:current.color,border:`1px solid ${current.color}44`}}/>}
+            {state&&<div style={{flex:1}}>
+              <div style={{fontSize:12,fontWeight:600,color:state.correct?C.green:C.red,marginBottom:state.correct?0:4}}>
+                {state.correct?"✓ Correct !":"✗ Incorrect"}
+              </div>
+              {!state.correct&&<div style={{fontSize:12,color:"#444"}}>
+                <span style={{color:C.green}}>✅ {ex.ans}</span>
+                {ex.exp&&<div style={{color:C.gray,marginTop:3,fontStyle:"italic"}}>👉 {ex.exp}</div>}
+              </div>}
             </div>}
-          </div>}
-        </div>}/>
-        <Card ch={<div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-          <Btn ch="← Précédent" v="ghost" sm onClick={()=>setRule(r=>Math.max(0,r-1))} dis={rule===0}/>
-          <span style={{fontSize:12,color:C.gray}}>{rule+1} / {curCat.rules.length}</span>
-          <Btn ch="Suivant →" v="secondary" sm onClick={()=>setRule(r=>Math.min(curCat.rules.length-1,r+1))} dis={rule===curCat.rules.length-1}/>
-        </div>}/>
-      </div>}
-    </div>
+          </div>
+        </div>}/> );
+      })}
 
-    {/* Modal */}
-    {modal&&<div onClick={()=>setModal(null)} style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.55)",display:"flex",alignItems:"flex-start",justifyContent:"center",zIndex:1000,overflowY:"auto",padding:"1rem"}}>
-      <div onClick={e=>e.stopPropagation()} style={{background:"#fff",borderRadius:16,padding:"1.75rem",maxWidth:600,width:"100%",marginTop:"1rem"}}>
-        {modal.mode==="cat"&&<>
-          <h3 style={{margin:"0 0 1.25rem",fontWeight:500}}>{modal.catIdx===null?"➕ Nouvelle catégorie":"✏️ Modifier la catégorie"}</h3>
-          <div style={{display:"flex",gap:10,marginBottom:12}}>
-            <input style={{...inp,width:60,textAlign:"center",fontSize:20}} value={form.icon||""} onChange={e=>setForm(f=>({...f,icon:e.target.value}))} placeholder="🔤"/>
-            <input style={{...inp,flex:1}} value={form.cat||""} onChange={e=>setForm(f=>({...f,cat:e.target.value}))} placeholder="Nom de la catégorie *"/>
-          </div>
-          <div style={{marginBottom:16}}>
-            <div style={{fontSize:12,color:C.gray,marginBottom:8}}>Couleur</div>
-            <div style={{display:"flex",gap:8}}>
-              {COLORS.map(c=><div key={c} onClick={()=>setForm(f=>({...f,color:c}))} style={{width:28,height:28,borderRadius:"50%",background:c,cursor:"pointer",border:`3px solid ${form.color===c?"#1a1a1a":"transparent"}`,transition:"border .15s"}}/>)}
-            </div>
-          </div>
-          <div style={{display:"flex",gap:8}}>
-            <Btn ch={modal.catIdx===null?"Créer":"Enregistrer"} full onClick={saveCat} dis={!form.cat?.trim()}/>
-            <Btn ch="Annuler" v="ghost" onClick={()=>setModal(null)}/>
-          </div>
-        </>}
-        {modal.mode==="rule"&&<>
-          <h3 style={{margin:"0 0 1.25rem",fontWeight:500}}>{modal.ruleIdx===null?"➕ Nouvelle règle":"✏️ Modifier la règle"}</h3>
-          <input style={{...inp,marginBottom:10}} value={form.title||""} onChange={e=>setForm(f=>({...f,title:e.target.value}))} placeholder="Titre de la règle *"/>
-          <textarea style={{...inp,minHeight:60,resize:"vertical",marginBottom:12}} value={form.use||""} onChange={e=>setForm(f=>({...f,use:e.target.value}))} placeholder="Emploi / explication..."/>
-          <div style={{marginBottom:12}}>
-            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
-              <div style={{fontSize:12,fontWeight:600,color:C.gray}}>EXEMPLES</div>
-              <button onClick={()=>setForm(f=>({...f,ex:[...(f.ex||[]),{fr:"",note:""}]}))} style={{background:"none",border:`1px solid ${C.green}`,borderRadius:6,padding:"2px 10px",fontSize:11,cursor:"pointer",color:C.green}}>+ Exemple</button>
-            </div>
-            {(form.ex||[]).map((e,i)=><div key={i} style={{display:"flex",gap:6,marginBottom:6,alignItems:"center"}}>
-              <input style={{...inp,flex:2}} value={e.fr} onChange={ev=>setForm(f=>({...f,ex:f.ex.map((x,j)=>j===i?{...x,fr:ev.target.value}:x)}))} placeholder="Phrase exemple"/>
-              <input style={{...inp,flex:1}} value={e.note} onChange={ev=>setForm(f=>({...f,ex:f.ex.map((x,j)=>j===i?{...x,note:ev.target.value}:x)}))} placeholder="Note"/>
-              <button onClick={()=>setForm(f=>({...f,ex:f.ex.filter((_,j)=>j!==i)}))} style={{background:"none",border:"none",color:C.red,cursor:"pointer",fontSize:16,flexShrink:0}}>×</button>
-            </div>)}
-          </div>
-          <div style={{marginBottom:16}}>
-            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
-              <div style={{fontSize:12,fontWeight:600,color:C.gray}}>ERREURS FRÉQUENTES</div>
-              <button onClick={()=>setForm(f=>({...f,errors:[...(f.errors||[]),""]}))} style={{background:"none",border:`1px solid ${C.red}`,borderRadius:6,padding:"2px 10px",fontSize:11,cursor:"pointer",color:C.red}}>+ Erreur</button>
-            </div>
-            {(form.errors||[]).map((e,i)=><div key={i} style={{display:"flex",gap:6,marginBottom:6,alignItems:"center"}}>
-              <input style={inp} value={e} onChange={ev=>setForm(f=>({...f,errors:f.errors.map((x,j)=>j===i?ev.target.value:x)}))} placeholder="❌ forme incorrecte → ✓ forme correcte"/>
-              <button onClick={()=>setForm(f=>({...f,errors:f.errors.filter((_,j)=>j!==i)}))} style={{background:"none",border:"none",color:C.red,cursor:"pointer",fontSize:16,flexShrink:0}}>×</button>
-            </div>)}
-          </div>
-          <div style={{display:"flex",gap:8}}>
-            <Btn ch={modal.ruleIdx===null?"Créer la règle":"Enregistrer"} full onClick={saveRule} dis={!form.title?.trim()}/>
-            <Btn ch="Annuler" v="ghost" onClick={()=>setModal(null)}/>
-          </div>
-        </>}
+      <div style={{display:"flex",justifyContent:"center",marginTop:8}}>
+        <Btn ch="Passer à l'application →" onClick={()=>setTab("apply")} sx={{background:current.color,color:"white",border:"none"}}/>
       </div>
+    </div>}
+
+    {/* ── APPLY ── */}
+    {tab==="apply"&&<div>
+      <div style={{background:current.color+"0d",borderRadius:12,padding:"1rem",marginBottom:16,borderLeft:`4px solid ${current.color}`}}>
+        <div style={{fontWeight:600,fontSize:14,color:current.color,marginBottom:4}}>🎯 Application — comme au TCF</div>
+        <div style={{fontSize:12,color:"#555"}}>Utilisez ce que vous avez appris dans des contextes réels</div>
+      </div>
+
+      {/* Speaking task */}
+      <Card sx={{marginBottom:12}} ch={<div>
+        <div style={{display:"flex",gap:8,alignItems:"center",marginBottom:10}}>
+          <span style={{fontSize:18}}>🎤</span>
+          <div>
+            <div style={{fontWeight:600,fontSize:13}}>Expression orale</div>
+            <div style={{fontSize:12,color:C.gray}}>Sujet : {current.tasks.speaking.topic}</div>
+          </div>
+        </div>
+        <div style={{marginBottom:8}}>
+          {current.tasks.speaking.req.map((r,i)=><div key={i} style={{display:"flex",gap:6,alignItems:"flex-start",fontSize:12,marginBottom:4}}>
+            <span style={{color:current.color,flexShrink:0}}>→</span><span>{r}</span>
+          </div>)}
+        </div>
+        <div style={{background:"#f4f3f0",borderRadius:8,padding:"8px 12px",fontSize:12,color:C.gray,fontStyle:"italic"}}>
+          Allez dans Expression orale → cherchez ce sujet et parlez en utilisant les structures vues ici
+        </div>
+      </div>}/>
+
+      {/* Writing task */}
+      <Card ch={<div>
+        <div style={{display:"flex",gap:8,alignItems:"center",marginBottom:10}}>
+          <span style={{fontSize:18}}>✏️</span>
+          <div>
+            <div style={{fontWeight:600,fontSize:13}}>Expression écrite</div>
+            <div style={{fontSize:12,color:C.gray}}>{current.tasks.writing.sujet}</div>
+          </div>
+        </div>
+        {current.tasks.writing.req.map((r,i)=><div key={i} style={{display:"flex",gap:6,alignItems:"flex-start",fontSize:12,marginBottom:4}}>
+          <span style={{color:current.color,flexShrink:0}}>→</span><span>{r}</span>
+        </div>)}
+        <textarea style={{...inp,marginTop:10,minHeight:100,resize:"vertical"}} placeholder="Écrivez votre réponse ici pour vous entraîner..."/>
+        <button onClick={()=>{saveProgress(mod,true);alert("✅ Module terminé !");}} style={{marginTop:8,background:current.color,color:"white",border:"none",borderRadius:8,padding:"8px 16px",fontSize:13,fontWeight:500,cursor:"pointer",width:"100%"}}>
+          ✓ Marquer ce module comme terminé
+        </button>
+      </div>}/>
+    </div>}
+
+    {/* ── MISTAKES ── */}
+    {tab==="mistakes"&&<div>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
+        <div style={{fontSize:13,fontWeight:500}}>📌 {mistakes.length} erreur{mistakes.length>1?"s":""} enregistrée{mistakes.length>1?"s":""}</div>
+        {mistakes.length>0&&<Btn ch="Tout effacer" sm v="ghost" onClick={()=>{setMistakes([]);try{localStorage.removeItem("tcf_mistakes");}catch{}}}/>}
+      </div>
+      {mistakes.length===0?<div style={{textAlign:"center",color:C.gray,fontSize:13,padding:"2rem"}}>
+        🎉 Aucune erreur ! Continuez à pratiquer.
+      </div>:mistakes.map((m,i)=><Card key={i} sx={{marginBottom:8,borderLeft:`3px solid ${C.red}`}} ch={<div>
+        <div style={{fontSize:12,color:C.gray,marginBottom:4}}>{new Date(m.date).toLocaleDateString("fr-CA")}</div>
+        <div style={{fontSize:13,fontWeight:500,marginBottom:6}}>{m.q}</div>
+        <div style={{display:"flex",gap:8,flexWrap:"wrap",fontSize:12}}>
+          <span style={{color:C.red}}>✗ {m.given}</span>
+          <span style={{color:C.green}}>✓ {m.correct}</span>
+        </div>
+        {m.exp&&<div style={{fontSize:11,color:C.gray,marginTop:4,fontStyle:"italic"}}>👉 {m.exp}</div>}
+      </div>}/>)}
     </div>}
   </div>);
 };
