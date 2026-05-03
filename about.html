@@ -481,20 +481,20 @@ footer {
     <a href="#coaching">Coaching</a>
     <a href="#tarifs">Tarifs</a>
     <a href="#app">Application</a>
-    <button onclick="toggleLang()" style="background:none;border:1px solid var(--border);padding:6px 14px;border-radius:100px;font-size:12px;cursor:pointer;color:var(--gray);margin-right:4px" id="lang-btn">🌐 EN</button>
-    <a href="#tarifs" class="nav-cta" id="nav-cta-btn">Commencer →</a>
+    <button onclick="toggleLang()" style="background:none;border:1px solid var(--border);padding:6px 14px;border-radius:100px;font-size:12px;cursor:pointer;color:var(--gray);margin-right:4px" id="lang-btn" data-t="lang-btn">🌐 EN</button>
+    <a href="#tarifs" class="nav-cta" href="https://tcf-canada23.vercel.app/" target="_blank" id="nav-cta-btn" data-t="nav-cta">Commencer →</a>
   </div>
 </nav>
 
 <!-- Hero -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-badge">🎓 Master FLE · Spécialiste TCF Canada</div>
-    <h1>Réussissez le TCF Canada<br/><em>du premier coup.</em></h1>
-    <p class="hero-sub">Coaching personnalisé par une enseignante certifiée Master FLE, combiné à une plateforme d'entraînement IA unique. Méthode éprouvée, résultats garantis.</p>
+    <div class="hero-badge" data-t="badge">🎓 Master FLE · Spécialiste TCF Canada</div>
+    <h1 data-t="h1">Réussissez le TCF Canada<br/><em>du premier coup.</em></h1>
+    <p class="hero-sub" data-t="sub">Coaching personnalisé par une enseignante certifiée Master FLE, combiné à une plateforme d'entraînement IA unique. Méthode éprouvée, résultats garantis.</p>
     <div class="hero-actions">
-      <a href="#tarifs" class="btn-primary">🚀 Commencer maintenant</a>
-      <a href="#app" class="btn-outline">Découvrir l'application</a>
+      <a href="https://tcf-canada23.vercel.app/" target="_blank" class="btn-primary" data-t="btn1">🚀 Commencer maintenant</a>
+      <a href="https://tcf-canada23.vercel.app/" target="_blank" class="btn-outline" data-t="btn2">Découvrir l'application</a>
     </div>
     <div class="hero-stats">
       <div class="stat">
@@ -541,9 +541,9 @@ footer {
 
 <!-- NCLC Table -->
 <section class="section" id="nclc">
-  <div class="section-label">Référence officielle</div>
-  <div class="section-title">Tableau des scores NCLC</div>
-  <p class="section-sub">Convertissez vos scores TCF Canada en niveaux NCLC pour votre dossier d'immigration. Connaître votre cible est la première étape.</p>
+  <div class="section-label" data-t="nclc-label">Référence officielle</div>
+  <div class="section-title" data-t="nclc-title">Tableau des scores NCLC</div>
+  <p class="section-sub" data-t="nclc-sub">Convertissez vos scores TCF Canada en niveaux NCLC pour votre dossier d'immigration. Connaître votre cible est la première étape.</p>
 
   <table class="nclc-table">
     <thead>
@@ -606,9 +606,9 @@ footer {
 
 <!-- Features / App -->
 <section class="section" id="app" style="background:var(--green-light)">
-  <div class="section-label">Plateforme exclusive</div>
-  <div class="section-title">Une application conçue<br/>par une experte FLE</div>
-  <p class="section-sub">Pas un simple générateur de quiz — une plateforme pédagogique construite autour des 4 compétences réelles du TCF Canada.</p>
+  <div class="section-label" data-t="feat-label">Plateforme exclusive</div>
+  <div class="section-title" data-t="feat-title">Une application conçue<br/>par une experte FLE</div>
+  <p class="section-sub" data-t="feat-sub">Pas un simple générateur de quiz — une plateforme pédagogique construite autour des 4 compétences réelles du TCF Canada.</p>
 
   <div class="features-grid">
     <div class="feature-card">
@@ -642,12 +642,18 @@ footer {
       <div class="feature-desc">Arguments pour/contre/nuance prêts à l'emploi, classés par thème.</div>
     </div>
   </div>
+  <div style="margin-top:2rem;text-align:center">
+    <a href="https://tcf-canada23.vercel.app/" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:var(--green);color:white;padding:14px 32px;border-radius:100px;font-size:15px;font-weight:600;text-decoration:none;box-shadow:0 4px 20px rgba(31,92,58,.3)">
+      🚀 Accéder à l'application gratuitement
+    </a>
+    <div style="font-size:12px;color:var(--gray);margin-top:8px">Aucune carte de crédit requise · 5 tests offerts</div>
+  </div>
 </section>
 
 <!-- Coaching -->
 <section class="section" id="coaching">
-  <div class="section-label">Accompagnement personnalisé</div>
-  <div class="section-title">Séances de coaching<br/>avec Mme Théa Nguyen</div>
+  <div class="section-label" data-t="coach-label">Accompagnement personnalisé</div>
+  <div class="section-title" data-t="coach-title">Séances de coaching<br/>avec Mme Théa Nguyen</div>
   <p style="margin-top:.5rem;font-size:13px;color:var(--green);font-weight:500">✓ Même qualité que les grandes plateformes — tarifs jusqu'à 40 CAD moins chers</p>
 
   <div class="coaching-grid">
@@ -661,7 +667,7 @@ footer {
         <li><span class="check">✓</span> Accès à la plateforme IA inclus pendant les séances</li>
       </ul>
       <div style="margin-top:2rem">
-        <a href="#tarifs" class="btn-primary">Réserver une séance →</a>
+        <a href="mailto:thiendieducation@gmail" class="btn-primary">📧 Réserver une séance →</a>
       </div>
     </div>
 
@@ -720,7 +726,7 @@ footer {
 
 <!-- Pricing -->
 <section class="pricing-bg" id="tarifs">
-  <div class="section-label">Abonnements</div>
+  <div class="section-label" data-t="price-label">Abonnements</div>
   <div class="section-title" style="color:white">Choisissez votre formule</div>
   <p class="section-sub">Accès complet à la plateforme. Annulez à tout moment.</p>
 
@@ -736,7 +742,7 @@ footer {
         <li>Grammaire B2 complète</li>
         <li>Minuteurs intégrés</li>
       </ul>
-      <a href="#app" class="price-btn price-btn-outline">Essayer gratuitement</a>
+      <a href="https://tcf-canada23.vercel.app/" target="_blank" class="price-btn price-btn-outline">Essayer gratuitement</a>
     </div>
 
     <div class="price-card">
@@ -750,7 +756,7 @@ footer {
         <li>IA amélioration ×10/jour</li>
         <li>Tout Gratuit inclus</li>
       </ul>
-      <a href="#app" class="price-btn price-btn-outline">Choisir Basic</a>
+      <a href="https://tcf-canada23.vercel.app/" target="_blank" class="price-btn price-btn-outline">Choisir Basic</a>
     </div>
 
     <div class="price-card featured">
@@ -765,7 +771,7 @@ footer {
         <li>IA amélioration ×30/jour</li>
         <li>Tout Basic inclus</li>
       </ul>
-      <a href="#app" class="price-btn price-btn-solid">Choisir Pro →</a>
+      <a href="https://tcf-canada23.vercel.app/" target="_blank" class="price-btn price-btn-solid">Choisir Pro →</a>
     </div>
 
     <div class="price-card">
@@ -779,15 +785,15 @@ footer {
         <li>Coût IA ~$1-3/mois</li>
         <li>Idéal pour les geeks</li>
       </ul>
-      <a href="#app" class="price-btn price-btn-outline">Choisir Clé API</a>
+      <a href="https://tcf-canada23.vercel.app/" target="_blank" class="price-btn price-btn-outline">Choisir Clé API</a>
     </div>
   </div>
 </section>
 
 <!-- Testimonials -->
 <section class="section">
-  <div class="section-label">Témoignages</div>
-  <div class="section-title">Ils ont réussi leur TCF Canada</div>
+  <div class="section-label" data-t="testi-label">Témoignages</div>
+  <div class="section-title" data-t="price-title">Ils ont réussi leur TCF Canada</div>
 
   <div class="testimonials-grid">
     <div class="testimonial-card">
@@ -813,9 +819,9 @@ footer {
 
 <!-- CTA -->
 <section class="cta-section">
-  <h2>Prête à commencer votre<br/>préparation TCF ?</h2>
+  <h2 data-t="cta-title">Prête à commencer votre<br/>préparation TCF ?</h2>
   <p>Rejoignez la plateforme conçue par Mme Théa Nguyen, Master FLE, et boostez votre score avec l'IA.</p>
-  <a href="#tarifs" class="btn-white">🚀 Commencer maintenant</a>
+  <a href="#tarifs" class="btn-white" href="https://tcf-canada23.vercel.app/" target="_blank" data-t="cta-btn">🚀 Commencer maintenant</a>
 </section>
 
 <!-- Footer -->
@@ -835,112 +841,63 @@ footer {
 
 
 <script>
-const TRANSLATIONS = {
+const T = {
   fr: {
-    "nav-cta": "Commencer →",
-    "lang-btn": "🌐 EN",
-    "hero-badge": "🎓 Master FLE · Spécialiste TCF Canada",
-    "hero-h1": "Réussissez le TCF Canada<br/><em>du premier coup.</em>",
-    "hero-sub": "Coaching personnalisé par une enseignante certifiée Master FLE, combiné à une plateforme d'entraînement IA unique. Méthode éprouvée, résultats garantis.",
-    "hero-btn1": "🚀 Commencer maintenant",
-    "hero-btn2": "Découvrir l'application",
-    "stat1": "Compétences TCF<br/>couvertes",
-    "stat2": "Niveau cible<br/>NCLC 7-8",
-    "stat3": "Coach vocal<br/>Whisper GPT",
-    "nclc-label": "Référence officielle",
-    "nclc-title": "Tableau des scores NCLC",
+    badge: "🎓 Master FLE · Spécialiste TCF Canada",
+    h1: "Réussissez le TCF Canada<br/><em>du premier coup.</em>",
+    sub: "Coaching personnalisé par une enseignante certifiée Master FLE, combiné à une plateforme d'entraînement IA unique.",
+    btn1: "🚀 Commencer maintenant", btn2: "Découvrir l'application",
+    "nav-cta": "Commencer →", "lang-btn": "🌐 EN",
+    "nclc-label": "Référence officielle", "nclc-title": "Tableau des scores NCLC",
     "nclc-sub": "Convertissez vos scores TCF Canada en niveaux NCLC pour votre dossier d'immigration.",
-    "features-label": "Plateforme exclusive",
-    "features-title": "Une application conçue<br/>par une experte FLE",
-    "features-sub": "Pas un simple générateur de quiz — une plateforme pédagogique construite autour des 4 compétences réelles du TCF Canada.",
-    "coaching-label": "Accompagnement personnalisé",
-    "coaching-title": "Séances de coaching<br/>avec Mme Théa Nguyen",
-    "pricing-label": "Abonnements",
-    "pricing-title": "Choisissez votre formule",
-    "pricing-sub": "Accès complet à la plateforme. Annulez à tout moment.",
-    "testi-label": "Témoignages",
-    "testi-title": "Ils ont réussi leur TCF Canada",
-    "cta-h2": "Prête à commencer votre<br/>préparation TCF ?",
+    "feat-label": "Plateforme exclusive", "feat-title": "Une application conçue<br/>par une experte FLE",
+    "feat-sub": "Pas un simple générateur de quiz — une plateforme pédagogique construite autour des 4 compétences réelles du TCF Canada.",
+    "coach-label": "Accompagnement personnalisé", "coach-title": "Séances de coaching<br/>avec Mme Théa Nguyen",
+    "price-label": "Abonnements", "price-title": "Choisissez votre formule",
+    "price-sub": "Accès complet à la plateforme. Annulez à tout moment.",
+    "testi-label": "Témoignages", "testi-title": "Ils ont réussi leur TCF Canada",
+    "cta-title": "Prête à commencer votre<br/>préparation TCF ?",
     "cta-sub": "Rejoignez la plateforme conçue par Mme Théa Nguyen, Master FLE.",
     "cta-btn": "🚀 Commencer maintenant",
   },
   en: {
-    "nav-cta": "Get started →",
-    "lang-btn": "🌐 FR",
-    "hero-badge": "🎓 Master FLE · TCF Canada Specialist",
-    "hero-h1": "Pass the TCF Canada<br/><em>on your first try.</em>",
-    "hero-sub": "Personalized coaching by a certified Master FLE teacher, combined with a unique AI training platform. Proven method, guaranteed results.",
-    "hero-btn1": "🚀 Get started now",
-    "hero-btn2": "Discover the app",
-    "stat1": "TCF skills<br/>covered",
-    "stat2": "Target level<br/>NCLC 7-8",
-    "stat3": "AI Voice Coach<br/>Whisper GPT",
-    "nclc-label": "Official reference",
-    "nclc-title": "NCLC Score Table",
+    badge: "🎓 Master FLE · TCF Canada Specialist",
+    h1: "Pass the TCF Canada<br/><em>on your first try.</em>",
+    sub: "Personalized coaching by a certified Master FLE teacher, combined with a unique AI training platform.",
+    btn1: "🚀 Get started now", btn2: "Discover the app",
+    "nav-cta": "Get started →", "lang-btn": "🌐 FR",
+    "nclc-label": "Official reference", "nclc-title": "NCLC Score Table",
     "nclc-sub": "Convert your TCF Canada scores to NCLC levels for your immigration file.",
-    "features-label": "Exclusive platform",
-    "features-title": "An app designed<br/>by an FLE expert",
-    "features-sub": "Not just a quiz generator — a pedagogical platform built around the 4 real TCF Canada skills.",
-    "coaching-label": "Personalized coaching",
-    "coaching-title": "Coaching sessions<br/>with Mme Théa Nguyen",
-    "pricing-label": "Subscriptions",
-    "pricing-title": "Choose your plan",
-    "pricing-sub": "Full platform access. Cancel anytime.",
-    "testi-label": "Testimonials",
-    "testi-title": "They passed their TCF Canada",
-    "cta-h2": "Ready to start your<br/>TCF preparation?",
+    "feat-label": "Exclusive platform", "feat-title": "An app designed<br/>by an FLE expert",
+    "feat-sub": "Not just a quiz generator — a pedagogical platform built around the 4 real TCF Canada skills.",
+    "coach-label": "Personalized coaching", "coach-title": "Coaching sessions<br/>with Mme Théa Nguyen",
+    "price-label": "Subscriptions", "price-title": "Choose your plan",
+    "price-sub": "Full platform access. Cancel anytime.",
+    "testi-label": "Testimonials", "testi-title": "They passed their TCF Canada",
+    "cta-title": "Ready to start your<br/>TCF preparation?",
     "cta-sub": "Join the platform designed by Mme Théa Nguyen, Master FLE.",
     "cta-btn": "🚀 Start now",
   }
 };
 
-let currentLang = localStorage.getItem('landing_lang') || 'fr';
+let lang = localStorage.getItem('landing_lang') || 'fr';
 
-function applyLang(lang) {
-  const t = TRANSLATIONS[lang];
-  Object.entries(t).forEach(([id, val]) => {
-    const el = document.getElementById(id);
-    if (el) el.innerHTML = val;
+function applyLang(l) {
+  lang = l;
+  localStorage.setItem('landing_lang', l);
+  const t = T[l];
+  // Apply to all [data-t] elements
+  document.querySelectorAll('[data-t]').forEach(el => {
+    const key = el.getAttribute('data-t');
+    if (t[key]) el.innerHTML = t[key];
   });
-  localStorage.setItem('landing_lang', lang);
-  currentLang = lang;
 }
 
 function toggleLang() {
-  applyLang(currentLang === 'fr' ? 'en' : 'fr');
+  applyLang(lang === 'fr' ? 'en' : 'fr');
 }
 
-// Add IDs to elements
-document.addEventListener('DOMContentLoaded', () => {
-  // Hero
-  document.querySelector('.hero-badge').id = 'hero-badge';
-  document.querySelector('.hero h1').id = 'hero-h1';
-  document.querySelector('.hero-sub').id = 'hero-sub';
-  const herobtns = document.querySelectorAll('.hero-actions a');
-  if(herobtns[0]) herobtns[0].id = 'hero-btn1';
-  if(herobtns[1]) herobtns[1].id = 'hero-btn2';
-  const stats = document.querySelectorAll('.stat-label');
-  if(stats[0]) stats[0].id = 'stat1';
-  if(stats[1]) stats[1].id = 'stat2';
-  if(stats[2]) stats[2].id = 'stat3';
-  // Sections
-  const labels = document.querySelectorAll('.section-label');
-  const titles = document.querySelectorAll('.section-title');
-  const subs = document.querySelectorAll('.section-sub');
-  const ids = ['nclc','features','coaching','pricing','testi'];
-  labels.forEach((el,i) => { if(ids[i]) el.id = ids[i]+'-label'; });
-  titles.forEach((el,i) => { if(ids[i]) el.id = ids[i]+'-title'; });
-  subs.forEach((el,i) => { if(ids[i]) el.id = ids[i]+'-sub'; });
-  // CTA
-  const ctaH2 = document.querySelector('.cta-section h2');
-  const ctaP = document.querySelector('.cta-section p');
-  const ctaBtn = document.querySelector('.btn-white');
-  if(ctaH2) ctaH2.id = 'cta-h2';
-  if(ctaP) ctaP.id = 'cta-sub';
-  if(ctaBtn) ctaBtn.id = 'cta-btn';
-
-  applyLang(currentLang);
-});
+document.addEventListener('DOMContentLoaded', () => applyLang(lang));
 </script>
 
 </body>
