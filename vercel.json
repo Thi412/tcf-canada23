@@ -4,7 +4,9 @@
     { "source": "/api/webhook",     "destination": "/api/webhook.js" },
     { "source": "/api/verify-plan", "destination": "/api/verify-plan.js" },
     { "source": "/api/transcribe",  "destination": "/api/transcribe.js" },
-    { "source": "/api/tests",       "destination": "/api/tests.js" }
+    { "source": "/api/tests",       "destination": "/api/tests.js" },
+    { "source": "/landing",         "destination": "/landing.html" },
+    { "source": "/about",           "destination": "/landing.html" }
   ],
   "headers": [
     {
