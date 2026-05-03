@@ -619,8 +619,47 @@ const UpgradeModal=({onClose,currentPlan,setPlan,reason,initialPlan})=>{
     </div>
   </div>);
 };
-const NAV=[{id:"dashboard",icon:"⊞",label:"Tableau de bord"},{id:"speaking",icon:"🎤",label:"Expression orale"},{id:"reading",icon:"📖",label:"Compréhension écrite"},{id:"listening",icon:"🎧",label:"Compréhension orale"},{id:"writing",icon:"✏️",label:"Expression écrite"},{id:"grammaire",icon:"🔤",label:"Grammaire"},{id:"pricing",icon:"💎",label:"Plans & Tarifs"}];
-const Sidebar=({page,setPage,plan,aiUsage,onUpgrade})=>{const p=PLANS[plan];return(
+const LANG={
+  fr:{
+    dashboard:"Tableau de bord", speaking:"Expression orale",
+    reading:"Compréhension écrite", listening:"Compréhension orale",
+    writing:"Expression écrite", grammar:"Grammaire", pricing:"Plans & Tarifs",
+    start:"Commencer →", back:"← Retour", submit:"Soumettre",
+    unlock:"Débloquer", upgrade:"Passer au plan supérieur",
+    correct:"Correct !", incorrect:"Incorrect", score:"Score",
+    level:"Niveau", strengths:"Points forts", improve:"À améliorer",
+    advice:"Conseil", example:"Version B2/C1",
+    listening_label:"Compréhension orale",
+    reading_label:"Compréhension écrite",
+    all_tests:"Tous les tests", done_tests:"tests complétés",
+    avg:"moyenne", free_limit:"5 tests accessibles gratuitement",
+    bonjour:"Bonjour 👋", plan_label:"Plan",
+    topics_label:"topics", sits_label:"situations",
+    export_label:"Exporter mes données",
+    lang_switch:"EN",
+  },
+  en:{
+    dashboard:"Dashboard", speaking:"Speaking",
+    reading:"Reading Comprehension", listening:"Listening Comprehension",
+    writing:"Written Expression", grammar:"Grammar", pricing:"Plans & Pricing",
+    start:"Start →", back:"← Back", submit:"Submit",
+    unlock:"Unlock", upgrade:"Upgrade your plan",
+    correct:"Correct!", incorrect:"Incorrect", score:"Score",
+    level:"Level", strengths:"Strengths", improve:"To improve",
+    advice:"Tip", example:"B2/C1 version",
+    listening_label:"Listening Comprehension",
+    reading_label:"Reading Comprehension",
+    all_tests:"All tests", done_tests:"tests completed",
+    avg:"average", free_limit:"5 free tests available",
+    bonjour:"Hello 👋", plan_label:"Plan",
+    topics_label:"topics", sits_label:"situations",
+    export_label:"Export my data",
+    lang_switch:"FR",
+  }
+};
+
+const NAV=[{id:"dashboard",icon:"⊞",label:"Tableau de bord"},{id:"speaking",icon:"🎤",label:"Expression orale"},{id:"reading",icon:"📖",label:"Compréhension écrite"},{id:"listening",icon:"🎧",label:"Compréhension orale"},{id:"writing",icon:"✏️",label:"Expression écrite"},{id:"grammaire",icon:"🔤",label:"Grammaire"},{id:"pricing",icon:"💎",label:LANG[lang||"fr"].pricing}];
+const Sidebar=({page,setPage,plan,aiUsage,onUpgrade,lang,toggleLang})=>{const p=PLANS[plan];return(
   <div style={{width:200,background:"#fff",borderRight:`0.5px solid ${C.border}`,display:"flex",flexDirection:"column",minHeight:"100vh",padding:"1rem 0",flexShrink:0}}>
     <div style={{padding:"0.5rem 1.25rem 1.5rem"}}><div style={{fontWeight:600,fontSize:16,color:C.green}}>🍁 TCF Canada</div><div style={{fontSize:11,color:C.gray}}>Préparation complète</div></div>
     <div style={{flex:1,overflowY:"auto"}}>{NAV.map(n=><button key={n.id} onClick={()=>setPage(n.id)} style={{display:"flex",alignItems:"center",gap:8,width:"100%",padding:"8px 1.25rem",background:page===n.id?C.green+"18":"transparent",border:"none",borderLeft:page===n.id?`3px solid ${C.green}`:"3px solid transparent",color:page===n.id?C.green:"#555",fontSize:12.5,fontWeight:page===n.id?500:400,cursor:"pointer",textAlign:"left"}}><span>{n.icon}</span>{n.label}</button>)}</div>
@@ -1742,6 +1781,9 @@ function App(){
   const [ctests,setCtests]=useState([]);
   const [testModal,setTestModal]=useState(null);
   const [upgradeTarget,setUpgradeTarget]=useState(null);
+  const [lang,setLang]=useState(()=>localStorage.getItem("tcf_lang")||"fr");
+  const T=LANG[lang]||LANG.fr;
+  const toggleLang=()=>{const nl=lang==="fr"?"en":"fr";setLang(nl);try{localStorage.setItem("tcf_lang",nl);}catch{}};
   const [userApiKey,setUserApiKey]=useState(()=>localStorage.getItem("oai_key")||"");
   useEffect(()=>{window.__setUserApiKey=setUserApiKey;return()=>{delete window.__setUserApiKey;};},[]);
 
@@ -1786,7 +1828,7 @@ function App(){
 
   return(
     <div style={{display:"flex",minHeight:"100vh",background:"#f4f3f0",fontFamily:"-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"}}>
-      <Sidebar page={page} setPage={nav} plan={plan} aiUsage={aiUsage} onUpgrade={()=>openUpgrade()}/>
+      <Sidebar page={page} setPage={nav} plan={plan} aiUsage={aiUsage} onUpgrade={()=>openUpgrade()} lang={lang} toggleLang={toggleLang}/>
       <main style={{flex:1,padding:"1.75rem 2rem",overflowY:"auto",minWidth:0}}>{renderPage()}</main>
       {showUpgrade&&<UpgradeModal onClose={()=>setShowUpgrade(false)} currentPlan={plan} setPlan={p=>{setPlan(p);setAiUsage({speak:0,write:0,coach:0});}} reason={upgradeReason} initialPlan={upgradeTarget}/>}
       {testModal&&<TestAdminPanel type={testModal.type} editTest={testModal.editTest} onSave={handleSaveTest} onClose={()=>setTestModal(null)}/>}
