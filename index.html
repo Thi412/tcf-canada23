@@ -673,7 +673,7 @@ const UpgradeModal=({onClose,currentPlan,setPlan,reason,initialPlan})=>{
 };
 // LANG loaded from plain script
 
-const NAV=[{id:"dashboard",icon:"⊞",label:"Tableau de bord"},{id:"speaking",icon:"🎤",label:"Expression orale"},{id:"reading",icon:"📖",label:"Compréhension écrite"},{id:"listening",icon:"🎧",label:"Compréhension orale"},{id:"writing",icon:"✏️",label:"Expression écrite"},{id:"grammaire",icon:"🔤",label:"Grammaire"},{id:"pricing",icon:"💎",label:LANG[lang||"fr"].pricing}];
+const NAV=[{id:"dashboard",icon:"⊞",label:"Tableau de bord",en:"Dashboard"},{id:"speaking",icon:"🎤",label:"Expression orale",en:"Speaking"},{id:"reading",icon:"📖",label:"Compréhension écrite",en:"Reading"},{id:"listening",icon:"🎧",label:"Compréhension orale",en:"Listening"},{id:"writing",icon:"✏️",label:"Expression écrite",en:"Writing"},{id:"grammaire",icon:"🔤",label:"Grammaire",en:"Grammar"},{id:"pricing",icon:"💎",label:"Plans & Tarifs",en:"Plans & Pricing"}];
 const Sidebar=({page,setPage,plan,aiUsage,onUpgrade,lang,toggleLang})=>{const p=PLANS[plan];return(
   <div style={{width:200,background:"#fff",borderRight:`0.5px solid ${C.border}`,display:"flex",flexDirection:"column",minHeight:"100vh",padding:"1rem 0",flexShrink:0}}>
     <div style={{padding:"0.5rem 1.25rem 1.5rem"}}><div style={{fontWeight:600,fontSize:16,color:C.green}}>🍁 TCF Canada</div><div style={{fontSize:11,color:C.gray}}>Préparation complète</div></div>
