@@ -683,6 +683,9 @@ const Sidebar=({page,setPage,plan,aiUsage,onUpgrade,lang,toggleLang})=>{const p=
       <div style={{fontSize:11,color:C.gray,marginBottom:3}}>Speaking IA: {aiUsage.speak}/{p.speakAI}</div><Prog val={aiUsage.speak} max={p.speakAI}/>
       <div style={{fontSize:11,color:C.gray,margin:"6px 0 3px"}}>Écriture IA: {aiUsage.write}/{p.writeAI}</div><Prog val={aiUsage.write} max={p.writeAI} color={C.purple}/>
     </div>
+    <button onClick={toggleLang} style={{margin:"8px",width:"calc(100% - 16px)",background:"none",border:`1px solid ${C.border}`,borderRadius:8,padding:"7px",fontSize:12,cursor:"pointer",color:C.gray,display:"flex",alignItems:"center",justifyContent:"center",gap:6}}>
+      🌐 {lang==="fr"?"English":"Français"}
+    </button>
   </div>
 );};
 
