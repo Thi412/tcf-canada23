@@ -694,22 +694,6 @@ const Dashboard=({plan,aiUsage,setPage,ct,cw,ctests,gramData})=>{const p=PLANS[p
   <div>
     <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1.5rem"}}>
       <Ttl ch="Bonjour 👋" sub={`Plan : ${p.name} · ${TOPICS.length+ct.length} topics · ${SITS.length} situations`}/>
-      <button onClick={()=>{
-        const data={
-          custom_topics:ct||[],
-          custom_writing:cw||[],
-          custom_tests:ctests||[],
-          exported_at:new Date().toISOString(),
-          version:"1.0"
-        };
-        const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
-        const url=URL.createObjectURL(blob);
-        const a=document.createElement("a");
-        a.href=url;a.download="tcf-canada-custom-data.json";
-        a.click();URL.revokeObjectURL(url);
-      }} style={{display:"flex",alignItems:"center",gap:6,background:"none",border:`1px solid ${C.green}`,borderRadius:8,padding:"7px 14px",fontSize:12,color:C.green,cursor:"pointer",fontWeight:500,flexShrink:0}}>
-        ⬇️ Exporter mes données
-      </button>
     </div>
     <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:"1.5rem"}}>
       {[{label:"Topics EO",value:TOPICS.length+ct.length,color:C.green},{label:"Situations T2",value:SITS.length,color:C.amber},{label:"Tests CE/CO",value:`${p.tests*2}`,color:C.purple},{label:"IA restants",value:p.speakAI-aiUsage.speak+p.writeAI-aiUsage.write,color:C.green}].map(s=>(
