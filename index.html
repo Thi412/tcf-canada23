@@ -65,210 +65,431 @@ const WRITING_PROMPTS=[
   // Remplace les entrées tache3 (id:35 à id:122) dans WRITING_PROMPTS
 // Coller ce bloc à la place des anciennes entrées tache3
 
-  {id:35,task:"tache3",theme:"🌍 Environnement & transport",title:"L'interdiction des voitures en ville",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté en présentant votre position sur l'interdiction des voitures dans les centres urbains. (120–180 mots)
+ {id:35,task:"tache3",theme:"🌍 Environnement & transport",title:"L'interdiction des voitures en ville",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'interdiction des voitures dans les centres urbains. (120–180 mots)
 
-📄 Document 1 : Face à des niveaux de pollution très élevés, certaines villes ont décidé d'interdire la circulation des voitures dans les centres urbains. Oslo a récemment choisi cette mesure et en tire un bilan positif, estimant qu'elle profite à tous. Avec le temps, les accidents diminueront, la consommation de pétrole reculera et la qualité de l'air s'améliorera.
+📄 Document 1 : Face à des niveaux de pollution très élevés, certaines villes ont décidé d'interdire la circulation des voitures dans les centres urbains. Oslo a récemment choisi cette mesure et en tire un bilan positif. Avec le temps, les accidents diminueront, la consommation de pétrole reculera et la qualité de l'air s'améliorera.
 
-📄 Document 2 : De nombreuses villes lancent des projets visant à interdire les voitures en milieu urbain sans disposer des moyens et des infrastructures indispensables. Certes, la réduction du nombre de voitures permet de diminuer la pollution, mais il est nécessaire de prévoir de grands parkings, de développer les transports en commun et d'accorder des autorisations spéciales à certains professionnels.`},
+📄 Document 2 : De nombreuses villes lancent des projets d'interdiction sans disposer des moyens indispensables. Certes, la réduction des voitures diminue la pollution, mais il est nécessaire de prévoir de grands parkings, de développer les transports en commun et d'accorder des autorisations spéciales à certains professionnels (police, services d'urgence, livreurs).`},
 
-  {id:36,task:"tache3",theme:"🌍 Environnement & transport",title:"Transports en commun : bénéfices et contraintes",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté en présentant votre position sur la gratuité des transports en commun. (120–180 mots)
+  {id:36,task:"tache3",theme:"🌍 Environnement & transport",title:"Transports en commun : bénéfices et contraintes",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la gratuité des transports en commun. (120–180 mots)
 
-📄 Document 1 : La gratuité des transports en commun est une initiative très positive. Elle permet de réduire le trafic automobile et de limiter les bouchons. Elle contribue aussi à diminuer la pollution et les risques pour la santé. Dans les villes où les transports sont gratuits, on constate une hausse de leur utilisation et une amélioration du commerce local.
+📄 Document 1 : La gratuité des transports en commun est une initiative très positive. Elle permet de réduire le trafic automobile et de limiter les bouchons. Dans les villes où les transports sont gratuits, on constate une hausse de leur utilisation et une amélioration du commerce local.
 
-📄 Document 2 : À mon avis, cette mesure n'est pas appropriée. La gratuité des transports représente un coût élevé pour les villes. Il vaudrait mieux améliorer la desserte des transports publics plutôt que de les rendre gratuits, car certains quartiers en sont mal équipés. Garder les transports payants encourage les usagers à mieux respecter les installations.`},
+📄 Document 2 : Cette mesure n'est pas appropriée. La gratuité des transports représente un coût élevé pour les villes. Il vaudrait mieux améliorer la desserte des transports publics plutôt que de les rendre gratuits. Garder les transports payants encourage aussi les usagers à mieux respecter les installations.`},
 
-  {id:37,task:"tache3",theme:"🌍 Environnement & transport",title:"Villes et environnement : impacts et réalités",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'impact des villes sur l'environnement. (120–180 mots)
+  {id:37,task:"tache3",theme:"🌍 Environnement & transport",title:"Les vols low-cost : avantages et limites",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les vols à bas prix. (120–180 mots)
 
-📄 Document 1 : De nos jours, les villes s'agrandissent sans cesse, ce qui affecte malheureusement l'environnement. L'un des exemples les plus visibles est la déforestation. Les arbres et les espaces verts retiennent le carbone. Quand ils sont abattus pour construire des immeubles ou des routes, on détruit des zones importantes pour le stockage du carbone.
+📄 Document 1 : Je voyage souvent avec des compagnies aériennes à petit prix. Les low-cost proposent des billets bien moins chers, parfois moins chers que le train. Mais avec ces tarifs, aucun service n'est inclus à bord. Ce type de vol n'est donc pas adapté aux longs trajets.
 
-📄 Document 2 : Plus de la moitié des habitants de la planète vivent dans des villes. On affirme souvent que les villes ne respectent pas l'environnement, mais il faut relativiser : les villes ne sont pas toujours aussi polluantes qu'on l'imagine. Par exemple, un habitant de la ville consomme souvent moins d'énergie qu'une personne à la campagne.`},
+📄 Document 2 : J'ai décidé d'arrêter les compagnies low-cost. Les sièges sont inconfortables, les employés travaillent dans des conditions difficiles et les avions semblent parfois trop vieux pour garantir une bonne sécurité. Je préfère désormais la voiture, le train ou une compagnie classique.`},
 
-  {id:38,task:"tache3",theme:"🌍 Environnement & transport",title:"Ville ou campagne : deux modes de vie",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté en défendant votre préférence entre la vie en ville et la vie à la campagne. (120–180 mots)
+  {id:38,task:"tache3",theme:"🌍 Environnement & transport",title:"Interdiction de la circulation en zones urbaines",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'interdiction de circuler en centre-ville. (120–180 mots)
 
-📄 Document 1 : Vivre en ville permet de profiter de nombreuses activités de loisirs. Aller au cinéma, dîner au restaurant ou faire les magasins est très facile. Tout est à proximité. La ville offre également une grande variété d'activités culturelles comme les musées, le théâtre ou l'opéra.
+📄 Document 1 : Face à une pollution croissante, certaines villes ont mis en place des interdictions de circulation. Oslo a appliqué cette mesure avec succès, réduisant le taux d'accidents et la dépendance au pétrole, tout en améliorant la qualité de l'air.
 
-📄 Document 2 : J'ai choisi de m'installer à la campagne après avoir quitté la ville, car je voulais vivre dans un environnement plus naturel et tranquille. Le prix des logements a également été un élément important : à la campagne, les maisons coûtent beaucoup moins cher. Avec le même budget, j'ai pu acheter une grande maison avec jardin.`},
+📄 Document 2 : Si l'interdiction des voitures a des avantages, elle pose aussi des défis. Beaucoup de villes ne disposent pas encore d'une infrastructure adaptée. Il est essentiel de prévoir des parkings, de renforcer les transports en commun et de permettre la circulation des services essentiels.`},
 
-  {id:39,task:"tache3",theme:"🌍 Environnement & transport",title:"Les vols low-cost : avantages et limites",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les vols low-cost. (120–180 mots)
+  {id:39,task:"tache3",theme:"🌍 Environnement & transport",title:"Les billets d'avion à prix réduits",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les compagnies aériennes à bas prix. (120–180 mots)
 
-📄 Document 1 : Je voyage souvent avec des compagnies aériennes à petit prix. Les compagnies low-cost proposent des billets beaucoup moins chers que les compagnies classiques. Parfois, cela revient même moins cher que de voyager en voiture ou en train. Mais avec ces tarifs très bas, aucun service n'est inclus à bord.
+📄 Document 1 : Je privilégie souvent les compagnies à bas prix. Elles proposent des tarifs bien inférieurs aux compagnies traditionnelles, parfois même plus avantageux que le train ou la voiture. Cependant, ces prix impliquent l'absence totale de services à bord.
 
-📄 Document 2 : J'ai décidé d'arrêter de voyager avec les compagnies aériennes low-cost. Les sièges sont inconfortables, les employés travaillent dans des conditions difficiles et les avions semblent parfois trop vieux pour garantir une bonne sécurité. Désormais, je préfère utiliser la voiture ou le train. Pour les longs trajets, je choisirai une compagnie aérienne classique.`},
+📄 Document 2 : Après réflexion, j'ai choisi de ne plus voyager avec les compagnies à bas prix. Les sièges sont trop inconfortables, les conditions de travail du personnel sont préoccupantes et la sécurité des avions laisse parfois à désirer. Je privilégierai la voiture ou le train.`},
 
-  {id:40,task:"tache3",theme:"🍔 Alimentation & consommation",title:"Les menus sans viande dans les cantines scolaires",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'introduction de menus sans viande dans les cantines scolaires. (120–180 mots)
+  {id:40,task:"tache3",theme:"🌍 Environnement & transport",title:"Les vols à bas prix : pour ou contre ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les compagnies low-cost. (120–180 mots)
 
-📄 Document 1 : De plus en plus d'établissements scolaires intègrent des repas sans viande dans leurs menus. Certaines études ont démontré que les enfants consomment une quantité excessive de protéines animales. Pour des raisons de santé, les écoles privilégient des alternatives comme le soja, les céréales et les légumes, qui sont plus sains et souvent plus économiques.
+📄 Document 1 : Je voyage fréquemment avec des compagnies aériennes à bas prix. Ces compagnies proposent des billets bien moins chers que les compagnies classiques, parfois plus économiques que le train ou la voiture. Évidemment, les services à bord sont inexistants : pas de repas ni de boissons.
 
-📄 Document 2 : La suppression de la viande dans les menus scolaires ne fait pas l'unanimité. Pour certaines familles en difficulté, la cantine représente la seule opportunité pour leurs enfants de consommer de la viande. Par ailleurs, les producteurs locaux de viande sont affectés économiquement, et bon nombre d'enfants préfèrent encore les plats à base de viande.`},
+📄 Document 2 : J'ai décidé de ne plus emprunter les compagnies low-cost. Ce choix s'impose face à l'inconfort des sièges, aux conditions de travail difficiles et aux doutes sur la sécurité liés à la vétusté des avions. Je privilégierai donc la voiture ou le train pour certains trajets.`},
 
-  {id:41,task:"tache3",theme:"🍔 Alimentation & consommation",title:"La restauration rapide : pour ou contre ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la restauration rapide. (120–180 mots)
+  {id:41,task:"tache3",theme:"🌍 Environnement & transport",title:"Le cyclisme urbain",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'utilisation du vélo en ville. (120–180 mots)
 
-📄 Document 1 — Catherine : « Je suis complètement contre les chaînes de fast-food, car on ignore souvent quels ingrédients sont utilisés. La qualité de la nourriture y est faible et manger ce type d'aliments peut provoquer des maladies. Certes, les hamburgers et frites sont pratiques et bon marché, mais il est important de faire d'autres choix pour rester en bonne santé. »
+📄 Document 1 : Le vélo constitue avant tout un moyen de déplacement quotidien. En milieu urbain, il se révèle rapide et apaisant, offrant une échappatoire au trafic aux heures de pointe. Une solution idéale pour allier activité physique et déplacements utiles.
 
-📄 Document 2 — Bernard : « Je soutiens la restauration rapide. Je pense qu'on peut y trouver des repas équilibrés. Les menus comprennent des légumes, des salades, du pain et de la viande. Chaque client est responsable de ce qu'il mange. Ces restaurants sont aussi très propres et faciles d'accès pour les familles. »`},
+📄 Document 2 : Circuler à vélo en milieu urbain comporte des risques non négligeables. La concentration élevée de véhicules, les manquements aux règles de circulation et l'insuffisance des pistes cyclables créent un environnement dangereux. À ces dangers s'ajoute l'exposition quotidienne aux polluants atmosphériques.`},
 
-  {id:42,task:"tache3",theme:"🍔 Alimentation & consommation",title:"Grandes surfaces ou commerces de proximité ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur votre préférence entre les supermarchés et les commerces de proximité. (120–180 mots)
+  {id:42,task:"tache3",theme:"🌍 Environnement & transport",title:"Villes et environnement : impacts et réalités",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'impact des villes sur l'environnement. (120–180 mots)
 
-📄 Document 1 : Faire ses courses au supermarché est avantageux, puisqu'on y trouve une grande diversité de produits au même endroit. On peut passer d'un rayon à l'autre pour acheter ce dont on a besoin : fruits, légumes, fromages, viandes, boissons. De plus, plusieurs marques sont proposées pour chaque produit, avec des offres promotionnelles régulières.
+📄 Document 1 : De nos jours, les villes s'agrandissent sans cesse, ce qui affecte l'environnement. La déforestation est l'un des impacts les plus visibles. Les arbres retiennent le carbone : quand ils sont abattus pour construire des immeubles ou des routes, on détruit des zones importantes.
 
-📄 Document 2 — Association pour la défense des commerces de proximité : L'initiative « Février sans supermarché » vise à limiter le pouvoir des grandes surfaces et à soutenir les petits commerces. Le principe est simple : ne pas faire ses courses dans les grandes surfaces durant un mois. Les clients en retirent des avantages : produits plus frais, de qualité, et moments d'échange avec leurs voisins.`},
+📄 Document 2 : Plus de la moitié des habitants de la planète vivent en ville. On affirme souvent que les villes ne respectent pas l'environnement, mais il faut relativiser : elles ne sont pas toujours aussi polluantes qu'on l'imagine. Un habitant de la ville consomme souvent moins d'énergie qu'une personne à la campagne.`},
 
-  {id:43,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Parents exigeants ou permissifs ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur le style parental à privilégier. (120–180 mots)
+  {id:43,task:"tache3",theme:"🌍 Environnement & transport",title:"L'agrandissement des villes",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la croissance urbaine et ses conséquences environnementales. (120–180 mots)
 
-📄 Document 1 : J'ai 19 ans et je vis toujours avec mes parents. Même si je suis maintenant majeure, ils restent très exigeants. Avant mes 18 ans, je devais être à la maison avant 20 heures. Aujourd'hui, j'ai un peu plus de liberté, mais j'ai l'impression d'être plus surveillée que les autres jeunes.
+📄 Document 1 : Les villes continuent de croître rapidement, entraînant de graves répercussions sur l'environnement. La déforestation est l'un des impacts les plus alarmants : les plantes jouent un rôle crucial dans l'absorption du carbone, et la construction urbaine remplace souvent ces espaces verts.
 
-📄 Document 2 : Certains parents choisissent de ne pas être trop sévères et laissent beaucoup de liberté à leurs enfants. Ils ont peur que trop de règles les rendent tristes. Cependant, des enfants élevés sans limites auront du mal à respecter les règles et à vivre en société une fois adultes.`},
+📄 Document 2 : La majorité de la population mondiale vit aujourd'hui en zone urbaine. On affirme souvent que les villes amplifient les problèmes environnementaux, mais il convient de relativiser. La consommation d'énergie d'un citadin est souvent inférieure à celle d'un habitant de la campagne.`},
 
-  {id:44,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Lecture et enfants : encourager sans forcer",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la façon d'encourager les enfants à lire. (120–180 mots)
+  {id:44,task:"tache3",theme:"🌍 Environnement & transport",title:"Ville ou campagne : deux modes de vie",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur votre préférence entre la vie en ville et la vie à la campagne. (120–180 mots)
 
-📄 Document 1 : Obliger les enfants à lire n'est pas une bonne solution. Quand un enfant aime le sport, on ne le contraint pas, on essaie de le motiver. Il en va de même pour la lecture. La pédopsychiatre Laurence T. affirme que « l'amour de la lecture ne peut pas être imposé ».
+📄 Document 1 : Vivre en ville permet de profiter de nombreuses activités de loisirs. Aller au cinéma, dîner au restaurant ou faire les magasins est très facile. La ville offre également une grande variété d'activités culturelles comme les musées, le théâtre ou l'opéra.
 
-📄 Document 2 : Lire avec ses enfants est une activité agréable et bénéfique. Une lecture régulière leur permet d'apprendre de nouveaux mots et de mieux écouter. Ce moment est idéal pour partager du plaisir en famille. Les parents doivent essayer de lire des histoires à leurs enfants dès leur jeune âge — cinq à dix minutes par jour suffisent.`},
+📄 Document 2 : J'ai choisi de m'installer à la campagne car je voulais vivre dans un environnement plus naturel et tranquille. Le prix des logements a été un élément important : à la campagne, les maisons coûtent beaucoup moins cher. Avec le même budget, j'ai pu acheter une grande maison avec jardin.`},
 
-  {id:45,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Technologies dans les écoles : pour ou contre ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'utilisation des nouvelles technologies dans les écoles. (120–180 mots)
+  {id:45,task:"tache3",theme:"🌍 Environnement & transport",title:"Ville ou campagne : choisir son cadre de vie",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur le choix entre vie urbaine et vie rurale. (120–180 mots)
 
-📄 Document 1 — Adam : « Je suis persuadé que l'intégration des nouvelles technologies dans les écoles est essentielle pour préparer les élèves à l'avenir numérique. L'utilisation des tablettes et ordinateurs motive les élèves et enrichit leur expérience d'apprentissage en favorisant leur créativité et leur autonomie. »
+📄 Document 1 — Marie, 42 ans : Depuis que j'ai déménagé à la campagne, ma vie a complètement changé. J'ai fui le bruit, la pollution et la foule pour profiter du calme et des espaces verts. Je savoure la tranquillité et de grands espaces sans voisins proches.
 
-📄 Document 2 — Inès : « Je reste dubitative face à l'utilisation excessive des technologies dans l'éducation. Cela peut limiter les interactions humaines et entraîner une dépendance aux écrans. À mon avis, les méthodes traditionnelles et le contact direct entre enseignants et élèves sont essentiels pour un développement équilibré. »`},
+📄 Document 2 — Claire, 35 ans : La vie rurale n'est pas adaptée à tous. Les commerces, loisirs et services essentiels peuvent se trouver à plusieurs kilomètres. Il est souvent nécessaire d'utiliser la voiture, et Internet n'est pas toujours fiable. La ville procure un confort quotidien supérieur.`},
 
-  {id:46,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Technologie et enfants",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'impact de la technologie sur les enfants. (120–180 mots)
+  {id:46,task:"tache3",theme:"🌍 Environnement & transport",title:"L'utilisation du plastique",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'utilisation du plastique dans notre société. (120–180 mots)
 
-📄 Document 1 : Les élèves du primaire ont la possibilité d'utiliser la technologie pour chercher des vidéos liées à leurs leçons ou pour s'exercer avec des jeux qui développent leurs compétences en mathématiques, en lecture et en saisie au clavier.
+📄 Document 1 — Franck : Il défend une utilisation restreinte du plastique, soulignant son importance dans des domaines tels que l'alimentation et la médecine. Il prône une gestion responsable et le recyclage, tout en admettant que certains usages sont inévitables dans la société moderne.
 
-📄 Document 2 : Aujourd'hui, les technologies poussent les enfants à rester inactifs, ce qui inquiète beaucoup les parents. Cela limite les jeux créatifs, les échanges sociaux directs et l'activité physique. Pourquoi ne pas encourager les enfants à poser leurs appareils et essayer des activités ludiques ?`},
+📄 Document 2 — Amicha : Elle s'oppose fermement à l'utilisation du plastique en raison de ses impacts environnementaux dévastateurs : pollution des océans et destruction des écosystèmes. Selon elle, il est urgent d'adopter des alternatives écologiques et durables.`},
 
-  {id:47,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Caméras de surveillance à l'école",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'installation de caméras de surveillance dans les écoles. (120–180 mots)
+  {id:47,task:"tache3",theme:"🍔 Alimentation & consommation",title:"La question de la consommation de viande",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la consommation de viande. (120–180 mots)
 
-📄 Document 1 : À l'école où je travaille à Montréal, les caméras de surveillance sont largement présentes. Leur objectif est de dissuader les élèves de commettre des actes de violence. Les enseignants, les parents et la majorité des élèves les accueillent favorablement, car cela renforce la sécurité et crée un environnement propice à l'enseignement.
+📄 Document 1 — Daniel : Je suis opposé à la consommation de viande. D'un point de vue éthique, tous les animaux méritent de vivre librement. Sur le plan environnemental, la production de viande génère une grande quantité de gaz à effet de serre et consomme d'énormes ressources en terres et en eau.
 
-📄 Document 2 : Je m'oppose à l'installation des caméras de surveillance dans nos écoles. Les résultats obtenus dans d'autres pays ne sont pas convaincants. Pour résoudre les problèmes de discipline, il est préférable d'améliorer la communication entre enseignants, administration et élèves, plutôt que de dépendre des caméras.`},
+📄 Document 2 — Alain : Je pense que la consommation de viande reste justifiée, car elle fournit des nutriments essentiels comme les protéines, les vitamines B, le fer et le zinc. La viande joue aussi un rôle clé dans de nombreuses cultures et traditions culinaires.`},
 
-  {id:48,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Devoirs à domicile : bienfaits et critiques",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les devoirs à la maison. (120–180 mots)
+  {id:48,task:"tache3",theme:"🍔 Alimentation & consommation",title:"Végétarisme : un choix à réfléchir",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur le végétarisme. (120–180 mots)
 
-📄 Document 1 : D'après certaines associations de parents d'élèves, les devoirs à domicile sont bénéfiques car ils permettent aux élèves de gérer leur temps seuls. Pour les parents, les devoirs représentent une occasion de se rapprocher de l'école chaque jour et de montrer de l'intérêt à leurs enfants.
+📄 Document 1 : Le végétarisme offre plusieurs bénéfices. Il contribue à une meilleure santé en réduisant les risques de maladies cardiaques. Il joue aussi un rôle dans la protection de l'environnement en réduisant la pollution liée à la production de viande. Enfin, il permet de respecter les animaux.
 
-📄 Document 2 : Nous nous opposons depuis longtemps aux devoirs à la maison. Leur efficacité pour améliorer les résultats scolaires n'a jamais été prouvée. De nombreux parents n'ont pas le temps ou ne savent pas comment aider leurs enfants. Les élèves qui ont compris perdent du temps, tandis que ceux qui ne sont pas aidés restent en difficulté.`},
+📄 Document 2 : Le végétarisme ne convient pas à tout le monde. Certaines personnes ont besoin de viande pour obtenir des nutriments essentiels comme le fer et les protéines. De plus, les habitudes alimentaires traditionnelles incluent souvent la viande, ce qui rend ce changement difficile.`},
 
-  {id:49,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Animaux de compagnie pour enfants",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'intérêt d'avoir un animal de compagnie pour un enfant. (120–180 mots)
+  {id:49,task:"tache3",theme:"🍔 Alimentation & consommation",title:"Art urbain ou vandalisme ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les graffitis dans les villes. (120–180 mots)
 
-📄 Document 1 : Donner un animal de compagnie à un enfant comporte de nombreux bienfaits. Pour les enfants qui n'ont pas de frères ou sœurs, l'animal devient un compagnon et leur évite la solitude. Grâce à lui, l'enfant gagne en confiance et apprend que l'animal mérite attention et respect.
+📄 Document 1 : Dans les grandes villes, on voit de plus en plus de peintures sur les façades des bâtiments. Cet art de rue permet à la culture d'être présente dans l'espace public. Pour certains maires, il est essentiel de donner aux artistes des espaces légaux. Ces graffitis attirent aussi les touristes.
 
-📄 Document 2 : Même si vous souhaitez faire plaisir à votre enfant, il est important de bien réfléchir avant d'adopter un animal. Celui-ci devient un membre de la famille et implique un engagement sur plusieurs années. Avoir un animal coûte souvent cher et demande beaucoup de responsabilités. Ce n'est pas un jouet que l'on peut mettre de côté.`},
+📄 Document 2 : Chaque année, certaines villes investissent des sommes importantes pour lutter contre les graffitis. Les dessins sur les murs sont difficiles à enlever. Pour certains habitants, ces peintures nuisent à l'image de leur quartier et dérangent les propriétaires, obligés de les nettoyer eux-mêmes.`},
 
-  {id:50,task:"tache3",theme:"💼 Travail & société",title:"Étudiants et travail saisonnier",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur le travail saisonnier pour les étudiants. (120–180 mots)
+  {id:50,task:"tache3",theme:"🍔 Alimentation & consommation",title:"L'art urbain : pour ou contre ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'art de rue dans les villes. (120–180 mots)
 
-📄 Document 1 : Après une longue période à l'université, les vacances permettent aux jeunes de se détendre. Certains étudiants préfèrent travailler au lieu de partir en vacances. Bien que ces emplois saisonniers aient des points positifs, ils limitent le temps libre des jeunes, qui manquent de repos et de moments en famille.
+📄 Document 1 : L'art éveille la curiosité des citadins et transforme l'espace urbain en un lieu d'échange entre artistes et passants. Peintures et spectacles de rue créent une atmosphère immersive, rendant l'art accessible à tous et embellissant la ville.
 
-📄 Document 2 : Pour quelles raisons de nombreux étudiants travaillent-ils durant les vacances ? Cette expérience représente souvent une entrée dans la vie professionnelle : elle leur permet de développer le sens des responsabilités. Gagner de l'argent est aussi motivant. Certains travaillent pour ne plus dépendre financièrement de leurs parents.`},
+📄 Document 2 : À plus grande échelle, les graffitis divisent l'opinion. Perçus par certains comme une forme de vandalisme défigurant l'espace public, ils sont associés à une rupture sociale et à une pollution visuelle. Ce débat opposant artistes, législateurs et citoyens reste vif.`},
 
-  {id:51,task:"tache3",theme:"💼 Travail & société",title:"Le rôle du travail dans notre vie",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la place du travail dans la vie des individus. (120–180 mots)
+  {id:51,task:"tache3",theme:"🍔 Alimentation & consommation",title:"La restauration rapide",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la restauration rapide. (120–180 mots)
 
-📄 Document 1 : Le travail occupe une place importante dans notre vie. Même s'il peut apporter de la satisfaction, il est souvent source de fatigue et peut donner l'impression d'être coincé dans une routine. Beaucoup de personnes constatent un déséquilibre entre leur vie professionnelle et leur vie personnelle.
+📄 Document 1 — Catherine : « Je suis complètement contre les chaînes de fast-food. La qualité de la nourriture y est faible et manger ce type d'aliments peut provoquer des maladies. Certes, les hamburgers et frites sont pratiques et bon marché, mais il est important de faire d'autres choix pour rester en bonne santé. »
 
-📄 Document 2 : Le travail fait partie de notre identité sociale. Selon le spécialiste Jean-Daniel Remond, la vie professionnelle contribue à se construire : elle permet de rencontrer des gens, de créer des réseaux, de se sentir utile et même de se faire des amis. Le travail reste crucial pour l'équilibre personnel et collectif.`},
+📄 Document 2 — Bernard : « Je soutiens la restauration rapide. On peut y trouver des repas équilibrés avec des légumes, des salades, du pain et de la viande. Chaque client est responsable de ce qu'il mange. Ces restaurants sont aussi très propres et faciles d'accès pour les familles. »`},
 
-  {id:52,task:"tache3",theme:"💼 Travail & société",title:"Femmes et hommes au travail",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'égalité entre femmes et hommes au travail. (120–180 mots)
+  {id:52,task:"tache3",theme:"🍔 Alimentation & consommation",title:"La restauration express",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la restauration rapide et ses effets sur la santé. (120–180 mots)
 
-📄 Document 1 : Dans certaines régions, comme le Québec, l'égalité entre les femmes et les hommes est une réalité. Beaucoup de femmes occupent désormais des postes à responsabilité et travaillent dans des domaines traditionnellement masculins. Avec les lois sur l'égalité et le changement des mentalités, les femmes ont accès aux mêmes métiers que les hommes.
+📄 Document 1 : Les restaurants express offrent des plats variés, tout en respectant les normes d'hygiène et en proposant une gamme diversifiée de produits de qualité. De plus, c'est le client qui compose son menu, assumant ainsi la responsabilité de ses choix.
 
-📄 Document 2 : Même si des efforts sont faits pour atteindre la parité, des inégalités demeurent. Certains métiers sont encore très féminisés. De plus, certaines personnes estiment que les femmes doivent rester à la maison pour s'occuper des enfants. Il reste beaucoup à faire pour changer les mentalités et garantir les mêmes chances à tous.`},
+📄 Document 2 : La restauration express est nocive pour la santé, car elle engendre des problèmes irréversibles comme l'obésité. Une consommation régulière de ce type d'aliments peut avoir des conséquences graves sur la santé à long terme.`},
 
-  {id:53,task:"tache3",theme:"💼 Travail & société",title:"Productivité et confort au travail",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les moyens d'améliorer le bien-être au travail. (120–180 mots)
+  {id:53,task:"tache3",theme:"🍔 Alimentation & consommation",title:"La livraison de repas au bureau",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la livraison de repas en entreprise. (120–180 mots)
 
-📄 Document 1 — Louise, responsable : « Dans notre entreprise, nous avons mis en place des bureaux réglables en hauteur. Les employés sont satisfaits et affirment être plus performants. De plus, le climat social s'est amélioré et les échanges entre collègues sont plus fréquents. »
+📄 Document 1 — Céline, 25 ans : La livraison de repas représente un gain de temps appréciable. Il est possible de se faire livrer sur son lieu de travail, évitant ainsi de se déplacer. Ce service offre une grande variété de choix et est disponible 24h/24.
 
-📄 Document 2 — Dubois, ingénieur : « Aujourd'hui, les entreprises cherchent toujours à augmenter la productivité. Pour ma part, ce qui compte, c'est de réaliser mon travail pendant mes heures normales, sans devoir faire des heures supplémentaires. »`},
+📄 Document 2 — Ahmed, 40 ans : Ce service a un impact environnemental non négligeable, les livraisons étant souvent effectuées en scooter ou en voiture polluants. Ce mode de consommation peut aussi nuire à la vie sociale en poussant les gens à rester à l'intérieur.`},
 
-  {id:54,task:"tache3",theme:"💼 Travail & société",title:"La sieste au travail",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'introduction de la sieste en milieu professionnel. (120–180 mots)
+  {id:54,task:"tache3",theme:"🍔 Alimentation & consommation",title:"Livraison des repas au bureau : pour ou contre ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la livraison de repas en milieu professionnel. (120–180 mots)
 
-📄 Document 1 : Selon le site siestepourtous.com, une courte sieste au travail pourrait augmenter la productivité et la créativité des employés de 35 %. De plus, la sieste améliorerait la mémoire et la concentration. Un employé reposé serait plus disponible pour ses tâches et moins stressé.
+📄 Document 1 : La livraison de repas en entreprise offre un gain de temps considérable. Les employés n'ont plus besoin de quitter leur lieu de travail pour manger. Les repas étant directement disponibles, il est possible de les consommer après une réunion sans interrompre une tâche importante.
 
-📄 Document 2 : Même si les bienfaits de la micro-sieste ont été prouvés scientifiquement, certaines personnes restent sceptiques. La sieste au bureau pose des difficultés pratiques : toutes les entreprises ne peuvent pas disposer de salles spécifiques. Il faut aussi garantir l'égalité entre tous les salariés et établir une charte encadrant cette pratique.`},
+📄 Document 2 : Bien que pratique, ce service comporte des inconvénients. Avec la forte demande, les services de livraison peuvent être débordés, entraînant des retards. De plus, rester trop longtemps à son poste sans faire de pause peut entraîner une fatigue accrue et nuire au bien-être.`},
 
-  {id:55,task:"tache3",theme:"💼 Travail & société",title:"Animaux de compagnie au bureau : pour ou contre ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la présence d'animaux de compagnie au bureau. (120–180 mots)
+  {id:55,task:"tache3",theme:"🍔 Alimentation & consommation",title:"Faire ses courses : grandes surfaces ou commerces de proximité ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur votre préférence entre supermarché et commerce de proximité. (120–180 mots)
 
-📄 Document 1 : Apporter son animal au travail est une pratique qui se développe. Son intérêt ? Réduire le stress des employés. Les chiens ou les chats changent l'atmosphère de l'entreprise et diminuent les conflits entre collègues. Une enquête montre qu'un quart des salariés pensent que les animaux améliorent leur motivation.
+📄 Document 1 : Faire ses courses au supermarché est avantageux : on y trouve une grande diversité de produits au même endroit. On peut passer d'un rayon à l'autre et profiter d'offres promotionnelles régulières sur plusieurs marques.
 
-📄 Document 2 — Alba, 32 ans : « Dans l'entreprise où je travaille, il est permis d'amener son animal. Pour ma part, cela me dérange. Je ne suis pas très confortable avec les animaux. Cela peut aussi poser des problèmes de santé pour les employés allergiques. Et puis, cela constitue une source de distraction. »`},
+📄 Document 2 — Association pour la défense des commerces de proximité : L'initiative « Février sans supermarché » encourage à privilégier les épiceries de quartier. Les clients en retirent des avantages : des produits plus frais, de meilleure qualité, et des moments d'échange avec leurs voisins.`},
 
-  {id:56,task:"tache3",theme:"💼 Travail & société",title:"Faut-il mettre une photo sur son CV ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'utilisation d'une photo dans un CV. (120–180 mots)
+  {id:56,task:"tache3",theme:"🍔 Alimentation & consommation",title:"Privilégier la ferme ou le supermarché ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur votre façon de faire vos courses. (120–180 mots)
 
-📄 Document 1 : Il faudrait interdire la photo sur le CV pour éviter toute forme de discrimination. Selon une étude de spécialistes du recrutement, les employeurs accordent plus d'attention à l'expérience professionnelle (32 %) et aux diplômes (15 %) qu'au physique. Seuls 2 % des recruteurs commencent par regarder la photo.
+📄 Document 1 : Je réalise mes achats alimentaires à moins de dix kilomètres de chez moi. Habitant à la campagne, j'achète directement à la ferme et discute avec les producteurs. Le prix est parfois plus élevé, mais les produits sont de meilleure qualité et je connais leur origine.
 
-📄 Document 2 : L'utilisation d'une photo sur le CV est un sujet qui divise les recruteurs. Certains estiment que la photo aide à se faire une idée du candidat avant la rencontre. Elle peut aussi faciliter la mémorisation quand beaucoup de CV sont reçus. Pour les postes liés à l'accueil, la photo peut être appropriée.`},
+📄 Document 2 : Pour mes courses, je me rends toujours au supermarché. C'est plus pratique, surtout avec les enfants. Je peux trouver tous les produits au même endroit et profiter des promotions. L'important est de gagner du temps, de réduire mes dépenses et de faire mes courses près de chez moi.`},
 
-  {id:57,task:"tache3",theme:"💼 Travail & société",title:"Aider les sans-abri : dons ou actions concrètes ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la meilleure façon d'aider les personnes sans-abri. (120–180 mots)
+  {id:57,task:"tache3",theme:"🍔 Alimentation & consommation",title:"Les menus sans viande dans les cantines",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'introduction de menus sans viande dans les cantines scolaires. (120–180 mots)
 
-📄 Document 1 — Charlotte, 45 ans : « Chaque hiver, je consacre un peu de mon temps et de mon argent pour aider les personnes sans-abri. Pour moi, il est important de donner quelques dollars à ces personnes ou aux associations qui les soutiennent. C'est un geste de solidarité que chacun peut réaliser. »
+📄 Document 1 : De plus en plus d'établissements scolaires intègrent des repas sans viande. Les enfants consomment une quantité excessive de protéines animales. Les écoles privilégient des alternatives comme le soja, les céréales et les légumes, qui sont plus sains et souvent plus économiques pour les familles.
 
-📄 Document 2 — Arthur, 54 ans : « Au lieu de donner de l'argent aux personnes défavorisées, il serait préférable de repenser notre façon de vivre. Je préfère m'investir dans une association de mon quartier. Les sans-abri ont besoin d'un logement et d'un emploi, pas seulement d'argent. Donner seul ne fait qu'apaiser notre conscience. »`},
+📄 Document 2 : La suppression de la viande dans les menus scolaires ne fait pas l'unanimité. Pour certaines familles en difficulté, la cantine est la seule occasion pour leurs enfants de consommer de la viande. Par ailleurs, les producteurs locaux sont affectés, et de nombreux enfants préfèrent encore les plats à base de viande.`},
 
-  {id:58,task:"tache3",theme:"📱 Technologie & médias",title:"La télévision dans la société",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur le rôle de la télévision dans la société actuelle. (120–180 mots)
+  {id:58,task:"tache3",theme:"🍔 Alimentation & consommation",title:"Les distributeurs automatiques dans les écoles",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'installation de distributeurs automatiques dans les lycées. (120–180 mots)
 
-📄 Document 1 : La télévision est un moyen de communication très présent dans la société. Elle permet de transmettre des informations, de proposer différents programmes de divertissement et de diffuser la culture. Présente dans beaucoup de foyers, elle reste une source d'information et de loisirs accessible à tous.
+📄 Document 1 : Certains estiment que les distributeurs automatiques dans les lycées sont un atout. Ils permettent aux élèves d'avoir un accès rapide à des boissons et en-cas. De plus, ces distributeurs peuvent être approvisionnés en options saines comme des jus de fruits et de l'eau.
 
-📄 Document 2 : La télévision présente aussi des aspects négatifs. Certains programmes peuvent transmettre des stéréotypes ou des valeurs discutables. Passer trop de temps devant la télévision peut diminuer le temps consacré à des activités plus utiles, comme la lecture ou le sport. Il est nécessaire de limiter ce temps, surtout pour les enfants.`},
+📄 Document 2 : D'autres considèrent que ces distributeurs favorisent une consommation excessive de produits sucrés et contribuent à des problèmes de santé comme l'obésité et le diabète. Les écoles devraient encourager des habitudes alimentaires plus saines et éviter ces installations.`},
 
-  {id:59,task:"tache3",theme:"📱 Technologie & médias",title:"Jeux vidéo : un loisir utile ou dangereux ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les effets des jeux vidéo. (120–180 mots)
+  {id:59,task:"tache3",theme:"🍔 Alimentation & consommation",title:"Cuisiner pour le plaisir ou comme métier ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la cuisine amateur versus professionnelle. (120–180 mots)
 
-📄 Document 1 : Des recherches ont montré que certaines parties du cerveau des adultes peuvent se développer grâce aux jeux vidéo. Jouer peut aider à renforcer l'analyse, la prise de décision et la rapidité de réaction. C'est une bonne nouvelle, puisque 83 % des joueurs sont des adultes.
+📄 Document 1 : Les passionnés de cuisine arrivent à préparer quelques plats, mais ils manquent généralement des techniques et de l'expérience des chefs. Maîtriser l'art culinaire nécessite un apprentissage et une pratique approfondie.
 
-📄 Document 2 : Durant trois ans, des chercheurs ont observé des enfants de 8 à 17 ans. Les conclusions indiquent que les enfants qui jouent beaucoup aux jeux vidéo deviennent plus violents, plus tendus et réussissent moins bien à l'école. Il est conseillé aux parents de contrôler le temps passé devant les jeux vidéo.`},
+📄 Document 2 : Grâce aux réseaux sociaux et aux cours en ligne, certains autodidactes se sont distingués. Le parcours d'une passionnée devenue cheffe et auteure de livres de cuisine démontre qu'il est possible de réussir autrement que par la voie classique.`},
 
-  {id:60,task:"tache3",theme:"📱 Technologie & médias",title:"Objets connectés : progrès ou danger ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les objets connectés. (120–180 mots)
+  {id:60,task:"tache3",theme:"🍔 Alimentation & consommation",title:"Manger à l'extérieur ou chez soi ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur votre préférence entre manger au restaurant et manger à la maison. (120–180 mots)
 
-📄 Document 1 : Les objets connectés rendent le quotidien plus pratique. Il s'agit d'appareils que vous contrôlez à distance à l'aide d'un téléphone ou d'Internet. Les montres connectées permettent également d'observer vos activités sportives. Leur rôle est particulièrement utile dans le secteur de la santé, rappelant les consultations médicales ou la prise de médicaments.
+📄 Document 1 — Aïcha, 28 ans : Elle préfère dîner à l'extérieur plutôt que de manger seule à la maison. Elle apprécie la possibilité de sortir à tout moment et de partager des repas conviviaux avec ses amis, ce qui est impossible dans son petit appartement.
 
-📄 Document 2 : On pense qu'il existe environ 50 milliards d'objets connectés à travers le monde. Toutefois, ce développement entraîne des risques liés à la sécurité. Un hacker peut contrôler un objet connecté en peu de temps. Par exemple, un cambrioleur pourrait vérifier, à l'aide de caméras connectées, si une maison est vide.`},
+📄 Document 2 — Laura, 45 ans : Manger au restaurant est souvent trop coûteux pour elle. Le budget familial l'empêche de sortir souvent. Elle préfère savoir exactement ce qu'elle mange en préparant les repas chez elle et critique la qualité des plats au restaurant.`},
 
-  {id:61,task:"tache3",theme:"📱 Technologie & médias",title:"La publicité alimentaire ciblant les enfants",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la publicité ciblant les enfants. (120–180 mots)
+  {id:61,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Parents exigeants ou permissifs ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur le style parental à privilégier. (120–180 mots)
 
-📄 Document 1 — Lucien, 28 ans : « La publicité est très utile pour les entreprises. Elle sert à présenter un produit ou un service. J'aime l'écouter quand je conduis. Elle m'aide à découvrir les nouveautés et les offres spéciales. Comparer les articles grâce à la publicité permet de faire de bonnes économies. »
+📄 Document 1 : J'ai 19 ans et je vis toujours avec mes parents. Même majeure, ils restent très exigeants. Avant mes 18 ans, je devais être à la maison avant 20 heures. Aujourd'hui, ma mère reste très inquiète et m'appelle souvent pour savoir où je suis.
 
-📄 Document 2 — Alma, 35 ans : « Nous sommes entourés de publicité tous les jours : journaux, radios, télévisions, smartphones… Les émissions télévisées sont souvent coupées par des pubs, ce qui peut être irritant. Recevoir des kilos de publicité chaque année dans la boîte aux lettres n'est pas bon pour l'environnement. »`},
+📄 Document 2 : Certains parents laissent beaucoup de liberté à leurs enfants, craignant que trop de règles les rendent tristes. Cependant, des enfants élevés sans limites auront du mal à respecter les règles et à vivre en société une fois adultes.`},
 
-  {id:62,task:"tache3",theme:"📱 Technologie & médias",title:"La publicité : utile ou gênante ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la place de la publicité dans notre quotidien. (120–180 mots)
+  {id:62,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Sévérité parentale : atout ou frein ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'autorité parentale. (120–180 mots)
 
-📄 Document 1 — Elena, 28 ans : « La publicité est essentielle au fonctionnement du commerce. Grâce à elle, on découvre de nouveaux produits et services. Certaines publicités sont même amusantes ! J'aime aussi comparer les produits, ce qui me permet d'économiser. Sans la publicité, de nombreuses applications gratuites deviendraient payantes. »
+📄 Document 1 : À presque 22 ans, je vis encore chez mes parents et leur autorité reste omniprésente. Lorsque j'étais mineure, il m'était interdit de dormir ailleurs. Aujourd'hui, ma mère m'appelle constamment jusqu'à mon retour à la maison.
 
-📄 Document 2 — Alicia, 35 ans : « La publicité fait partie de notre vie quotidienne, et certaines émissions sont interrompues par des publicités, ce qui est vraiment agaçant. Recevoir chaque année beaucoup de papiers publicitaires dans la boîte aux lettres n'est pas bon pour l'environnement. Il faudrait une loi pour limiter la publicité à la télé et par courrier. »`},
+📄 Document 2 : Les parents redoutent parfois d'être trop stricts, craignant de freiner l'épanouissement de leurs enfants. Pourtant, céder à toutes leurs demandes peut aussi avoir des conséquences négatives. Il est essentiel d'inculquer dès l'enfance le respect de certaines règles nécessaires à la vie en société.`},
 
-  {id:63,task:"tache3",theme:"🏡 Mode de vie & logement",title:"Vivre en colocation à l'âge adulte",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la vie en colocation. (120–180 mots)
+  {id:63,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Lecture et enfants : encourager sans forcer",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la façon d'encourager les enfants à lire. (120–180 mots)
 
-📄 Document 1 : La vie en colocation demande de bien s'entendre et de suivre des règles communes. On ne peut pas toujours mettre la musique à un volume élevé ou inviter tous ses amis. Chaque personne a des comportements qui peuvent agacer les autres. Une bonne organisation et la communication permettent une colocation réussie.
+📄 Document 1 : Obliger les enfants à lire n'est pas une bonne solution. Quand un enfant aime le sport, on ne le contraint pas, on essaie de le motiver. Il en va de même pour la lecture. La pédopsychiatre Laurence T. affirme que l'amour de la lecture ne peut pas être imposé.
 
-📄 Document 2 : Vivre en colocation à l'âge adulte ? C'est un choix pratique pour avoir un logement plus spacieux à moindre coût. En divisant le loyer et les frais avec vos colocataires, vous dépensez beaucoup moins que pour un logement individuel. La colocation permet ainsi d'accéder à des logements plus abordables.`},
+📄 Document 2 : Lire avec ses enfants est une activité agréable et bénéfique. Une lecture régulière leur permet d'apprendre de nouveaux mots et de mieux écouter. Ce moment est idéal pour partager du plaisir en famille. Cinq à dix minutes par jour suffisent pour donner le goût de la lecture durablement.`},
 
-  {id:64,task:"tache3",theme:"🏡 Mode de vie & logement",title:"Maisons de retraite ou maintien à domicile ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la meilleure solution pour les personnes âgées. (120–180 mots)
+  {id:64,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Les bienfaits de la lecture pour les jeunes",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'importance de la lecture pour les enfants à l'ère numérique. (120–180 mots)
 
-📄 Document 1 — Sophie, infirmière : « Les maisons de retraite représentent une solution adaptée pour les personnes âgées. Elles y bénéficient de soins appropriés et d'un encadrement professionnel. Elles ont aussi la possibilité de participer à diverses activités qui leur permettent de garder une vie sociale et d'éviter la solitude. »
+📄 Document 1 : À l'ère du numérique, les jeux vidéo, les sports et les réseaux sociaux captivent les enfants bien plus que les livres. Faut-il leur imposer la lecture ? Comme le rappelle un proverbe, le goût de la lecture ne peut être forcé. Il faut leur laisser la liberté de choisir.
 
-📄 Document 2 — Jean, retraité : « Les maisons de retraite peuvent priver les personnes âgées de la présence de leur famille et donner l'impression d'être abandonné. De plus, les conditions de vie ne sont pas toujours satisfaisantes. Selon moi, l'aide à domicile est une meilleure solution pour vieillir auprès de ses proches. »`},
+📄 Document 2 : La lecture a toujours été un héritage transmis de génération en génération. Lire régulièrement permet aux jeunes d'acquérir plus facilement le langage, tout en développant leur attention. Les parents peuvent accorder dix minutes par jour à la lecture avec leurs enfants, renforçant ainsi les liens familiaux.`},
 
-  {id:65,task:"tache3",theme:"🌐 Culture & loisirs",title:"L'accès gratuit aux musées",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la gratuité des musées. (120–180 mots)
+  {id:65,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Technologies dans les écoles : pour ou contre ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'utilisation des nouvelles technologies dans les écoles. (120–180 mots)
 
-📄 Document 1 : La gratuité fait partie des principes fondamentaux des musées et symbolise le partage culturel. Une fois par mois, l'entrée des musées nationaux est gratuite pour tous. Cette mesure a pour but de faire venir de nouveaux visiteurs, car le musée reste avant tout un lieu d'éducation pour le plus grand nombre.
+📄 Document 1 — Adam : « Je suis persuadé que l'intégration des nouvelles technologies dans les écoles est essentielle pour préparer les élèves à l'avenir numérique. L'utilisation des tablettes et ordinateurs motive les élèves et favorise leur créativité et leur autonomie. »
 
-📄 Document 2 : Rendre les musées totalement gratuits est une fausse bonne idée, car cela fait croire que la culture ne nécessite aucun financement. Les musées doivent recevoir des fonds pour maintenir et développer leurs collections. Une solution plus adaptée est de proposer des entrées à tarif réduit pour des publics ciblés.`},
+📄 Document 2 — Inès : « Je reste dubitative face à l'utilisation excessive des technologies. Cela peut limiter les interactions humaines et entraîner une dépendance aux écrans. Les méthodes traditionnelles et le contact direct entre enseignants et élèves sont essentiels pour un développement équilibré. »`},
 
-  {id:66,task:"tache3",theme:"🌐 Culture & loisirs",title:"Art urbain ou vandalisme ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les graffitis dans les villes. (120–180 mots)
+  {id:66,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Les nouvelles technologies à l'école : atout ou risque ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les technologies numériques en milieu scolaire. (120–180 mots)
 
-📄 Document 1 : Dans les grandes villes, on voit de plus en plus de peintures sur les façades des bâtiments. Cet art de rue permet à la culture d'être présente dans l'espace public. Pour certains maires, il est essentiel de donner aux artistes des espaces où ils peuvent travailler légalement. Ces graffitis attirent aussi les touristes.
+📄 Document 1 — Jean : « Intégrer les nouvelles technologies dans l'éducation est indispensable pour préparer les élèves à l'ère du numérique. L'usage des tablettes et ordinateurs renforce leur motivation, enrichit leur apprentissage et favorise leur autonomie et leur créativité. »
 
-📄 Document 2 : Chaque année, certaines villes investissent des sommes importantes pour lutter contre les graffitis. Les dessins sur les murs sont difficiles à enlever et demandent parfois l'aide de professionnels. Pour certains habitants, ces peintures nuisent à l'image de leur quartier et dérangent les propriétaires, obligés de les nettoyer eux-mêmes.`},
+📄 Document 2 — Sara : « L'usage excessif des technologies dans l'enseignement me laisse perplexe. Il pourrait nuire aux relations humaines et accentuer l'addiction aux écrans. L'enseignement traditionnel et le lien direct entre élèves et enseignants sont irremplaçables. »`},
 
-  {id:67,task:"tache3",theme:"🐾 Animaux",title:"La chasse : une pratique à soutenir ou à rejeter ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la pratique de la chasse. (120–180 mots)
+  {id:67,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"L'usage des nouvelles technologies en milieu scolaire",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'introduction du numérique à l'école. (120–180 mots)
 
-📄 Document 1 — Sophie, 28 ans : « Je fais partie de ceux qui ne parviennent pas à comprendre comment on peut prendre plaisir à tuer des animaux. Je fais aussi partie de ceux qui ne saisissent pas comment on peut prétendre aimer la nature tout en contribuant à sa destruction. »
+📄 Document 1 — Jean : « L'introduction des nouvelles technologies dans les écoles est indispensable pour familiariser les élèves avec l'univers numérique. L'usage des outils numériques renforce leur motivation et améliore leur apprentissage en leur offrant des ressources variées qui encouragent leur indépendance. »
 
-📄 Document 2 — Bernard, journaliste : « La chasse est pratiquée pour diverses raisons : qu'il s'agisse de se nourrir, de commercer, de gérer la faune, de protéger la propriété, de faire de l'exercice, de se divertir ou de chercher du prestige. »`},
+📄 Document 2 — Sara : « Je suis partagée sur l'intégration poussée des technologies dans l'éducation. Cela pourrait nuire aux interactions sociales et accentuer une addiction aux écrans. L'enseignement traditionnel, basé sur un échange direct entre professeurs et élèves, demeure primordial. »`},
 
-  {id:68,task:"tache3",theme:"📚 Apprentissage & langues",title:"Apprendre une langue en ligne",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'apprentissage d'une langue en ligne. (120–180 mots)
+  {id:68,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Technologie et enfants",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'impact de la technologie sur les enfants. (120–180 mots)
 
-📄 Document 1 : Grâce à Internet, il est tout à fait possible d'apprendre une langue en ligne, et les résultats sont souvent très bons. Contrairement aux cours en présentiel, on peut suivre les leçons quand on le souhaite, puisqu'elles sont disponibles 24h/24. Cela aide à mieux gérer son emploi du temps et à économiser de l'argent.
+📄 Document 1 : Les élèves du primaire peuvent utiliser la technologie pour chercher des vidéos liées à leurs leçons ou s'exercer avec des jeux qui développent leurs compétences en mathématiques, en lecture et en saisie au clavier.
 
-📄 Document 2 : On pourrait croire que l'apprentissage d'une langue en ligne est facile, mais ce n'est pas accessible à tous. Il faut d'abord avoir un bon accès à Internet et un équipement numérique suffisant. De plus, étudier seul à la maison demande beaucoup de motivation, surtout sans l'aide d'un enseignant ou d'autres apprenants.`},
-];
+📄 Document 2 : Les technologies poussent aujourd'hui les enfants à rester inactifs, ce qui inquiète beaucoup de parents. Elles limitent les jeux créatifs, les échanges sociaux directs et l'activité physique. Il faudrait encourager les enfants à poser leurs appareils et essayer des activités ludiques.`},
+
+  {id:69,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Les enfants face aux nouvelles technologies",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'utilisation des technologies par les enfants. (120–180 mots)
+
+📄 Document 1 : La technologie peut être utilisée par les enfants du primaire pour explorer des vidéos en lien avec leurs apprentissages scolaires ou pour s'exercer à travers des jeux qui développent leurs capacités en calcul, en lecture ou en écriture au clavier.
+
+📄 Document 2 : Les technologies modernes encouragent une attitude passive chez les enfants, ce qui préoccupe beaucoup de parents. Elles limitent les interactions humaines, les jeux imaginatifs et l'exercice physique. Il faudrait introduire des activités originales et engageantes pour les aider à se déconnecter.`},
+
+  {id:70,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Caméras de surveillance à l'école",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'installation de caméras de surveillance dans les écoles. (120–180 mots)
+
+📄 Document 1 : À l'école où je travaille à Montréal, les caméras de surveillance sont largement présentes. Elles dissuadent les élèves de commettre des actes de violence. Les enseignants, les parents et la majorité des élèves les accueillent favorablement car elles renforcent la sécurité.
+
+📄 Document 2 : Je m'oppose à l'installation de caméras de surveillance dans les écoles. Les résultats obtenus dans d'autres pays ne sont pas convaincants. Pour résoudre les problèmes de discipline, il est préférable d'améliorer la communication entre enseignants, administration et élèves.`},
+
+  {id:71,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"L'uniforme scolaire",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur le port de l'uniforme à l'école. (120–180 mots)
+
+📄 Document 1 : Le port de l'uniforme peut limiter l'expression personnelle des élèves. Pour ceux qui souhaitent affirmer leur identité à travers leur style vestimentaire, l'uniforme impose une conformité qui peut les frustrer.
+
+📄 Document 2 : Le port de l'uniforme favorise un sentiment d'appartenance à l'établissement et renforce la communauté. Il aide à réduire les discriminations liées au style vestimentaire ou à la classe sociale et offre un avantage économique pour les familles.`},
+
+  {id:72,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Écoles privées ou publiques ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur le choix entre école privée et école publique. (120–180 mots)
+
+📄 Document 1 : Les écoles privées enregistrent une hausse constante d'inscriptions. Les parents apprécient la discipline et la proximité avec les enseignants. Cependant, leur coût élevé les rend moins accessibles, et elles accueillent majoritairement des élèves issus de milieux aisés.
+
+📄 Document 2 : L'accès aux écoles privées reste limité aux familles pouvant assumer les coûts de scolarité. Cette séparation entre privé et public freine la mixité sociale et réduit les opportunités d'échanges entre jeunes de différentes origines, perpétuant ainsi les inégalités.`},
+
+  {id:73,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Devoirs à domicile : bienfaits et critiques",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les devoirs à la maison. (120–180 mots)
+
+📄 Document 1 : Les devoirs à domicile sont bénéfiques car ils permettent aux élèves de gérer leur temps seuls. Pour les parents, ils représentent une occasion de se rapprocher de l'école et de montrer de l'intérêt à leurs enfants, qui se sentent valorisés.
+
+📄 Document 2 : Nous nous opposons aux devoirs à la maison. Leur efficacité pour améliorer les résultats scolaires n'a jamais été prouvée. De nombreux parents n'ont pas le temps ou les connaissances pour aider leurs enfants. Les élèves autonomes perdent du temps, et ceux qui ne sont pas aidés restent en difficulté.`},
+
+  {id:74,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Les devoirs à domicile : atout ou contrainte ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'utilité des devoirs scolaires à la maison. (120–180 mots)
+
+📄 Document 1 : Selon certains parents d'élèves, les devoirs sont bénéfiques, car ils enseignent aux enfants à organiser leur travail. Ils offrent aux familles un moment d'échange avec l'école. Ce suivi permet aux parents de montrer à leurs enfants qu'ils s'intéressent à leur progression.
+
+📄 Document 2 : Nous remettons en question l'utilité des devoirs à domicile, car ils ne garantissent pas de meilleurs résultats scolaires. De nombreux parents ne peuvent pas superviser le travail de leurs enfants. Les élèves autonomes n'en ont pas besoin, et ceux qui ne sont pas aidés restent pénalisés.`},
+
+  {id:75,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"L'enseignement à domicile",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la scolarisation à domicile. (120–180 mots)
+
+📄 Document 1 : L'enseignement à domicile permet une approche pédagogique plus personnalisée. L'enfant peut gérer son apprentissage à son propre rythme, approfondir les sujets qui le passionnent et évoluer sans la pression des notes décourageantes ou des évaluations stressantes.
+
+📄 Document 2 : La scolarisation à domicile représente un défi important. Elle demande un investissement considérable en temps, une organisation rigoureuse et des coûts associés. De plus, l'enfant n'a pas l'opportunité de côtoyer quotidiennement des camarades, ce qui limite ses interactions sociales.`},
+
+  {id:76,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Animaux de compagnie pour enfants",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'intérêt d'avoir un animal de compagnie pour un enfant. (120–180 mots)
+
+📄 Document 1 : Donner un animal de compagnie à un enfant comporte de nombreux bienfaits. Pour les enfants sans frères ni sœurs, l'animal devient un compagnon précieux. Grâce à lui, l'enfant gagne en confiance, apprend le respect envers un être vivant et développe son autonomie.
+
+📄 Document 2 : Avant d'adopter un animal, il est important de bien réfléchir. Celui-ci devient un membre de la famille pour plusieurs années. Son entretien peut représenter un coût important et demande une responsabilité constante. Ce n'est pas un jouet dont on peut se débarrasser lorsque l'enfant perd son intérêt.`},
+
+  {id:77,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Les vêtements de marque pour enfants",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les vêtements de marque pour les enfants. (120–180 mots)
+
+📄 Document 1 : Les vêtements de marque jouent un rôle essentiel pour les enfants et adolescents en leur permettant de s'exprimer et de se sentir intégrés dans un groupe social. Cette attraction est particulièrement forte chez les adolescents qui cherchent à affirmer leur personnalité.
+
+📄 Document 2 : Les enfants grandissent rapidement, ce qui rend leurs vêtements trop petits après peu de temps. De plus, jouer à l'extérieur fait que leurs vêtements s'usent vite et se salissent rapidement. Investir dans des vêtements de marque coûteux pour des enfants est donc peu pratique.`},
+
+  {id:78,task:"tache3",theme:"💼 Travail & société",title:"Le rôle du travail dans notre vie",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la place du travail dans la vie des individus. (120–180 mots)
+
+📄 Document 1 : Le travail occupe une place importante dans notre vie. Même s'il peut apporter de la satisfaction, il est souvent source de fatigue. Beaucoup de personnes constatent un déséquilibre entre leur vie professionnelle et personnelle et pensent qu'en travaillant moins, on serait plus heureux.
+
+📄 Document 2 : Le travail fait partie de notre identité sociale. Selon le spécialiste Jean-Daniel Remond, la vie professionnelle contribue à se construire : elle permet de rencontrer des gens, de créer des réseaux, de se sentir utile et même de se faire des amis.`},
+
+  {id:79,task:"tache3",theme:"💼 Travail & société",title:"Le travail : un bénéfice ou un frein ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur le rôle du travail dans la vie personnelle et sociale. (120–180 mots)
+
+📄 Document 1 : Le travail tient une place essentielle dans nos vies. Travailler devrait être source de réussite, mais pour beaucoup, il apporte surtout stress et contraintes. Certains considèrent qu'il est nécessaire de réévaluer son rôle et de réduire sa durée pour améliorer la qualité de vie.
+
+📄 Document 2 : Certaines personnes ont décidé de quitter leur emploi pour adopter un autre style de vie. Pourtant, travailler reste important. La question « Que fais-tu dans la vie ? » montre que le travail fait partie de notre identité. L'entreprise contribue à construire notre personnalité.`},
+
+  {id:80,task:"tache3",theme:"💼 Travail & société",title:"Réduction du temps de travail",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la réduction du temps de travail. (120–180 mots)
+
+📄 Document 1 : Réduire le temps de travail aide les employés à trouver un meilleur équilibre entre vie professionnelle et personnelle. En ayant plus de temps libre, ils peuvent consacrer davantage de moments à leur famille et à leur santé. Cela améliore leur satisfaction et diminue le stress.
+
+📄 Document 2 : Réduire les heures de travail peut aider les entreprises en réduisant l'absentéisme et en augmentant la fidélisation des employés. Cependant, cela nécessite une organisation efficace et une adaptation des processus pour maintenir la productivité.`},
+
+  {id:81,task:"tache3",theme:"💼 Travail & société",title:"Productivité et confort au travail",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les moyens d'améliorer le bien-être au travail. (120–180 mots)
+
+📄 Document 1 — Louise, responsable : « Nous avons mis en place des bureaux réglables en hauteur. Les employés sont satisfaits et affirment être plus performants. De plus, le climat social s'est amélioré et les échanges entre collègues sont plus fréquents. »
+
+📄 Document 2 — Dubois, ingénieur : « Les entreprises cherchent toujours à augmenter la productivité. Pour ma part, ce qui compte, c'est de réaliser mon travail pendant mes heures normales, sans devoir faire des heures supplémentaires. »`},
+
+  {id:82,task:"tache3",theme:"💼 Travail & société",title:"La sieste au travail",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'introduction de la sieste en milieu professionnel. (120–180 mots)
+
+📄 Document 1 : Une courte sieste au travail pourrait augmenter la productivité et la créativité des employés de 35 %. Elle améliorerait également la mémoire et la concentration. Un employé reposé serait plus disponible pour ses tâches et moins stressé.
+
+📄 Document 2 : Même si les bienfaits de la micro-sieste ont été prouvés scientifiquement, la sieste au bureau pose des difficultés pratiques. Toutes les entreprises ne peuvent pas disposer de salles spécifiques. Il faut aussi garantir l'égalité entre tous les salariés et établir une charte encadrant cette pratique.`},
+
+  {id:83,task:"tache3",theme:"💼 Travail & société",title:"Les relations amicales au travail",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les amitiés entre collègues. (120–180 mots)
+
+📄 Document 1 : Les amitiés entre collègues contribuent à instaurer un environnement de travail agréable. Avoir des amis au bureau permet de solidifier les relations professionnelles et d'instaurer un esprit de camaraderie, ce qui améliore la communication et facilite la résolution des problèmes.
+
+📄 Document 2 : Il est essentiel de trouver un juste équilibre entre amitié et professionnalisme. Des amitiés trop proches peuvent engendrer des tensions lors de décisions professionnelles. Des amitiés exclusives entre certains collègues peuvent aussi marginaliser les autres et affecter la cohésion de l'équipe.`},
+
+  {id:84,task:"tache3",theme:"💼 Travail & société",title:"Animaux de compagnie au bureau",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la présence d'animaux de compagnie au bureau. (120–180 mots)
+
+📄 Document 1 : Apporter son animal au travail est une pratique qui se développe pour réduire le stress des employés. Les chiens ou les chats changent l'atmosphère de l'entreprise et diminuent les conflits. Un quart des salariés pensent que les animaux améliorent leur motivation.
+
+📄 Document 2 — Alba, 32 ans : « Dans l'entreprise où je travaille, il est permis d'amener son animal. Pour ma part, cela me dérange. Je ne suis pas confortable avec les animaux. Cela peut aussi poser des problèmes de santé pour les employés allergiques et constitue une source de distraction. »`},
+
+  {id:85,task:"tache3",theme:"💼 Travail & société",title:"Étudiants et travail saisonnier",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur le travail saisonnier pour les étudiants. (120–180 mots)
+
+📄 Document 1 : Les vacances permettent aux jeunes de se détendre. Pourtant, certains étudiants préfèrent travailler : garde d'enfants, restauration ou cueillette de fruits. Bien que ces emplois saisonniers aient des points positifs, ils limitent le temps libre et les jeunes manquent de repos et de moments en famille.
+
+📄 Document 2 : Pour de nombreux étudiants, travailler durant les vacances représente une entrée dans la vie professionnelle et leur permet de développer le sens des responsabilités. Gagner de l'argent est aussi motivant. Certains travaillent pour ne plus dépendre financièrement de leurs parents.`},
+
+  {id:86,task:"tache3",theme:"💼 Travail & société",title:"Jeunes et emploi : diplôme ou expérience ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'importance du diplôme versus l'expérience professionnelle. (120–180 mots)
+
+📄 Document 1 : Les jeunes diplômés rencontrent des difficultés pour entrer sur le marché du travail. Même après plusieurs années d'études, les entreprises exigent souvent une expérience préalable. Pourtant, le diplôme reste essentiel pour acquérir des connaissances théoriques nécessaires à certains métiers spécialisés.
+
+📄 Document 2 : Pour beaucoup d'employeurs, l'expérience professionnelle est plus importante que les diplômes. Un jeune ayant déjà travaillé sait mieux s'adapter à la réalité du terrain et gérer les responsabilités. Les stages et emplois étudiants permettent de développer des compétences concrètes.`},
+
+  {id:87,task:"tache3",theme:"💼 Travail & société",title:"Femmes et hommes au travail",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'égalité entre femmes et hommes au travail. (120–180 mots)
+
+📄 Document 1 : Dans certaines régions comme le Québec, l'égalité entre les femmes et les hommes est une réalité. Beaucoup de femmes occupent désormais des postes à responsabilité dans des domaines traditionnellement masculins. Avec les lois sur l'égalité, les femmes ont accès aux mêmes métiers que les hommes.
+
+📄 Document 2 : Même si des efforts sont faits pour atteindre la parité, des inégalités demeurent. Certains métiers sont encore très féminisés. De plus, certaines personnes estiment que les femmes doivent rester à la maison pour s'occuper des enfants. Il reste beaucoup à faire pour garantir les mêmes chances à tous.`},
+
+  {id:88,task:"tache3",theme:"💼 Travail & société",title:"Faut-il mettre une photo sur son CV ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'utilisation d'une photo dans un CV. (120–180 mots)
+
+📄 Document 1 : Il faudrait interdire la photo sur le CV pour éviter toute discrimination. Selon une étude, les employeurs accordent plus d'attention à l'expérience professionnelle (32 %) et aux diplômes (15 %) qu'au physique. Seuls 2 % des recruteurs commencent par regarder la photo.
+
+📄 Document 2 : L'utilisation d'une photo sur le CV divise les recruteurs. Certains estiment qu'elle aide à se faire une idée du candidat avant la rencontre et facilite la mémorisation. Pour les postes liés à l'accueil, la photo peut être appropriée, à condition d'être professionnelle.`},
+
+  {id:89,task:"tache3",theme:"💼 Travail & société",title:"Aider les sans-abri : dons ou actions concrètes ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la meilleure façon d'aider les personnes sans-abri. (120–180 mots)
+
+📄 Document 1 — Charlotte, 45 ans : « Chaque hiver, je consacre du temps et de l'argent pour aider les personnes sans-abri. Je trouve essentiel de donner quelques dollars à ces personnes ou aux associations qui les soutiennent. C'est un geste de solidarité que chacun peut réaliser. »
+
+📄 Document 2 — Arthur, 54 ans : « Au lieu de donner de l'argent, il serait préférable de repenser notre façon de vivre. Je préfère m'investir dans une association de mon quartier. Les sans-abri ont besoin d'un logement et d'un emploi, pas seulement d'argent. »`},
+
+  {id:90,task:"tache3",theme:"📱 Technologie & médias",title:"La télévision dans la société",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur le rôle de la télévision dans la société actuelle. (120–180 mots)
+
+📄 Document 1 : La télévision est un moyen de communication très présent dans la société. Elle permet de transmettre des informations, de proposer différents programmes de divertissement et de diffuser la culture. Elle reste une source d'information et de loisirs accessible à tous.
+
+📄 Document 2 : La télévision présente aussi des aspects négatifs. Certains programmes peuvent transmettre des stéréotypes ou des valeurs discutables. Passer trop de temps devant la télévision diminue le temps consacré à des activités plus utiles. Il est nécessaire de limiter ce temps, surtout pour les enfants.`},
+
+  {id:91,task:"tache3",theme:"📱 Technologie & médias",title:"Publicité et enfants : bénéfique ou nocif ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la publicité destinée aux enfants. (120–180 mots)
+
+📄 Document 1 : La publicité destinée aux enfants permet de leur faire découvrir de nouveaux produits, jeux ou services adaptés à leur âge. Certaines campagnes peuvent également transmettre des messages éducatifs ou sensibiliser les jeunes à des sujets importants comme l'environnement ou la santé.
+
+📄 Document 2 : Les enfants sont particulièrement influençables face à la publicité. Beaucoup de messages publicitaires les poussent à consommer davantage ou à réclamer des produits inutiles. Certaines publicités alimentaires favorisent également une mauvaise alimentation avec des conséquences négatives sur leur santé.`},
+
+  {id:92,task:"tache3",theme:"📱 Technologie & médias",title:"La publicité alimentaire ciblant les enfants",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la place de la publicité dans notre quotidien. (120–180 mots)
+
+📄 Document 1 — Lucien, 28 ans : « La publicité est très utile pour les entreprises. Elle sert à présenter un produit ou un service. Elle m'aide à découvrir les nouveautés et les offres spéciales. Sans la publicité, les jeux gratuits sur téléphone seraient payants. »
+
+📄 Document 2 — Alma, 35 ans : « Nous sommes entourés de publicité tous les jours. Les émissions télévisées sont souvent coupées par des pubs, ce qui peut être irritant. Recevoir des kilos de publicité chaque année dans la boîte aux lettres n'est pas bon pour l'environnement. »`},
+
+  {id:93,task:"tache3",theme:"📱 Technologie & médias",title:"La publicité : utile ou gênante ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les avantages et inconvénients de la publicité. (120–180 mots)
+
+📄 Document 1 — Elena, 28 ans : « La publicité est essentielle au fonctionnement du commerce. Grâce à elle, on découvre de nouveaux produits et services. Certaines publicités sont même amusantes ! Sans la publicité, de nombreuses applications ou jeux gratuits deviendraient payants. »
+
+📄 Document 2 — Alicia, 35 ans : « La publicité fait partie de notre vie quotidienne et certaines émissions sont interrompues par des publicités, ce qui est agaçant. Recevoir chaque année beaucoup de papiers publicitaires dans la boîte aux lettres n'est pas bon pour l'environnement. »`},
+
+  {id:94,task:"tache3",theme:"📱 Technologie & médias",title:"Jeux vidéo : un loisir utile ou dangereux ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les effets des jeux vidéo. (120–180 mots)
+
+📄 Document 1 : Des recherches ont montré que certaines parties du cerveau des adultes peuvent se développer grâce aux jeux vidéo. Jouer aide à renforcer l'analyse, la prise de décision et la rapidité de réaction. 83 % des joueurs sont des adultes.
+
+📄 Document 2 : Durant trois ans, des chercheurs ont observé des enfants de 8 à 17 ans. Les conclusions indiquent que les enfants qui jouent beaucoup aux jeux vidéo deviennent plus violents, plus tendus et réussissent moins bien à l'école.`},
+
+  {id:95,task:"tache3",theme:"📱 Technologie & médias",title:"Les jeux vidéo : bienfaits cognitifs ou risque de dépendance ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les jeux vidéo et leurs effets sur le cerveau. (120–180 mots)
+
+📄 Document 1 : Certaines études montrent que les jeux vidéo peuvent développer plusieurs capacités cognitives : la mémoire, la rapidité de réaction et la capacité à résoudre des problèmes. Les jeux de stratégie améliorent également la concentration et l'esprit d'analyse.
+
+📄 Document 2 : Les jeux vidéo présentent aussi des risques importants en cas d'utilisation excessive. Certains jeunes passent de nombreuses heures devant leurs écrans et deviennent dépendants, ce qui peut entraîner des problèmes scolaires, un manque d'activité physique et un isolement social.`},
+
+  {id:96,task:"tache3",theme:"📱 Technologie & médias",title:"Objets connectés : progrès ou danger ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les objets connectés. (120–180 mots)
+
+📄 Document 1 : Les objets connectés rendent le quotidien plus pratique. Il s'agit d'appareils contrôlés à distance via un téléphone ou Internet. Les montres connectées permettent de suivre l'activité physique. Leur rôle est particulièrement utile dans le secteur de la santé.
+
+📄 Document 2 : On pense qu'il existe environ 50 milliards d'objets connectés à travers le monde. Ce développement entraîne des risques liés à la sécurité. Un hacker peut contrôler un objet connecté en peu de temps. Un cambrioleur pourrait vérifier via des caméras connectées si une maison est vide.`},
+
+  {id:97,task:"tache3",theme:"📱 Technologie & médias",title:"Le livre papier ou le livre numérique ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur votre préférence entre le livre papier et le livre numérique. (120–180 mots)
+
+📄 Document 1 : Le livre numérique offre de nombreux avantages pratiques. Grâce aux liseuses et tablettes, il est possible de transporter des centaines de livres sans prendre de place. Les livres numériques sont souvent moins chers et peuvent être téléchargés instantanément.
+
+📄 Document 2 : Malgré les progrès du numérique, beaucoup de lecteurs restent attachés au livre papier. Tourner les pages et posséder une bibliothèque physique procurent un plaisir particulier. De plus, la lecture sur écran peut fatiguer les yeux et réduire la concentration.`},
+
+  {id:98,task:"tache3",theme:"🏡 Mode de vie & logement",title:"Vivre en colocation à l'âge adulte",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la vie en colocation. (120–180 mots)
+
+📄 Document 1 : La vie en colocation demande de bien s'entendre et de suivre des règles communes. On ne peut pas toujours mettre la musique à volume élevé ou inviter tous ses amis. Une bonne organisation et la communication permettent une colocation réussie.
+
+📄 Document 2 : Vivre en colocation est un choix pratique pour avoir un logement plus spacieux à moindre coût. En divisant le loyer et les frais avec vos colocataires, vous dépensez beaucoup moins que pour un logement individuel, tout en accédant parfois à un appartement en centre-ville.`},
+
+  {id:99,task:"tache3",theme:"🏡 Mode de vie & logement",title:"Maisons de retraite ou maintien à domicile ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la meilleure solution pour les personnes âgées. (120–180 mots)
+
+📄 Document 1 — Sophie, infirmière : « Les maisons de retraite représentent une solution adaptée pour les personnes âgées. Elles y bénéficient de soins appropriés et d'un encadrement professionnel. Elles peuvent participer à diverses activités qui leur permettent de garder une vie sociale et d'éviter la solitude. »
+
+📄 Document 2 — Jean, retraité : « Les maisons de retraite peuvent priver les personnes âgées de la présence de leur famille et donner l'impression d'être abandonné. Les conditions de vie ne sont pas toujours satisfaisantes. Selon moi, l'aide à domicile est une meilleure solution. »`},
+
+  {id:100,task:"tache3",theme:"🌐 Culture & loisirs",title:"L'accès gratuit aux musées",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la gratuité des musées. (120–180 mots)
+
+📄 Document 1 : La gratuité fait partie des principes fondamentaux des musées et symbolise le partage culturel. Une fois par mois, l'entrée des musées nationaux est gratuite pour tous. Cette mesure a pour but de faire venir de nouveaux visiteurs, car le musée reste avant tout un lieu d'éducation.
+
+📄 Document 2 : Rendre les musées totalement gratuits est une fausse bonne idée. Les musées doivent recevoir des fonds pour maintenir et développer leurs collections. Une solution plus adaptée est de proposer des entrées à tarif réduit pour des publics ciblés, accompagnées d'activités adaptées.`},
+
+  {id:101,task:"tache3",theme:"🌐 Culture & loisirs",title:"L'impact des grands événements sportifs",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'organisation de grands événements sportifs internationaux. (120–180 mots)
+
+📄 Document 1 : Les grands événements sportifs internationaux, comme les Jeux olympiques ou la Coupe du monde, attirent des millions de visiteurs et stimulent l'économie du pays organisateur. Ils permettent aussi de développer les infrastructures, de créer des emplois et d'améliorer l'image du pays à l'étranger.
+
+📄 Document 2 : Ces événements coûtent souvent très cher et peuvent entraîner des problèmes économiques ou environnementaux. Certains stades deviennent inutiles après les compétitions et les habitants doivent parfois supporter une augmentation des impôts. L'afflux massif de touristes peut aussi provoquer des nuisances.`},
+
+  {id:102,task:"tache3",theme:"🐾 Animaux",title:"La chasse : une pratique à soutenir ou à rejeter ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la pratique de la chasse. (120–180 mots)
+
+📄 Document 1 — Sophie, 28 ans : « Je fais partie de ceux qui ne parviennent pas à comprendre comment on peut prendre plaisir à tuer des animaux. Je ne saisis pas comment on peut prétendre aimer la nature tout en contribuant à sa destruction. »
+
+📄 Document 2 — Bernard, journaliste : « La chasse est pratiquée pour diverses raisons : se nourrir, commercer, gérer la faune, protéger la propriété, faire de l'exercice, se divertir ou chercher du prestige. »`},
+
+  {id:103,task:"tache3",theme:"🐾 Animaux",title:"Les zoos : outils de conservation ou prisons pour animaux ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur le rôle des zoos dans la société actuelle. (120–180 mots)
+
+📄 Document 1 : Les zoos jouent un rôle important dans la protection des espèces menacées. Grâce aux programmes de reproduction et aux soins vétérinaires, ils permettent de préserver des animaux qui risqueraient de disparaître. Ils ont également une mission éducative, sensibilisant les visiteurs à la biodiversité.
+
+📄 Document 2 : Pour leurs opposants, les zoos sont des lieux où les animaux vivent enfermés dans des espaces artificiels, loin de leur environnement naturel. Certains animaux souffrent du manque de liberté. Il vaudrait mieux protéger les espèces dans leur habitat naturel plutôt qu'en captivité.`},
+
+  {id:104,task:"tache3",theme:"📚 Apprentissage & langues",title:"Apprendre une langue en ligne",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'apprentissage d'une langue en ligne. (120–180 mots)
+
+📄 Document 1 : Grâce à Internet, il est tout à fait possible d'apprendre une langue en ligne avec de très bons résultats. On peut suivre les leçons quand on le souhaite, disponibles 24h/24. Cela aide à mieux gérer son emploi du temps et à économiser de l'argent.
+
+📄 Document 2 : Apprendre une langue en ligne n'est pas accessible à tous. Il faut avoir un bon accès à Internet et un équipement numérique suffisant. De plus, étudier seul à la maison demande beaucoup d'autonomie et de motivation, surtout sans l'aide d'un enseignant ou d'autres apprenants.`},
+
+  {id:105,task:"tache3",theme:"📚 Apprentissage & langues",title:"Les cours de langues en ligne",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les cours de langues en ligne. (120–180 mots)
+
+📄 Document 1 : Les cours de langues en ligne offrent une grande flexibilité. Les apprenants peuvent suivre les leçons à leur rythme et organiser leur emploi du temps selon leurs besoins. Cette solution permet également d'économiser du temps et de l'argent en évitant les déplacements.
+
+📄 Document 2 : Cependant, apprendre une langue en ligne demande beaucoup d'autonomie et de motivation. Certains étudiants ont du mal à rester concentrés lorsqu'ils travaillent seuls devant un écran. De plus, les échanges humains et la pratique orale sont parfois moins naturels qu'en présentiel.`},
 </script>
 <script>
 const MODULES=[
