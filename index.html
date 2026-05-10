@@ -62,96 +62,212 @@ const WRITING_PROMPTS=[
   {id:32,task:"tache1",theme:"📱 Médias & société",title:"Expérience réseau social",level:"A2-B1",prompt:"Écrivez à un ami pour lui parler de votre expérience sur un réseau social. Décrivez ce que vous y faites et votre opinion. (60–80 mots)"},
   {id:33,task:"tache2",theme:"🏡 Logement & colocation",title:"Lettre de réclamation",level:"B1-B2",prompt:"Vous avez commandé un appareil électronique en ligne il y a 3 semaines. Il n'est pas encore arrivé et le service client ne répond pas. Écrivez une lettre de réclamation au directeur du service après-vente. (120–150 mots)"},
   {id:34,task:"tache2",theme:"💼 Travail & études",title:"Demande de logement étudiant",level:"B1-B2",prompt:"Vous êtes étudiant(e) étranger(ère) accepté(e) dans une université canadienne. Écrivez une lettre formelle au service logement de l'université pour demander une chambre en résidence. (120–150 mots)"},
-  {id:35,task:"tache3",theme:"📱 Médias & société",title:"Téléphones à l'école",level:"B2-C1",prompt:"Une loi propose d'interdire les téléphones portables dans les écoles. Écrivez un article pour un journal local en présentant votre position argumentée sur cette mesure. (120–180 mots)"},
-  {id:36,task:"tache3",theme:"💼 Travail & études",title:"Semaine de 4 jours",level:"B2-C1",prompt:"De nombreuses entreprises expérimentent la semaine de travail de 4 jours. Rédigez une tribune dans laquelle vous analysez les avantages et inconvénients et défendez votre point de vue. (120–180 mots)"}
-,
-  {id:37,task:"tache2",theme:"🎉 Vie sociale & événements",title:"Fête de quartier",level:"B1-B2",prompt:"Vous avez récemment assisté à une fête de quartier entre voisins. Partagez votre expérience sur un forum en ligne. (120–150 mots)"},
-  {id:38,task:"tache2",theme:"🎉 Vie sociale & événements",title:"Fête de famille",level:"B1-B2",prompt:"Vous avez récemment assisté à une fête de famille. Racontez cet événement sur votre blog. (120–150 mots)"},
-  {id:39,task:"tache2",theme:"🎉 Vie sociale & événements",title:"Festival de musique",level:"B1-B2",prompt:"Vous avez assisté avec un ami à un festival de musique gratuit organisé dans votre ville. Écrivez un article de blog pour partager votre expérience et vos impressions. (120–150 mots)"},
-  {id:40,task:"tache2",theme:"🎉 Vie sociale & événements",title:"Mauvaise expérience à un festival",level:"B1-B2",prompt:"Racontez une mauvaise expérience lors d\'un festival sur un forum. Décrivez ce qui s\'est passé et donnez votre avis. (120–150 mots)"},
-  {id:41,task:"tache2",theme:"🎉 Vie sociale & événements",title:"Fête traditionnelle",level:"B1-B2",prompt:"Vous avez participé à une fête traditionnelle dans votre pays ou à l\'étranger. Parlez-en dans votre blog et expliquez pourquoi elle vous a plu. (120–150 mots)"},
-  {id:42,task:"tache2",theme:"🎉 Vie sociale & événements",title:"Spectacle de théâtre",level:"B1-B2",prompt:"Une compagnie de théâtre est venue dans votre ville et vous avez assisté à l\'une de ses représentations. Écrivez un article de blog pour raconter cette expérience. (120–150 mots)"},
-  {id:43,task:"tache2",theme:"🎉 Vie sociale & événements",title:"Concert incroyable",level:"B1-B2",prompt:"Vous avez assisté à un concert incroyable. Écrivez un article pour raconter ce que vous avez vécu et invitez vos amis à découvrir cet artiste en live. (120–150 mots)"},
-  {id:44,task:"tache2",theme:"🎉 Vie sociale & événements",title:"Brocante en ville",level:"B1-B2",prompt:"Vous avez pris part à une brocante dans votre ville, où vous avez vendu ou acheté des objets d\'occasion. Partagez votre expérience sur un blog. (120–150 mots)"},
-  {id:45,task:"tache2",theme:"🌍 Voyages & découvertes",title:"Vacances à l\'étranger",level:"B1-B2",prompt:"Lors de vos dernières vacances, vous avez visité un nouveau pays. Partagez votre expérience sur un forum en ligne. (120–150 mots)"},
-  {id:46,task:"tache2",theme:"🌍 Voyages & découvertes",title:"Premières impressions à l\'étranger",level:"B1-B2",prompt:"Vous avez récemment déménagé dans un pays étranger et souhaitez partager vos premières impressions sur un blog. (120–150 mots)"},
-  {id:47,task:"tache2",theme:"🌍 Voyages & découvertes",title:"Aaron et Perla visitent votre pays",level:"B1-B2",prompt:"Aaron et Perla prévoient de visiter votre pays pendant leurs vacances. Écrivez-leur un message pour leur présenter votre pays et donner des conseils pratiques. (120–150 mots)"},
-  {id:48,task:"tache2",theme:"🌍 Voyages & découvertes",title:"Partir un an pour voyager",level:"B1-B2",prompt:"Donnez votre avis sur un forum : « Partir un an pour voyager : conseillé ou risqué ? » Partagez votre point de vue en vous appuyant sur des exemples tirés de votre propre expérience. (120–150 mots)"},
-  {id:49,task:"tache2",theme:"🌍 Voyages & découvertes",title:"Voyage en solo",level:"B1-B2",prompt:"Publiez sur un forum vos impressions après un voyage seul. Partagez les avantages et les défis de ce type de voyage. (120–150 mots)"},
-  {id:50,task:"tache2",theme:"🎓 Études & apprentissage",title:"Apprendre une langue étrangère",level:"B1-B2",prompt:"Sur un forum en ligne, partagez votre expérience d\'apprentissage d\'une langue étrangère. Décrivez vos méthodes, difficultés et progrès. (120–150 mots)"},
-  {id:51,task:"tache2",theme:"🎓 Études & apprentissage",title:"Témoignage pour Julie",level:"B1-B2",prompt:"Julie, une étudiante de 19 ans, s\'apprête à partir à l\'étranger pour poursuivre ses études et recherche des témoignages sur un forum. Vous répondez en partageant votre propre expérience d\'un séjour à l\'étranger, en expliquant les défis et les bénéfices. (120–150 mots)"},
-  {id:52,task:"tache2",theme:"🎓 Études & apprentissage",title:"Journée d\'accueil étudiants",level:"B1-B2",prompt:"Votre établissement vous a confié la mission d\'organiser une journée d\'accueil pour les nouveaux étudiants francophones. Écrivez un courriel à leur intention en précisant toutes les informations utiles. (120–150 mots)"},
-  {id:53,task:"tache2",theme:"🏃 Sport & loisirs",title:"Nouveau loisir",level:"B1-B2",prompt:"Vous venez de commencer un nouveau loisir (sport, danse, etc.) et souhaitez en parler sur votre blog. Décrivez cette activité et ce qu\'elle vous apporte. (120–150 mots)"},
-  {id:54,task:"tache2",theme:"🏃 Sport & loisirs",title:"Cours de fitness",level:"B1-B2",prompt:"Vous avez récemment participé à un cours de sport dans une salle de fitness. Partagez votre expérience sur un forum. (120–150 mots)"},
-  {id:55,task:"tache2",theme:"🏃 Sport & loisirs",title:"Compétition sportive",level:"B1-B2",prompt:"Vous avez participé à une compétition sportive et souhaitez partager votre expérience sur un site internet. (120–150 mots)"},
-  {id:56,task:"tache2",theme:"🤝 Associations & communauté",title:"Association activités enfants",level:"B1-B2",prompt:"Vous êtes membre d\'une association de quartier qui propose des activités aux enfants. Décrivez votre expérience de bénévole sur un blog. (120–150 mots)"},
-  {id:57,task:"tache2",theme:"🤝 Associations & communauté",title:"Cohabitation avec une personne âgée",level:"B1-B2",prompt:"Le site « Infos Familles » recherche des témoignages sur la cohabitation avec une personne âgée. Partagez votre expérience. (120–150 mots)"},
-  {id:58,task:"tache2",theme:"🤝 Associations & communauté",title:"S\'occuper des personnes âgées",level:"B1-B2",prompt:"Partagez votre avis sur un forum sur les différentes façons de s\'occuper des personnes âgées. (120–150 mots)"},
-  {id:59,task:"tache2",theme:"💼 Travail & société",title:"Télétravail et productivité",level:"B1-B2",prompt:"Sur un site professionnel, rédigez un article sur les effets du télétravail sur la productivité. Donnez votre opinion et des exemples concrets. (120–150 mots)"},
-  {id:60,task:"tache2",theme:"💼 Travail & société",title:"Photo sur le CV",level:"B1-B2",prompt:"Participez à un forum de recrutement pour donner votre opinion sur la présence de la photo sur le CV. (120–150 mots)"},
-  {id:61,task:"tache2",theme:"💼 Travail & société",title:"Travailler moins pour vivre mieux",level:"B1-B2",prompt:"Rédigez un article pour un forum sur le thème : « Travailler moins pour vivre mieux ». Donnez votre opinion et justifiez votre point de vue. (120–150 mots)"},
-  {id:62,task:"tache2",theme:"🍽️ Alimentation & modes de vie",title:"Changer son alimentation",level:"B1-B2",prompt:"Rédigez un article sur un forum pour expliquer les raisons qui vous ont poussé à modifier votre manière de vous alimenter. (120–150 mots)"},
-  {id:63,task:"tache2",theme:"🍽️ Alimentation & modes de vie",title:"Habitudes alimentaires de votre pays",level:"B1-B2",prompt:"Le site manger-international.com lance un appel à témoignages sur les habitudes alimentaires dans différents pays. Écrivez un article pour parler de celles de votre pays. Dites ce que vous appréciez ou non. (120–150 mots)"},
-  {id:64,task:"tache2",theme:"🍽️ Alimentation & modes de vie",title:"Quitter la ville pour la campagne",level:"B1-B2",prompt:"Sur votre blog, expliquez les raisons qui vous ont poussé à quitter la ville pour vous installer à la campagne. Présentez les avantages de votre nouvelle vie rurale. (120–150 mots)"},
-  {id:65,task:"tache2",theme:"🌟 Culture & admiration",title:"Admiration pour une personnalité",level:"B1-B2",prompt:"Rédiger un article de blog pour exprimer votre admiration envers une personnalité (célèbre ou non). Expliquez pourquoi cette personne vous inspire. (120–150 mots)"},
-  {id:66,task:"tache2",theme:"🌟 Culture & admiration",title:"Gratuité des musées",level:"B1-B2",prompt:"Rédigez un article sur votre blog pour donner votre avis sur la gratuité des musées. (120–150 mots)"},
-  {id:67,task:"tache2",theme:"🌟 Culture & admiration",title:"Street art en ville",level:"B1-B2",prompt:"Écrivez un article pour un site culturel sur la place du street art dans votre ville. (120–150 mots)"},
-  {id:68,task:"tache2",theme:"📱 Médias & numérique",title:"Réseaux sociaux au quotidien",level:"B1-B2",prompt:"Donnez votre avis sur l\'influence des réseaux sociaux dans la vie quotidienne sur un forum. (120–150 mots)"},
-  {id:69,task:"tache2",theme:"📱 Médias & numérique",title:"Arrêter Instagram",level:"B1-B2",prompt:"Vous avez décidé d\'arrêter d\'utiliser votre réseau social préféré. Dans un texte adressé à vos amis ou lecteurs, vous racontez cette expérience. (120–150 mots)"},
-  {id:70,task:"tache2",theme:"🏡 Logement & colocation",title:"Expérience de colocation",level:"B1-B2",prompt:"Décrivez votre expérience de colocation sur un blog. Parlez des avantages, des difficultés et de ce que vous avez appris. (120–150 mots)"}
-,
-  {id:71,task:"tache3",theme:"✈️ Transport & mobilité",title:"Les vols low-cost",level:"B2-C1",prompt:"Les vols low-cost ont transformé les habitudes de voyage mais soulèvent des questions environnementales et sociales. Rédigez un article argumenté sur les avantages et les limites des billets d\'avion à bas prix. (120–180 mots)"},
-  {id:72,task:"tache3",theme:"✈️ Transport & mobilité",title:"Interdiction de la circulation en zones urbaines",level:"B2-C1",prompt:"De nombreuses villes envisagent d\'interdire la circulation des voitures dans les centres urbains. Rédigez un texte argumenté en présentant les avantages et les défis de cette mesure. (120–180 mots)"},
-  {id:73,task:"tache3",theme:"✈️ Transport & mobilité",title:"Le cyclisme urbain",level:"B2-C1",prompt:"Le vélo est présenté comme une solution de mobilité durable en ville. Rédigez un texte argumenté sur les avantages et les défis du cyclisme urbain. (120–180 mots)"},
-  {id:74,task:"tache3",theme:"✈️ Transport & mobilité",title:"Location courte durée",level:"B2-C1",prompt:"Les plateformes de location courte durée (Airbnb…) transforment le tourisme et l\'habitat. Rédigez un texte argumenté sur les avantages et inconvénients de ce modèle. (120–180 mots)"},
-  {id:75,task:"tache3",theme:"🎓 Éducation & enfants",title:"Parents exigeants ou permissifs",level:"B2-C1",prompt:"Entre parents stricts et parents permissifs, quel style éducatif favorise le mieux le développement de l\'enfant ? Rédigez un texte argumenté en défendant votre point de vue. (120–180 mots)"},
-  {id:76,task:"tache3",theme:"🎓 Éducation & enfants",title:"Uniforme scolaire",level:"B2-C1",prompt:"L\'uniforme scolaire est débattu dans de nombreux pays. Rédigez un texte argumenté sur les avantages et inconvénients du port de l\'uniforme à l\'école. (120–180 mots)"},
-  {id:77,task:"tache3",theme:"🎓 Éducation & enfants",title:"Caméras de surveillance à l\'école",level:"B2-C1",prompt:"L\'installation de caméras de surveillance dans les établissements scolaires est un sujet controversé. Rédigez un texte argumenté en présentant les arguments pour et contre cette mesure. (120–180 mots)"},
-  {id:78,task:"tache3",theme:"🎓 Éducation & enfants",title:"Impact des vêtements de marque sur les enfants",level:"B2-C1",prompt:"Les grandes marques exercent une forte influence sur les enfants et adolescents. Rédigez un texte argumenté sur l\'impact des vêtements de marque sur les jeunes. (120–180 mots)"},
-  {id:79,task:"tache3",theme:"🎓 Éducation & enfants",title:"Les devoirs à domicile",level:"B2-C1",prompt:"Les devoirs à domicile font débat : certains les jugent essentiels, d\'autres les estiment néfastes. Rédigez un texte argumenté en défendant votre position. (120–180 mots)"},
-  {id:80,task:"tache3",theme:"🎓 Éducation & enfants",title:"Écoles privées ou publiques",level:"B2-C1",prompt:"Face au choix entre école privée et école publique, les avis sont partagés. Rédigez un texte argumenté sur les avantages et inconvénients de chaque système. (120–180 mots)"},
-  {id:81,task:"tache3",theme:"🎓 Éducation & enfants",title:"Les nouvelles technologies à l\'école",level:"B2-C1",prompt:"Les tablettes et outils numériques envahissent les salles de classe. Rédigez un texte argumenté sur les avantages et risques des nouvelles technologies à l\'école. (120–180 mots)"},
-  {id:82,task:"tache3",theme:"🎓 Éducation & enfants",title:"Les distributeurs automatiques dans les écoles",level:"B2-C1",prompt:"L\'installation de distributeurs automatiques dans les établissements scolaires suscite débat. Rédigez un texte argumenté sur cette question. (120–180 mots)"},
-  {id:83,task:"tache3",theme:"🎓 Éducation & enfants",title:"L\'enseignement à domicile",level:"B2-C1",prompt:"De plus en plus de familles choisissent de scolariser leurs enfants à domicile. Rédigez un texte argumenté sur les avantages et inconvénients de cette pratique. (120–180 mots)"},
-  {id:84,task:"tache3",theme:"🎓 Éducation & enfants",title:"Rôle de la télévision dans l\'éducation",level:"B2-C1",prompt:"La télévision peut-elle être un outil éducatif pour les enfants ? Rédigez un texte argumenté sur le rôle de la télévision dans l\'éducation des enfants. (120–180 mots)"},
-  {id:85,task:"tache3",theme:"🎓 Éducation & enfants",title:"Les bienfaits de la lecture",level:"B2-C1",prompt:"La lecture est souvent présentée comme essentielle pour les jeunes. Rédigez un texte argumenté sur les bienfaits de la lecture pour les enfants et adolescents. (120–180 mots)"},
-  {id:86,task:"tache3",theme:"🎓 Éducation & enfants",title:"Sévérité parentale",level:"B2-C1",prompt:"Une éducation stricte prépare-t-elle mieux les enfants à la vie ou freine-t-elle leur épanouissement ? Rédigez un texte argumenté en défendant votre position. (120–180 mots)"},
-  {id:87,task:"tache3",theme:"🛒 Consommation & alimentation",title:"Petits commerces vs grandes surfaces",level:"B2-C1",prompt:"Faut-il privilégier les petits commerces de proximité ou les grandes surfaces ? Rédigez un texte argumenté en présentant les avantages et inconvénients de chaque option. (120–180 mots)"},
-  {id:88,task:"tache3",theme:"🛒 Consommation & alimentation",title:"Producteurs locaux ou supermarché",level:"B2-C1",prompt:"Faire ses courses chez les producteurs locaux ou au supermarché : quelle option est la plus judicieuse ? Rédigez un texte argumenté en défendant votre point de vue. (120–180 mots)"},
-  {id:89,task:"tache3",theme:"🛒 Consommation & alimentation",title:"La restauration rapide",level:"B2-C1",prompt:"La restauration rapide est omniprésente dans nos villes. Rédigez un texte argumenté sur les avantages et inconvénients de ce mode de restauration. (120–180 mots)"},
-  {id:90,task:"tache3",theme:"🛒 Consommation & alimentation",title:"Manger au restaurant ou chez soi",level:"B2-C1",prompt:"Manger au restaurant ou cuisiner chez soi : quelle option privilégier ? Rédigez un texte argumenté en présentant les avantages de chaque choix. (120–180 mots)"},
-  {id:91,task:"tache3",theme:"🛒 Consommation & alimentation",title:"Cuisiner : plaisir ou métier",level:"B2-C1",prompt:"Cuisiner peut être un loisir ou une vocation professionnelle. Rédigez un texte argumenté sur les différences entre le cuisinier amateur et le cuisinier professionnel. (120–180 mots)"},
-  {id:92,task:"tache3",theme:"🛒 Consommation & alimentation",title:"La livraison de repas au bureau",level:"B2-C1",prompt:"Commander des repas au bureau est une pratique de plus en plus répandue. Rédigez un texte argumenté sur les avantages et inconvénients de la livraison de repas au travail. (120–180 mots)"},
-  {id:93,task:"tache3",theme:"🛒 Consommation & alimentation",title:"La consommation de viande",level:"B2-C1",prompt:"La consommation de viande est remise en question pour des raisons éthiques et environnementales. Rédigez un texte argumenté en présentant différents points de vue. (120–180 mots)"},
-  {id:94,task:"tache3",theme:"🛒 Consommation & alimentation",title:"Végétarisme",level:"B2-C1",prompt:"Le végétarisme gagne du terrain dans nos sociétés. Rédigez un texte argumenté sur les avantages et les limites de ce mode d\'alimentation. (120–180 mots)"},
-  {id:95,task:"tache3",theme:"🛒 Consommation & alimentation",title:"Menus sans viande en cantine",level:"B2-C1",prompt:"Certaines cantines scolaires proposent des menus sans viande. Rédigez un texte argumenté sur les avantages et inconvénients de cette mesure. (120–180 mots)"},
-  {id:96,task:"tache3",theme:"🛒 Consommation & alimentation",title:"Les produits faits maison",level:"B2-C1",prompt:"Faire soi-même ses produits (cosmétiques, alimentaires…) est une tendance croissante. Rédigez un texte argumenté sur les avantages et risques de cette pratique. (120–180 mots)"},
-  {id:97,task:"tache3",theme:"🛒 Consommation & alimentation",title:"L\'utilisation du plastique",level:"B2-C1",prompt:"Le plastique est omniprésent mais très polluant. Rédigez un texte argumenté sur les avantages et dangers de l\'utilisation du plastique et les alternatives possibles. (120–180 mots)"},
-  {id:98,task:"tache3",theme:"💼 Travail & société",title:"Cours de langue en ligne",level:"B2-C1",prompt:"Les plateformes d\'apprentissage des langues en ligne se multiplient. Rédigez un texte argumenté sur les avantages et inconvénients des cours de langue en ligne par rapport aux cours traditionnels. (120–180 mots)"},
-  {id:99,task:"tache3",theme:"💼 Travail & société",title:"Le travail : bénéfice ou frein",level:"B2-C1",prompt:"Le travail est-il une source d\'épanouissement ou une contrainte pesante ? Rédigez un texte argumenté en défendant votre point de vue. (120–180 mots)"},
-  {id:100,task:"tache3",theme:"💼 Travail & société",title:"Sieste au travail",level:"B2-C1",prompt:"Certaines entreprises autorisent la sieste pendant la pause déjeuner. Rédigez un texte argumenté sur les avantages et inconvénients de la sieste au travail. (120–180 mots)"},
-  {id:101,task:"tache3",theme:"💼 Travail & société",title:"Jeunes et emploi : diplôme ou expérience",level:"B2-C1",prompt:"Pour trouver un emploi, faut-il mieux avoir un diplôme ou de l\'expérience ? Rédigez un texte argumenté en défendant votre position. (120–180 mots)"},
-  {id:102,task:"tache3",theme:"💼 Travail & société",title:"Réduction du temps de travail",level:"B2-C1",prompt:"La réduction du temps de travail est débattue dans de nombreux pays. Rédigez un texte argumenté sur les avantages et inconvénients de cette mesure. (120–180 mots)"},
-  {id:103,task:"tache3",theme:"💼 Travail & société",title:"Photo sur le CV",level:"B2-C1",prompt:"Faut-il mettre sa photo sur son CV ? Rédigez un texte argumenté en présentant les arguments pour et contre. (120–180 mots)"},
-  {id:104,task:"tache3",theme:"💼 Travail & société",title:"Les relations amicales au travail",level:"B2-C1",prompt:"Les relations amicales entre collègues sont-elles bénéfiques ou problématiques ? Rédigez un texte argumenté en défendant votre point de vue. (120–180 mots)"},
-  {id:105,task:"tache3",theme:"🏡 Logement & modes de vie",title:"Ville ou campagne",level:"B2-C1",prompt:"Faut-il préférer vivre en ville ou à la campagne ? Rédigez un texte argumenté en présentant les avantages et inconvénients de chaque mode de vie. (120–180 mots)"},
-  {id:106,task:"tache3",theme:"🏡 Logement & modes de vie",title:"Colocation : avantages et inconvénients",level:"B2-C1",prompt:"La colocation est de plus en plus répandue, notamment chez les jeunes. Rédigez un texte argumenté sur les bénéfices et les difficultés de la vie en colocation. (120–180 mots)"},
-  {id:107,task:"tache3",theme:"🏡 Logement & modes de vie",title:"Maisons de retraite ou maintien à domicile",level:"B2-C1",prompt:"Face au vieillissement de la population, deux options s\'offrent aux familles : la maison de retraite ou le maintien à domicile. Rédigez un texte argumenté sur ce sujet. (120–180 mots)"},
-  {id:108,task:"tache3",theme:"🏡 Logement & modes de vie",title:"L\'agrandissement des villes",level:"B2-C1",prompt:"Les villes s\'étendent de plus en plus, empiétant sur les espaces naturels. Rédigez un texte argumenté sur les conséquences de l\'agrandissement des villes. (120–180 mots)"},
-  {id:109,task:"tache3",theme:"🌿 Environnement & animaux",title:"La chasse aux animaux",level:"B2-C1",prompt:"La chasse est une pratique traditionnelle mais controversée. Rédigez un texte argumenté sur les arguments pour et contre la chasse aux animaux. (120–180 mots)"},
-  {id:110,task:"tache3",theme:"🌿 Environnement & animaux",title:"Les zoos : conservation ou captivité",level:"B2-C1",prompt:"Les zoos sont-ils des outils de conservation indispensables ou des prisons pour animaux ? Rédigez un texte argumenté en défendant votre position. (120–180 mots)"},
-  {id:111,task:"tache3",theme:"🌿 Environnement & animaux",title:"Les animaux de compagnie pour les enfants",level:"B2-C1",prompt:"Les animaux de compagnie sont-ils bénéfiques pour le développement des enfants ? Rédigez un texte argumenté sur ce sujet. (120–180 mots)"},
-  {id:112,task:"tache3",theme:"🎭 Culture & société",title:"La publicité : utile ou gênante",level:"B2-C1",prompt:"La publicité est omniprésente dans notre quotidien. Rédigez un texte argumenté sur les avantages et inconvénients de la publicité dans notre société. (120–180 mots)"},
-  {id:113,task:"tache3",theme:"🎭 Culture & société",title:"Publicité et enfants",level:"B2-C1",prompt:"La publicité destinée aux enfants soulève des questions éthiques. Rédigez un texte argumenté sur les effets bénéfiques ou nocifs de la publicité sur les enfants. (120–180 mots)"},
-  {id:114,task:"tache3",theme:"🎭 Culture & société",title:"L\'accès gratuit aux musées",level:"B2-C1",prompt:"Faut-il rendre les musées gratuits pour tous ? Rédigez un texte argumenté sur les avantages et inconvénients de la gratuité des musées. (120–180 mots)"},
-  {id:115,task:"tache3",theme:"🎭 Culture & société",title:"L\'art urbain",level:"B2-C1",prompt:"Le street art embellit nos villes pour certains, les dégrade pour d\'autres. Rédigez un texte argumenté sur la place de l\'art urbain dans notre société. (120–180 mots)"},
-  {id:116,task:"tache3",theme:"🎭 Culture & société",title:"Livre papier ou numérique",level:"B2-C1",prompt:"Le livre numérique menace-t-il le livre papier ? Rédigez un texte argumenté sur les avantages et inconvénients de chaque format. (120–180 mots)"},
-  {id:117,task:"tache3",theme:"🎭 Culture & société",title:"L\'impact des grands événements sportifs",level:"B2-C1",prompt:"Les grands événements sportifs (JO, Coupe du monde…) ont un impact économique, social et environnemental. Rédigez un texte argumenté sur leurs avantages et inconvénients. (120–180 mots)"},
-  {id:118,task:"tache3",theme:"🎭 Culture & société",title:"Les jeux vidéo : bienfaits ou dépendance",level:"B2-C1",prompt:"Les jeux vidéo sont accusés de créer de la dépendance mais peuvent aussi développer des compétences cognitives. Rédigez un texte argumenté en défendant votre position. (120–180 mots)"},
-  {id:119,task:"tache3",theme:"🎭 Culture & société",title:"Impact des jeux vidéo sur les enfants",level:"B2-C1",prompt:"Les jeux vidéo influencent-ils négativement le développement des enfants ? Rédigez un texte argumenté sur ce sujet. (120–180 mots)"},
-  {id:120,task:"tache3",theme:"📱 Technologie & numérique",title:"Les objets connectés",level:"B2-C1",prompt:"Les objets connectés (montres, assistants vocaux…) transforment notre quotidien. Rédigez un texte argumenté sur les avantages et risques des objets connectés. (120–180 mots)"},
-  {id:121,task:"tache3",theme:"📱 Technologie & numérique",title:"Les enfants face aux nouvelles technologies",level:"B2-C1",prompt:"Les enfants sont de plus en plus exposés aux écrans et aux technologies numériques. Rédigez un texte argumenté sur les bénéfices et dangers de cette exposition. (120–180 mots)"},
-  {id:122,task:"tache3",theme:"🤝 Solidarité & société",title:"L\'aide aux personnes en difficulté",level:"B2-C1",prompt:"La société doit-elle aider les personnes en difficulté financière ? Rédigez un texte argumenté en défendant votre position. (120–180 mots)"}
+  // Remplace les entrées tache3 (id:35 à id:122) dans WRITING_PROMPTS
+// Coller ce bloc à la place des anciennes entrées tache3
+
+  {id:35,task:"tache3",theme:"🌍 Environnement & transport",title:"L'interdiction des voitures en ville",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté en présentant votre position sur l'interdiction des voitures dans les centres urbains. (120–180 mots)
+
+📄 Document 1 : Face à des niveaux de pollution très élevés, certaines villes ont décidé d'interdire la circulation des voitures dans les centres urbains. Oslo a récemment choisi cette mesure et en tire un bilan positif, estimant qu'elle profite à tous. Avec le temps, les accidents diminueront, la consommation de pétrole reculera et la qualité de l'air s'améliorera.
+
+📄 Document 2 : De nombreuses villes lancent des projets visant à interdire les voitures en milieu urbain sans disposer des moyens et des infrastructures indispensables. Certes, la réduction du nombre de voitures permet de diminuer la pollution, mais il est nécessaire de prévoir de grands parkings, de développer les transports en commun et d'accorder des autorisations spéciales à certains professionnels.`},
+
+  {id:36,task:"tache3",theme:"🌍 Environnement & transport",title:"Transports en commun : bénéfices et contraintes",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté en présentant votre position sur la gratuité des transports en commun. (120–180 mots)
+
+📄 Document 1 : La gratuité des transports en commun est une initiative très positive. Elle permet de réduire le trafic automobile et de limiter les bouchons. Elle contribue aussi à diminuer la pollution et les risques pour la santé. Dans les villes où les transports sont gratuits, on constate une hausse de leur utilisation et une amélioration du commerce local.
+
+📄 Document 2 : À mon avis, cette mesure n'est pas appropriée. La gratuité des transports représente un coût élevé pour les villes. Il vaudrait mieux améliorer la desserte des transports publics plutôt que de les rendre gratuits, car certains quartiers en sont mal équipés. Garder les transports payants encourage les usagers à mieux respecter les installations.`},
+
+  {id:37,task:"tache3",theme:"🌍 Environnement & transport",title:"Villes et environnement : impacts et réalités",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'impact des villes sur l'environnement. (120–180 mots)
+
+📄 Document 1 : De nos jours, les villes s'agrandissent sans cesse, ce qui affecte malheureusement l'environnement. L'un des exemples les plus visibles est la déforestation. Les arbres et les espaces verts retiennent le carbone. Quand ils sont abattus pour construire des immeubles ou des routes, on détruit des zones importantes pour le stockage du carbone.
+
+📄 Document 2 : Plus de la moitié des habitants de la planète vivent dans des villes. On affirme souvent que les villes ne respectent pas l'environnement, mais il faut relativiser : les villes ne sont pas toujours aussi polluantes qu'on l'imagine. Par exemple, un habitant de la ville consomme souvent moins d'énergie qu'une personne à la campagne.`},
+
+  {id:38,task:"tache3",theme:"🌍 Environnement & transport",title:"Ville ou campagne : deux modes de vie",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté en défendant votre préférence entre la vie en ville et la vie à la campagne. (120–180 mots)
+
+📄 Document 1 : Vivre en ville permet de profiter de nombreuses activités de loisirs. Aller au cinéma, dîner au restaurant ou faire les magasins est très facile. Tout est à proximité. La ville offre également une grande variété d'activités culturelles comme les musées, le théâtre ou l'opéra.
+
+📄 Document 2 : J'ai choisi de m'installer à la campagne après avoir quitté la ville, car je voulais vivre dans un environnement plus naturel et tranquille. Le prix des logements a également été un élément important : à la campagne, les maisons coûtent beaucoup moins cher. Avec le même budget, j'ai pu acheter une grande maison avec jardin.`},
+
+  {id:39,task:"tache3",theme:"🌍 Environnement & transport",title:"Les vols low-cost : avantages et limites",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les vols low-cost. (120–180 mots)
+
+📄 Document 1 : Je voyage souvent avec des compagnies aériennes à petit prix. Les compagnies low-cost proposent des billets beaucoup moins chers que les compagnies classiques. Parfois, cela revient même moins cher que de voyager en voiture ou en train. Mais avec ces tarifs très bas, aucun service n'est inclus à bord.
+
+📄 Document 2 : J'ai décidé d'arrêter de voyager avec les compagnies aériennes low-cost. Les sièges sont inconfortables, les employés travaillent dans des conditions difficiles et les avions semblent parfois trop vieux pour garantir une bonne sécurité. Désormais, je préfère utiliser la voiture ou le train. Pour les longs trajets, je choisirai une compagnie aérienne classique.`},
+
+  {id:40,task:"tache3",theme:"🍔 Alimentation & consommation",title:"Les menus sans viande dans les cantines scolaires",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'introduction de menus sans viande dans les cantines scolaires. (120–180 mots)
+
+📄 Document 1 : De plus en plus d'établissements scolaires intègrent des repas sans viande dans leurs menus. Certaines études ont démontré que les enfants consomment une quantité excessive de protéines animales. Pour des raisons de santé, les écoles privilégient des alternatives comme le soja, les céréales et les légumes, qui sont plus sains et souvent plus économiques.
+
+📄 Document 2 : La suppression de la viande dans les menus scolaires ne fait pas l'unanimité. Pour certaines familles en difficulté, la cantine représente la seule opportunité pour leurs enfants de consommer de la viande. Par ailleurs, les producteurs locaux de viande sont affectés économiquement, et bon nombre d'enfants préfèrent encore les plats à base de viande.`},
+
+  {id:41,task:"tache3",theme:"🍔 Alimentation & consommation",title:"La restauration rapide : pour ou contre ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la restauration rapide. (120–180 mots)
+
+📄 Document 1 — Catherine : « Je suis complètement contre les chaînes de fast-food, car on ignore souvent quels ingrédients sont utilisés. La qualité de la nourriture y est faible et manger ce type d'aliments peut provoquer des maladies. Certes, les hamburgers et frites sont pratiques et bon marché, mais il est important de faire d'autres choix pour rester en bonne santé. »
+
+📄 Document 2 — Bernard : « Je soutiens la restauration rapide. Je pense qu'on peut y trouver des repas équilibrés. Les menus comprennent des légumes, des salades, du pain et de la viande. Chaque client est responsable de ce qu'il mange. Ces restaurants sont aussi très propres et faciles d'accès pour les familles. »`},
+
+  {id:42,task:"tache3",theme:"🍔 Alimentation & consommation",title:"Grandes surfaces ou commerces de proximité ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur votre préférence entre les supermarchés et les commerces de proximité. (120–180 mots)
+
+📄 Document 1 : Faire ses courses au supermarché est avantageux, puisqu'on y trouve une grande diversité de produits au même endroit. On peut passer d'un rayon à l'autre pour acheter ce dont on a besoin : fruits, légumes, fromages, viandes, boissons. De plus, plusieurs marques sont proposées pour chaque produit, avec des offres promotionnelles régulières.
+
+📄 Document 2 — Association pour la défense des commerces de proximité : L'initiative « Février sans supermarché » vise à limiter le pouvoir des grandes surfaces et à soutenir les petits commerces. Le principe est simple : ne pas faire ses courses dans les grandes surfaces durant un mois. Les clients en retirent des avantages : produits plus frais, de qualité, et moments d'échange avec leurs voisins.`},
+
+  {id:43,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Parents exigeants ou permissifs ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur le style parental à privilégier. (120–180 mots)
+
+📄 Document 1 : J'ai 19 ans et je vis toujours avec mes parents. Même si je suis maintenant majeure, ils restent très exigeants. Avant mes 18 ans, je devais être à la maison avant 20 heures. Aujourd'hui, j'ai un peu plus de liberté, mais j'ai l'impression d'être plus surveillée que les autres jeunes.
+
+📄 Document 2 : Certains parents choisissent de ne pas être trop sévères et laissent beaucoup de liberté à leurs enfants. Ils ont peur que trop de règles les rendent tristes. Cependant, des enfants élevés sans limites auront du mal à respecter les règles et à vivre en société une fois adultes.`},
+
+  {id:44,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Lecture et enfants : encourager sans forcer",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la façon d'encourager les enfants à lire. (120–180 mots)
+
+📄 Document 1 : Obliger les enfants à lire n'est pas une bonne solution. Quand un enfant aime le sport, on ne le contraint pas, on essaie de le motiver. Il en va de même pour la lecture. La pédopsychiatre Laurence T. affirme que « l'amour de la lecture ne peut pas être imposé ».
+
+📄 Document 2 : Lire avec ses enfants est une activité agréable et bénéfique. Une lecture régulière leur permet d'apprendre de nouveaux mots et de mieux écouter. Ce moment est idéal pour partager du plaisir en famille. Les parents doivent essayer de lire des histoires à leurs enfants dès leur jeune âge — cinq à dix minutes par jour suffisent.`},
+
+  {id:45,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Technologies dans les écoles : pour ou contre ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'utilisation des nouvelles technologies dans les écoles. (120–180 mots)
+
+📄 Document 1 — Adam : « Je suis persuadé que l'intégration des nouvelles technologies dans les écoles est essentielle pour préparer les élèves à l'avenir numérique. L'utilisation des tablettes et ordinateurs motive les élèves et enrichit leur expérience d'apprentissage en favorisant leur créativité et leur autonomie. »
+
+📄 Document 2 — Inès : « Je reste dubitative face à l'utilisation excessive des technologies dans l'éducation. Cela peut limiter les interactions humaines et entraîner une dépendance aux écrans. À mon avis, les méthodes traditionnelles et le contact direct entre enseignants et élèves sont essentiels pour un développement équilibré. »`},
+
+  {id:46,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Technologie et enfants",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'impact de la technologie sur les enfants. (120–180 mots)
+
+📄 Document 1 : Les élèves du primaire ont la possibilité d'utiliser la technologie pour chercher des vidéos liées à leurs leçons ou pour s'exercer avec des jeux qui développent leurs compétences en mathématiques, en lecture et en saisie au clavier.
+
+📄 Document 2 : Aujourd'hui, les technologies poussent les enfants à rester inactifs, ce qui inquiète beaucoup les parents. Cela limite les jeux créatifs, les échanges sociaux directs et l'activité physique. Pourquoi ne pas encourager les enfants à poser leurs appareils et essayer des activités ludiques ?`},
+
+  {id:47,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Caméras de surveillance à l'école",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'installation de caméras de surveillance dans les écoles. (120–180 mots)
+
+📄 Document 1 : À l'école où je travaille à Montréal, les caméras de surveillance sont largement présentes. Leur objectif est de dissuader les élèves de commettre des actes de violence. Les enseignants, les parents et la majorité des élèves les accueillent favorablement, car cela renforce la sécurité et crée un environnement propice à l'enseignement.
+
+📄 Document 2 : Je m'oppose à l'installation des caméras de surveillance dans nos écoles. Les résultats obtenus dans d'autres pays ne sont pas convaincants. Pour résoudre les problèmes de discipline, il est préférable d'améliorer la communication entre enseignants, administration et élèves, plutôt que de dépendre des caméras.`},
+
+  {id:48,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Devoirs à domicile : bienfaits et critiques",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les devoirs à la maison. (120–180 mots)
+
+📄 Document 1 : D'après certaines associations de parents d'élèves, les devoirs à domicile sont bénéfiques car ils permettent aux élèves de gérer leur temps seuls. Pour les parents, les devoirs représentent une occasion de se rapprocher de l'école chaque jour et de montrer de l'intérêt à leurs enfants.
+
+📄 Document 2 : Nous nous opposons depuis longtemps aux devoirs à la maison. Leur efficacité pour améliorer les résultats scolaires n'a jamais été prouvée. De nombreux parents n'ont pas le temps ou ne savent pas comment aider leurs enfants. Les élèves qui ont compris perdent du temps, tandis que ceux qui ne sont pas aidés restent en difficulté.`},
+
+  {id:49,task:"tache3",theme:"👨‍👩‍👧 Famille & éducation",title:"Animaux de compagnie pour enfants",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'intérêt d'avoir un animal de compagnie pour un enfant. (120–180 mots)
+
+📄 Document 1 : Donner un animal de compagnie à un enfant comporte de nombreux bienfaits. Pour les enfants qui n'ont pas de frères ou sœurs, l'animal devient un compagnon et leur évite la solitude. Grâce à lui, l'enfant gagne en confiance et apprend que l'animal mérite attention et respect.
+
+📄 Document 2 : Même si vous souhaitez faire plaisir à votre enfant, il est important de bien réfléchir avant d'adopter un animal. Celui-ci devient un membre de la famille et implique un engagement sur plusieurs années. Avoir un animal coûte souvent cher et demande beaucoup de responsabilités. Ce n'est pas un jouet que l'on peut mettre de côté.`},
+
+  {id:50,task:"tache3",theme:"💼 Travail & société",title:"Étudiants et travail saisonnier",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur le travail saisonnier pour les étudiants. (120–180 mots)
+
+📄 Document 1 : Après une longue période à l'université, les vacances permettent aux jeunes de se détendre. Certains étudiants préfèrent travailler au lieu de partir en vacances. Bien que ces emplois saisonniers aient des points positifs, ils limitent le temps libre des jeunes, qui manquent de repos et de moments en famille.
+
+📄 Document 2 : Pour quelles raisons de nombreux étudiants travaillent-ils durant les vacances ? Cette expérience représente souvent une entrée dans la vie professionnelle : elle leur permet de développer le sens des responsabilités. Gagner de l'argent est aussi motivant. Certains travaillent pour ne plus dépendre financièrement de leurs parents.`},
+
+  {id:51,task:"tache3",theme:"💼 Travail & société",title:"Le rôle du travail dans notre vie",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la place du travail dans la vie des individus. (120–180 mots)
+
+📄 Document 1 : Le travail occupe une place importante dans notre vie. Même s'il peut apporter de la satisfaction, il est souvent source de fatigue et peut donner l'impression d'être coincé dans une routine. Beaucoup de personnes constatent un déséquilibre entre leur vie professionnelle et leur vie personnelle.
+
+📄 Document 2 : Le travail fait partie de notre identité sociale. Selon le spécialiste Jean-Daniel Remond, la vie professionnelle contribue à se construire : elle permet de rencontrer des gens, de créer des réseaux, de se sentir utile et même de se faire des amis. Le travail reste crucial pour l'équilibre personnel et collectif.`},
+
+  {id:52,task:"tache3",theme:"💼 Travail & société",title:"Femmes et hommes au travail",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'égalité entre femmes et hommes au travail. (120–180 mots)
+
+📄 Document 1 : Dans certaines régions, comme le Québec, l'égalité entre les femmes et les hommes est une réalité. Beaucoup de femmes occupent désormais des postes à responsabilité et travaillent dans des domaines traditionnellement masculins. Avec les lois sur l'égalité et le changement des mentalités, les femmes ont accès aux mêmes métiers que les hommes.
+
+📄 Document 2 : Même si des efforts sont faits pour atteindre la parité, des inégalités demeurent. Certains métiers sont encore très féminisés. De plus, certaines personnes estiment que les femmes doivent rester à la maison pour s'occuper des enfants. Il reste beaucoup à faire pour changer les mentalités et garantir les mêmes chances à tous.`},
+
+  {id:53,task:"tache3",theme:"💼 Travail & société",title:"Productivité et confort au travail",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les moyens d'améliorer le bien-être au travail. (120–180 mots)
+
+📄 Document 1 — Louise, responsable : « Dans notre entreprise, nous avons mis en place des bureaux réglables en hauteur. Les employés sont satisfaits et affirment être plus performants. De plus, le climat social s'est amélioré et les échanges entre collègues sont plus fréquents. »
+
+📄 Document 2 — Dubois, ingénieur : « Aujourd'hui, les entreprises cherchent toujours à augmenter la productivité. Pour ma part, ce qui compte, c'est de réaliser mon travail pendant mes heures normales, sans devoir faire des heures supplémentaires. »`},
+
+  {id:54,task:"tache3",theme:"💼 Travail & société",title:"La sieste au travail",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'introduction de la sieste en milieu professionnel. (120–180 mots)
+
+📄 Document 1 : Selon le site siestepourtous.com, une courte sieste au travail pourrait augmenter la productivité et la créativité des employés de 35 %. De plus, la sieste améliorerait la mémoire et la concentration. Un employé reposé serait plus disponible pour ses tâches et moins stressé.
+
+📄 Document 2 : Même si les bienfaits de la micro-sieste ont été prouvés scientifiquement, certaines personnes restent sceptiques. La sieste au bureau pose des difficultés pratiques : toutes les entreprises ne peuvent pas disposer de salles spécifiques. Il faut aussi garantir l'égalité entre tous les salariés et établir une charte encadrant cette pratique.`},
+
+  {id:55,task:"tache3",theme:"💼 Travail & société",title:"Animaux de compagnie au bureau : pour ou contre ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la présence d'animaux de compagnie au bureau. (120–180 mots)
+
+📄 Document 1 : Apporter son animal au travail est une pratique qui se développe. Son intérêt ? Réduire le stress des employés. Les chiens ou les chats changent l'atmosphère de l'entreprise et diminuent les conflits entre collègues. Une enquête montre qu'un quart des salariés pensent que les animaux améliorent leur motivation.
+
+📄 Document 2 — Alba, 32 ans : « Dans l'entreprise où je travaille, il est permis d'amener son animal. Pour ma part, cela me dérange. Je ne suis pas très confortable avec les animaux. Cela peut aussi poser des problèmes de santé pour les employés allergiques. Et puis, cela constitue une source de distraction. »`},
+
+  {id:56,task:"tache3",theme:"💼 Travail & société",title:"Faut-il mettre une photo sur son CV ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'utilisation d'une photo dans un CV. (120–180 mots)
+
+📄 Document 1 : Il faudrait interdire la photo sur le CV pour éviter toute forme de discrimination. Selon une étude de spécialistes du recrutement, les employeurs accordent plus d'attention à l'expérience professionnelle (32 %) et aux diplômes (15 %) qu'au physique. Seuls 2 % des recruteurs commencent par regarder la photo.
+
+📄 Document 2 : L'utilisation d'une photo sur le CV est un sujet qui divise les recruteurs. Certains estiment que la photo aide à se faire une idée du candidat avant la rencontre. Elle peut aussi faciliter la mémorisation quand beaucoup de CV sont reçus. Pour les postes liés à l'accueil, la photo peut être appropriée.`},
+
+  {id:57,task:"tache3",theme:"💼 Travail & société",title:"Aider les sans-abri : dons ou actions concrètes ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la meilleure façon d'aider les personnes sans-abri. (120–180 mots)
+
+📄 Document 1 — Charlotte, 45 ans : « Chaque hiver, je consacre un peu de mon temps et de mon argent pour aider les personnes sans-abri. Pour moi, il est important de donner quelques dollars à ces personnes ou aux associations qui les soutiennent. C'est un geste de solidarité que chacun peut réaliser. »
+
+📄 Document 2 — Arthur, 54 ans : « Au lieu de donner de l'argent aux personnes défavorisées, il serait préférable de repenser notre façon de vivre. Je préfère m'investir dans une association de mon quartier. Les sans-abri ont besoin d'un logement et d'un emploi, pas seulement d'argent. Donner seul ne fait qu'apaiser notre conscience. »`},
+
+  {id:58,task:"tache3",theme:"📱 Technologie & médias",title:"La télévision dans la société",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur le rôle de la télévision dans la société actuelle. (120–180 mots)
+
+📄 Document 1 : La télévision est un moyen de communication très présent dans la société. Elle permet de transmettre des informations, de proposer différents programmes de divertissement et de diffuser la culture. Présente dans beaucoup de foyers, elle reste une source d'information et de loisirs accessible à tous.
+
+📄 Document 2 : La télévision présente aussi des aspects négatifs. Certains programmes peuvent transmettre des stéréotypes ou des valeurs discutables. Passer trop de temps devant la télévision peut diminuer le temps consacré à des activités plus utiles, comme la lecture ou le sport. Il est nécessaire de limiter ce temps, surtout pour les enfants.`},
+
+  {id:59,task:"tache3",theme:"📱 Technologie & médias",title:"Jeux vidéo : un loisir utile ou dangereux ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les effets des jeux vidéo. (120–180 mots)
+
+📄 Document 1 : Des recherches ont montré que certaines parties du cerveau des adultes peuvent se développer grâce aux jeux vidéo. Jouer peut aider à renforcer l'analyse, la prise de décision et la rapidité de réaction. C'est une bonne nouvelle, puisque 83 % des joueurs sont des adultes.
+
+📄 Document 2 : Durant trois ans, des chercheurs ont observé des enfants de 8 à 17 ans. Les conclusions indiquent que les enfants qui jouent beaucoup aux jeux vidéo deviennent plus violents, plus tendus et réussissent moins bien à l'école. Il est conseillé aux parents de contrôler le temps passé devant les jeux vidéo.`},
+
+  {id:60,task:"tache3",theme:"📱 Technologie & médias",title:"Objets connectés : progrès ou danger ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les objets connectés. (120–180 mots)
+
+📄 Document 1 : Les objets connectés rendent le quotidien plus pratique. Il s'agit d'appareils que vous contrôlez à distance à l'aide d'un téléphone ou d'Internet. Les montres connectées permettent également d'observer vos activités sportives. Leur rôle est particulièrement utile dans le secteur de la santé, rappelant les consultations médicales ou la prise de médicaments.
+
+📄 Document 2 : On pense qu'il existe environ 50 milliards d'objets connectés à travers le monde. Toutefois, ce développement entraîne des risques liés à la sécurité. Un hacker peut contrôler un objet connecté en peu de temps. Par exemple, un cambrioleur pourrait vérifier, à l'aide de caméras connectées, si une maison est vide.`},
+
+  {id:61,task:"tache3",theme:"📱 Technologie & médias",title:"La publicité alimentaire ciblant les enfants",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la publicité ciblant les enfants. (120–180 mots)
+
+📄 Document 1 — Lucien, 28 ans : « La publicité est très utile pour les entreprises. Elle sert à présenter un produit ou un service. J'aime l'écouter quand je conduis. Elle m'aide à découvrir les nouveautés et les offres spéciales. Comparer les articles grâce à la publicité permet de faire de bonnes économies. »
+
+📄 Document 2 — Alma, 35 ans : « Nous sommes entourés de publicité tous les jours : journaux, radios, télévisions, smartphones… Les émissions télévisées sont souvent coupées par des pubs, ce qui peut être irritant. Recevoir des kilos de publicité chaque année dans la boîte aux lettres n'est pas bon pour l'environnement. »`},
+
+  {id:62,task:"tache3",theme:"📱 Technologie & médias",title:"La publicité : utile ou gênante ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la place de la publicité dans notre quotidien. (120–180 mots)
+
+📄 Document 1 — Elena, 28 ans : « La publicité est essentielle au fonctionnement du commerce. Grâce à elle, on découvre de nouveaux produits et services. Certaines publicités sont même amusantes ! J'aime aussi comparer les produits, ce qui me permet d'économiser. Sans la publicité, de nombreuses applications gratuites deviendraient payantes. »
+
+📄 Document 2 — Alicia, 35 ans : « La publicité fait partie de notre vie quotidienne, et certaines émissions sont interrompues par des publicités, ce qui est vraiment agaçant. Recevoir chaque année beaucoup de papiers publicitaires dans la boîte aux lettres n'est pas bon pour l'environnement. Il faudrait une loi pour limiter la publicité à la télé et par courrier. »`},
+
+  {id:63,task:"tache3",theme:"🏡 Mode de vie & logement",title:"Vivre en colocation à l'âge adulte",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la vie en colocation. (120–180 mots)
+
+📄 Document 1 : La vie en colocation demande de bien s'entendre et de suivre des règles communes. On ne peut pas toujours mettre la musique à un volume élevé ou inviter tous ses amis. Chaque personne a des comportements qui peuvent agacer les autres. Une bonne organisation et la communication permettent une colocation réussie.
+
+📄 Document 2 : Vivre en colocation à l'âge adulte ? C'est un choix pratique pour avoir un logement plus spacieux à moindre coût. En divisant le loyer et les frais avec vos colocataires, vous dépensez beaucoup moins que pour un logement individuel. La colocation permet ainsi d'accéder à des logements plus abordables.`},
+
+  {id:64,task:"tache3",theme:"🏡 Mode de vie & logement",title:"Maisons de retraite ou maintien à domicile ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la meilleure solution pour les personnes âgées. (120–180 mots)
+
+📄 Document 1 — Sophie, infirmière : « Les maisons de retraite représentent une solution adaptée pour les personnes âgées. Elles y bénéficient de soins appropriés et d'un encadrement professionnel. Elles ont aussi la possibilité de participer à diverses activités qui leur permettent de garder une vie sociale et d'éviter la solitude. »
+
+📄 Document 2 — Jean, retraité : « Les maisons de retraite peuvent priver les personnes âgées de la présence de leur famille et donner l'impression d'être abandonné. De plus, les conditions de vie ne sont pas toujours satisfaisantes. Selon moi, l'aide à domicile est une meilleure solution pour vieillir auprès de ses proches. »`},
+
+  {id:65,task:"tache3",theme:"🌐 Culture & loisirs",title:"L'accès gratuit aux musées",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la gratuité des musées. (120–180 mots)
+
+📄 Document 1 : La gratuité fait partie des principes fondamentaux des musées et symbolise le partage culturel. Une fois par mois, l'entrée des musées nationaux est gratuite pour tous. Cette mesure a pour but de faire venir de nouveaux visiteurs, car le musée reste avant tout un lieu d'éducation pour le plus grand nombre.
+
+📄 Document 2 : Rendre les musées totalement gratuits est une fausse bonne idée, car cela fait croire que la culture ne nécessite aucun financement. Les musées doivent recevoir des fonds pour maintenir et développer leurs collections. Une solution plus adaptée est de proposer des entrées à tarif réduit pour des publics ciblés.`},
+
+  {id:66,task:"tache3",theme:"🌐 Culture & loisirs",title:"Art urbain ou vandalisme ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur les graffitis dans les villes. (120–180 mots)
+
+📄 Document 1 : Dans les grandes villes, on voit de plus en plus de peintures sur les façades des bâtiments. Cet art de rue permet à la culture d'être présente dans l'espace public. Pour certains maires, il est essentiel de donner aux artistes des espaces où ils peuvent travailler légalement. Ces graffitis attirent aussi les touristes.
+
+📄 Document 2 : Chaque année, certaines villes investissent des sommes importantes pour lutter contre les graffitis. Les dessins sur les murs sont difficiles à enlever et demandent parfois l'aide de professionnels. Pour certains habitants, ces peintures nuisent à l'image de leur quartier et dérangent les propriétaires, obligés de les nettoyer eux-mêmes.`},
+
+  {id:67,task:"tache3",theme:"🐾 Animaux",title:"La chasse : une pratique à soutenir ou à rejeter ?",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur la pratique de la chasse. (120–180 mots)
+
+📄 Document 1 — Sophie, 28 ans : « Je fais partie de ceux qui ne parviennent pas à comprendre comment on peut prendre plaisir à tuer des animaux. Je fais aussi partie de ceux qui ne saisissent pas comment on peut prétendre aimer la nature tout en contribuant à sa destruction. »
+
+📄 Document 2 — Bernard, journaliste : « La chasse est pratiquée pour diverses raisons : qu'il s'agisse de se nourrir, de commercer, de gérer la faune, de protéger la propriété, de faire de l'exercice, de se divertir ou de chercher du prestige. »`},
+
+  {id:68,task:"tache3",theme:"📚 Apprentissage & langues",title:"Apprendre une langue en ligne",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'apprentissage d'une langue en ligne. (120–180 mots)
+
+📄 Document 1 : Grâce à Internet, il est tout à fait possible d'apprendre une langue en ligne, et les résultats sont souvent très bons. Contrairement aux cours en présentiel, on peut suivre les leçons quand on le souhaite, puisqu'elles sont disponibles 24h/24. Cela aide à mieux gérer son emploi du temps et à économiser de l'argent.
+
+📄 Document 2 : On pourrait croire que l'apprentissage d'une langue en ligne est facile, mais ce n'est pas accessible à tous. Il faut d'abord avoir un bon accès à Internet et un équipement numérique suffisant. De plus, étudier seul à la maison demande beaucoup de motivation, surtout sans l'aide d'un enseignant ou d'autres apprenants.`},
 ];
 </script>
 <script>
