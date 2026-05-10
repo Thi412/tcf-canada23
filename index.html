@@ -62,10 +62,7 @@ const WRITING_PROMPTS=[
   {id:32,task:"tache1",theme:"📱 Médias & société",title:"Expérience réseau social",level:"A2-B1",prompt:"Écrivez à un ami pour lui parler de votre expérience sur un réseau social. Décrivez ce que vous y faites et votre opinion. (60–80 mots)"},
   {id:33,task:"tache2",theme:"🏡 Logement & colocation",title:"Lettre de réclamation",level:"B1-B2",prompt:"Vous avez commandé un appareil électronique en ligne il y a 3 semaines. Il n'est pas encore arrivé et le service client ne répond pas. Écrivez une lettre de réclamation au directeur du service après-vente. (120–150 mots)"},
   {id:34,task:"tache2",theme:"💼 Travail & études",title:"Demande de logement étudiant",level:"B1-B2",prompt:"Vous êtes étudiant(e) étranger(ère) accepté(e) dans une université canadienne. Écrivez une lettre formelle au service logement de l'université pour demander une chambre en résidence. (120–150 mots)"},
-  // Remplace les entrées tache3 (id:35 à id:122) dans WRITING_PROMPTS
-// Coller ce bloc à la place des anciennes entrées tache3
-
- {id:35,task:"tache3",theme:"🌍 Environnement & transport",title:"L'interdiction des voitures en ville",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'interdiction des voitures dans les centres urbains. (120–180 mots)
+  {id:35,task:"tache3",theme:"🌍 Environnement & transport",title:"L'interdiction des voitures en ville",level:"B2-C1",prompt:`Lisez les deux documents et rédigez un texte argumenté sur l'interdiction des voitures dans les centres urbains. (120–180 mots)
 
 📄 Document 1 : Face à des niveaux de pollution très élevés, certaines villes ont décidé d'interdire la circulation des voitures dans les centres urbains. Oslo a récemment choisi cette mesure et en tire un bilan positif. Avec le temps, les accidents diminueront, la consommation de pétrole reculera et la qualité de l'air s'améliorera.
 
@@ -490,6 +487,7 @@ const WRITING_PROMPTS=[
 📄 Document 1 : Les cours de langues en ligne offrent une grande flexibilité. Les apprenants peuvent suivre les leçons à leur rythme et organiser leur emploi du temps selon leurs besoins. Cette solution permet également d'économiser du temps et de l'argent en évitant les déplacements.
 
 📄 Document 2 : Cependant, apprendre une langue en ligne demande beaucoup d'autonomie et de motivation. Certains étudiants ont du mal à rester concentrés lorsqu'ils travaillent seuls devant un écran. De plus, les échanges humains et la pratique orale sont parfois moins naturels qu'en présentiel.`},
+];
 </script>
 <script>
 const MODULES=[
@@ -1031,6 +1029,22 @@ const Dashboard=({plan,aiUsage,setPage,ct,cw,ctests,gramData})=>{const p=PLANS[p
   <div>
     <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"1.5rem"}}>
       <Ttl ch="Bonjour 👋" sub={`Plan : ${p.name} · ${TOPICS.length+ct.length} topics · ${SITS.length} situations`}/>
+      <button onClick={()=>{
+        const data={
+          custom_topics:ct||[],
+          custom_writing:cw||[],
+          custom_tests:ctests||[],
+          exported_at:new Date().toISOString(),
+          version:"1.0"
+        };
+        const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+        const url=URL.createObjectURL(blob);
+        const a=document.createElement("a");
+        a.href=url;a.download="tcf-canada-custom-data.json";
+        a.click();URL.revokeObjectURL(url);
+      }} style={{display:"flex",alignItems:"center",gap:6,background:"none",border:`1px solid ${C.green}`,borderRadius:8,padding:"7px 14px",fontSize:12,color:C.green,cursor:"pointer",fontWeight:500,flexShrink:0}}>
+        ⬇️ Exporter mes données
+      </button>
     </div>
     <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:"1.5rem"}}>
       {[{label:"Topics EO",value:TOPICS.length+ct.length,color:C.green},{label:"Situations T2",value:SITS.length,color:C.amber},{label:"Tests CE/CO",value:`${p.tests*2}`,color:C.purple},{label:"IA restants",value:p.speakAI-aiUsage.speak+p.writeAI-aiUsage.write,color:C.green}].map(s=>(
@@ -1222,7 +1236,7 @@ JSON uniquement:
         <span style={{fontSize:20}}>🎤</span>
         <div>
           <div style={{fontWeight:600,fontSize:13,color:"#0ea5e9"}}>Coach vocal IA — Whisper</div>
-          <div style={{fontSize:11,color:C.gray}}>Whisper + GPT · ~$0.01/analyse · max 4 min 15 s</div>
+          <div style={{fontSize:11,color:C.gray}}>Whisper + GPT · ~$0.01/analyse · max 90s</div>
         </div>
       </div>
       {!canUse&&<Btn ch="Débloquer →" v="ghost" sm onClick={()=>onUpgrade("Débloquez le Coach vocal IA")} sx={{borderColor:"#0ea5e9",color:"#0ea5e9"}}/>}
@@ -1243,7 +1257,7 @@ JSON uniquement:
           <div style={{display:"flex",gap:8,alignItems:"center"}}>
             <div style={{width:10,height:10,borderRadius:"50%",background:C.red,animation:"pulse 1s ease-in-out infinite alternate"}}/>
             <span style={{fontSize:13,color:C.red,fontWeight:600}}>{fmt(duration)}</span>
-            <span style={{fontSize:12,color:C.gray}}>max 4 min 15 s</span>
+            <span style={{fontSize:12,color:C.gray}}>max 90s</span>
             {duration>=60&&<span style={{fontSize:11,color:C.amber}}>⚠ Bientôt la limite</span>}
           </div>
         </>}
