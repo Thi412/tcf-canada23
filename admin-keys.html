@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Admin — License Keys</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f4f3f0;color:#1a1a1a;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
+.card{background:#fff;border-radius:16px;padding:2rem;width:100%;max-width:480px;border:0.5px solid rgba(0,0,0,0.1)}
+h1{font-size:18px;font-weight:500;margin-bottom:6px}
+.sub{font-size:13px;color:#888;margin-bottom:1.5rem}
+label{font-size:12px;color:#888;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:6px}
+input,select{width:100%;padding:10px 14px;border-radius:8px;border:1px solid #e0e0e0;font-size:15px;margin-bottom:14px;outline:none;background:#fafafa;color:#1a1a1a;transition:border-color .15s}
+input:focus,select:focus{border-color:#1a1a1a}
+button{width:100%;padding:11px;background:#1a1a1a;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:500;cursor:pointer;transition:opacity .15s}
+button:hover{opacity:.85}
+button:disabled{opacity:.4;cursor:not-allowed}
+.result{margin-top:1rem;padding:14px 16px;border-radius:8px;font-size:14px;line-height:1.7;display:none}
+.result.success{background:#f0fdf4;border:1px solid #86efac;color:#166534}
+.result.error{background:#fef2f2;border:1px solid #fca5a5;color:#991b1b}
+.key-display{font-family:monospace;font-size:20px;font-weight:600;letter-spacing:.1em;background:#fff;border:1px solid #86efac;border-radius:6px;padding:8px 12px;margin:8px 0;text-align:center;cursor:pointer;user-select:all}
+.copy-hint{font-size:11px;color:#888;text-align:center}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>🔑 Generate License Key</h1>
+  <p class="sub">TCF Canada — Admin panel</p>
+
+  <label>Admin secret</label>
+  <input type="password" id="secret" placeholder="Your ADMIN_SECRET from Vercel env"/>
+
+  <label>Plan</label>
+  <select id="plan">
+    <option value="basic">API Key — $25</option>
+    <option value="pro">Essential — $79</option>
+    <option value="personal">Complete — $149</option>
+  </select>
+
+  <label>Student email</label>
+  <input type="email" id="email" placeholder="student@email.com"/>
+
+  <label>Note (optional)</label>
+  <input type="text" id="note" placeholder="e.g. Paid via PayPal 11 May"/>
+
+  <button onclick="generateKey()" id="btn">Generate key →</button>
+
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+async function generateKey() {
+  const secret = document.getElementById('secret').value.trim();
+  const plan = document.getElementById('plan').value;
+  const email = document.getElementById('email').value.trim();
+  const note = document.getElementById('note').value.trim();
+  const result = document.getElementById('result');
+  const btn = document.getElementById('btn');
+
+  if (!secret || !email) {
+    result.className = 'result error';
+    result.style.display = 'block';
+    result.innerHTML = 'Please fill in secret and email.';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Generating...';
+  result.style.display = 'none';
+
+  try {
+    const res = await fetch('/api/generate-key', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ secret, plan, email, note })
+    });
+    const data = await res.json();
+
+    if (data.ok) {
+      result.className = 'result success';
+      result.innerHTML = `
+        <div style="margin-bottom:8px">✓ Key generated for <strong>${data.email}</strong> · <strong>${data.plan}</strong></div>
+        <div class="key-display" onclick="copyKey('${data.key}')" title="Click to copy">${data.key}</div>
+        <div class="copy-hint">Click key to copy · Send this to the student</div>
+      `;
+    } else {
+      result.className = 'result error';
+      result.innerHTML = '✗ ' + (data.error || 'Unknown error');
+    }
+  } catch (e) {
+    result.className = 'result error';
+    result.innerHTML = '✗ Network error: ' + e.message;
+  }
+
+  result.style.display = 'block';
+  btn.disabled = false;
+  btn.textContent = 'Generate key →';
+}
+
+function copyKey(key) {
+  navigator.clipboard.writeText(key).then(() => {
+    const hint = document.querySelector('.copy-hint');
+    hint.textContent = '✓ Copied!';
+    setTimeout(() => hint.textContent = 'Click key to copy · Send this to the student', 2000);
+  });
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter') generateKey();
+});
+</script>
+</body>
+</html>
