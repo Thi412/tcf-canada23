@@ -1547,7 +1547,7 @@ const Speaking=({plan,aiUsage,setAiUsage,onUpgrade,ct,onAdd,userApiKey})=>{
 };
 
 // ─── TESTS ────────────────────────────────────────────────────────────────────
-const TestList=({type,plan,onStart,onAddTest,onEditTest,onDeleteTest,customTests,onUpgrade,testResults,onRefresh})=>{
+const TestList=({type,plan,onStart,onAddTest,onEditTest,onDeleteTest,customTests,onUpgrade,testResults,onRefresh,onExportJSON})=>{
   const p=PLANS[plan];
   const builtIn=MOCK_TESTS.filter(t=>t.type===type);
   const custom=(customTests||[]).filter(t=>t.type===type);
@@ -1568,7 +1568,10 @@ const TestList=({type,plan,onStart,onAddTest,onEditTest,onDeleteTest,customTests
     })()}
     <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:"1.5rem"}}>
       <Ttl ch={type==="CE"?"Compréhension écrite":"Compréhension orale"} sub={`${tests.length} tests`}/>
-      <Btn ch="➕ Ajouter un test" v="secondary" sm onClick={()=>onAddTest(type)}/>
+      <div style={{display:"flex",gap:8}}>
+        {type==="CO"&&onExportJSON&&<Btn ch="⬇ Export JSON" v="secondary" sm onClick={onExportJSON}/>}
+        <Btn ch="➕ Ajouter un test" v="secondary" sm onClick={()=>onAddTest(type)}/>
+      </div>
     </div>
     {tests.length===0&&<div style={{textAlign:"center",padding:"3rem 1rem",color:C.gray}}>
       <div style={{fontSize:36,marginBottom:12}}>{type==="CO"?"🎧":"📖"}</div>
@@ -2532,6 +2535,21 @@ function App(){
   const handleEditQuestion=(testId,qi,q)=>setEditedQs(eq=>{const next={...eq,[testId]:{...(eq[testId]||{}),[qi]:q}};try{localStorage.setItem("tcf_editedQs",JSON.stringify(next));}catch{}return next;});
   const getMergedTest=t=>{const edits=editedQs[t.id]||{};if(!Object.keys(edits).length)return t;return {...t,questions:t.questions.map((q,i)=>edits[i]?{...q,...edits[i]}:q)};};
 
+  const handleExportCO=()=>{
+    const builtIn=MOCK_TESTS.filter(t=>t.type==="CO").map(t=>getMergedTest(t));
+    const custom=(ctests||[]).filter(t=>t.type==="CO");
+    const all=[...builtIn,...custom];
+    const blob=new Blob([JSON.stringify(all,null,2)],{type:"application/json"});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a");
+    a.href=url;
+    a.download="co-tests-export.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   const isLanding=page==="pricing"&&plan==="starter";
   const renderPage=()=>{
     if((page==="reading"||page==="listening")&&activeTest)return <TestRunner test={getMergedTest(activeTest)} onBack={()=>setActiveTest(null)} onEditQuestion={(qi,q)=>handleEditQuestion(activeTest.id,qi,q)}/>;
@@ -2539,7 +2557,7 @@ function App(){
       case "dashboard":return <Dashboard plan={plan} aiUsage={aiUsage} setPage={nav} ct={ct} cw={cw} ctests={ctests} gramData={null}/>;
       case "speaking":return <Speaking plan={plan} aiUsage={aiUsage} setAiUsage={setAiUsage} onUpgrade={()=>openUpgrade("Améliorez vos phrases au niveau B2/C1")} ct={ct} onAdd={handleAdd} userApiKey={userApiKey}/>;
       case "reading":return <TestList type="CE" plan={plan} onStart={t=>safeStart(t,"CE")} onAddTest={handleAddTest} onEditTest={handleEditTest} onDeleteTest={handleDeleteTest} customTests={ctests} onUpgrade={openUpgrade} testResults={testResults} onRefresh={refreshResults}/>;
-      case "listening":return <TestList type="CO" plan={plan} onStart={t=>safeStart(t,"CO")} onAddTest={handleAddTest} onEditTest={handleEditTest} onDeleteTest={handleDeleteTest} customTests={ctests} onUpgrade={openUpgrade} testResults={testResults} onRefresh={refreshResults}/>;
+      case "listening":return <TestList type="CO" plan={plan} onStart={t=>safeStart(t,"CO")} onAddTest={handleAddTest} onEditTest={handleEditTest} onDeleteTest={handleDeleteTest} customTests={ctests} onUpgrade={openUpgrade} testResults={testResults} onRefresh={refreshResults} onExportJSON={handleExportCO}/>;
       case "writing":return <Writing plan={plan} aiUsage={aiUsage} setAiUsage={setAiUsage} onUpgrade={()=>openUpgrade("Feedback IA expression écrite")} cw={cw} onAdd={handleAdd} userApiKey={userApiKey}/>;
       case "grammaire":return <Grammaire/>;
       case "pricing":return <Pricing plan={plan} setPlan={p=>{savePlan(p);setAiUsage({speak:0,write:0,coach:0});}} onUpgrade={key=>openUpgrade("",key)} isLanding={isLanding}/>;
