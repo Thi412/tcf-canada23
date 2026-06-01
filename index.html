@@ -8,6 +8,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <style>
+@keyframes kpulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
+
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f4f3f0;color:#1a1a1a;min-height:100vh;font-size:16px}
 :root{--bg-primary:#ffffff;--bg-secondary:#f4f3f0;--bg-tertiary:#ededea;--text-primary:#1a1a1a;--text-secondary:#555;--border:rgba(0,0,0,0.1);--radius-md:8px;--radius-lg:12px;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
@@ -931,17 +933,17 @@ const PLANS={
     badge:null,
     features:["5 CE + 5 CO subjects","54 speaking topics","Tâche 2 situations","Built-in timers","C1 templates"]},
   basic:{name:"API Key",price:"$25",period:"/ 30 days",color:C.amber,
-    tests:999,speakAI:9999,writeAI:9999,coachAI:9999,
+    tests:999,speakAI:9999,writeAI:9999,coachAI:9999,coachT2:9999,coachT3:9999,writeT1:9999,writeT2:9999,writeT3:9999,
     badge:null,
     lsUrl:"https://thiendieducation.lemonsqueezy.com/checkout/buy/8f2d5c89-6634-4d4d-b9d8-310e4c473ef4",
     features:["47 real CE subjects","49 real CO subjects","Detailed corrections","Unlimited AI coach","Unlimited Whisper AI","Written expression AI"]},
   pro:{name:"Essential",price:"$79",period:"/ 30 days",color:C.green,
-    tests:999,speakAI:5,writeAI:0,coachAI:5,
+    tests:999,speakAI:10,writeAI:10,coachAI:10,coachT2:10,coachT3:10,writeT1:10,writeT2:10,writeT3:10,
     badge:null,
     lsUrl:"https://thiendieducation.lemonsqueezy.com/checkout/buy/be23349e-ff19-45c5-9823-69aaa098228b",
     features:["47 real CE subjects","49 real CO subjects","Detailed corrections","Oral AI coach · 5/day"]},
   personal:{name:"Complete",price:"$149",period:"/ 30 days",color:"#0ea5e9",
-    tests:999,speakAI:9999,writeAI:9999,coachAI:9999,
+    tests:999,speakAI:10,writeAI:10,coachAI:10,coachT2:10,coachT3:10,writeT1:10,writeT2:10,writeT3:10,
     badge:"Best for passing",
     lsUrl:"https://thiendieducation.lemonsqueezy.com/checkout/buy/50624d06-4d02-490e-9aaa-2ebf33f7e246",
     features:["47 real CE subjects","49 real CO subjects","Detailed corrections","Unlimited oral AI coach","Whisper AI · pronunciation score","Written expression + AI feedback"]},
@@ -1082,7 +1084,7 @@ const Dashboard=({plan,aiUsage,setPage,ct,cw,ctests,gramData})=>{const p=PLANS[p
       <Ttl ch="Bonjour 👋" sub={`Plan : ${p.name} · ${TOPICS.length+ct.length} topics · ${SITS.length} situations`}/>
     </div>
     <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:"1.5rem"}}>
-      {[{label:"Topics EO",value:TOPICS.length+ct.length,color:C.green},{label:"Situations T2",value:SITS.length,color:C.amber},{label:"Tests CE/CO",value:`${p.tests*2}`,color:C.purple},{label:"IA restants",value:p.speakAI-aiUsage.speak+p.writeAI-aiUsage.write,color:C.green}].map(s=>(
+      {[{label:"Topics EO",value:TOPICS.length+ct.length,color:C.green},{label:"Situations T2",value:SITS.length,color:C.amber},{label:"Tests CE/CO",value:"92",color:C.purple},{label:"IA restants",value:p.speakAI-aiUsage.speak+p.writeAI-aiUsage.write,color:C.green}].map(s=>(
         <div key={s.label} style={{background:"#f4f3f0",borderRadius:8,padding:"12px"}}><div style={{fontSize:13,color:C.gray,marginBottom:4}}>{s.label}</div><div style={{fontSize:26,fontWeight:500,color:s.color}}>{s.value}</div></div>
       ))}
     </div>
@@ -1168,9 +1170,12 @@ const SpeakingCoach=({topic,sit,userApiKey,plan,onUpgrade,aiUsage,setAiUsage,max
   const isPaid=plan!=="starter";
 
   const p=PLANS[plan];
-  const coachLimit=p?.coachAI||0;
-  const coachUsed=aiUsage?.coach||0;
+  const tacheKey=maxDur<=100?"coach_t2":"coach_t3";
+  const coachLimit=p?.[maxDur<=100?"coachT2":"coachT3"]||0;
+  const coachUsed=aiUsage?.[tacheKey]||0;
   const canUse=userApiKey||(isPaid&&coachUsed<coachLimit);
+  const scoreColor=s=>s>=8?C.green:s>=6?C.amber:C.red;
+  const niveauColor=n=>n==="C1"?C.purple:n==="B2"?C.green:n==="B1"?C.amber:C.red;
 
   const startRec=async()=>{
     if(!canUse){onUpgrade(isPaid?"Limite quotidienne atteinte — passez au plan supérieur":"Débloquez le Coach vocal IA");return;}
@@ -1253,7 +1258,7 @@ JSON uniquement:
       const clean=txt.replace(/```json|```/g,"").trim();
       setFeedback(JSON.parse(clean));
       setStatus("done");
-      if(!userApiKey&&setAiUsage)setAiUsage(u=>({...u,coach:(u.coach||0)+1}));
+      if(!userApiKey&&setAiUsage)setAiUsage(u=>({...u,[tacheKey]:(u[tacheKey]||0)+1}));
     }catch(e){
       setErr("Erreur d'analyse. Vérifiez votre connexion.");
       setStatus("idle");
@@ -1568,7 +1573,7 @@ const TestList=({type,plan,onStart,onAddTest,onEditTest,onDeleteTest,customTests
     })()}
     <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:"1.5rem"}}>
       <Ttl ch={type==="CE"?"Compréhension écrite":"Compréhension orale"} sub={`${tests.length} tests`}/>
-      <Btn ch="➕ Ajouter un test" v="secondary" sm onClick={()=>onAddTest(type)}/>
+      
     </div>
     {tests.length===0&&<div style={{textAlign:"center",padding:"3rem 1rem",color:C.gray}}>
       <div style={{fontSize:36,marginBottom:12}}>{type==="CO"?"🎧":"📖"}</div>
@@ -1594,7 +1599,6 @@ const TestList=({type,plan,onStart,onAddTest,onEditTest,onDeleteTest,customTests
           {(()=>{const r=(testResults||[]).find(x=>x.testId===t.id);return r?<span style={{fontSize:11,background:r.pct>=80?C.green+"22":r.pct>=60?C.amber+"22":C.red+"22",color:r.pct>=80?C.green:r.pct>=60?C.amber:C.red,borderRadius:20,padding:"2px 8px",fontWeight:600}}>{r.pct}% ✓</span>:null;})()}
         </div><div style={{fontSize:14,color:C.gray}}>{t.questions.length} questions{(testResults||[]).find(x=>x.testId===t.id)?<span style={{color:C.gray}}> · fait le {new Date((testResults||[]).find(x=>x.testId===t.id)?.date).toLocaleDateString("fr-CA")}</span>:null}</div></div>
         <div style={{display:"flex",gap:6}}>
-          {isCustom&&<><Btn ch="✏️" v="ghost" sm onClick={()=>onEditTest(t)}/><Btn ch="🗑" v="ghost" sm onClick={()=>onDeleteTest(t.id)}/></>}
           {locked
             ?<Btn ch="🔒 Débloquer" v="ghost" sm onClick={()=>onUpgrade("Accédez à tous les tests")}/>
             :<Btn ch="Commencer →" sm onClick={()=>onStart(t)}/>}
@@ -1696,6 +1700,41 @@ const TestRunner=({test,onBack,onEditQuestion})=>{
   const [editQ,setEditQ]=useState(null);
   const [transcribingEdit,setTranscribingEdit]=useState(false);
   const isCO=test.type==="CO";
+  const audioRefs=useRef({});
+  const sentenceElRefs=useRef({});
+  const [activeSentence,setActiveSentence]=useState({});
+  const [audioMeta,setAudioMeta]=useState({});
+  const buildSentenceTokens=(transcript,duration)=>{
+    if(!transcript||!duration)return[];
+    const parts=transcript.split(/([.!?])\s+/);
+    const sentences=[];let buf="";
+    for(let i=0;i<parts.length;i++){
+      if(/^[.!?]$/.test(parts[i])){buf+=parts[i];sentences.push(buf.trim());buf="";}
+      else buf+=parts[i];
+    }
+    if(buf.trim())sentences.push(buf.trim());
+    const filtered=sentences.filter(Boolean);
+    const totalChars=filtered.reduce((s,t)=>s+t.length,0)||1;
+    let cursor=0;
+    return filtered.map(text=>{const frac=text.length/totalChars;const start=cursor*duration;cursor+=frac;return{text,start,end:cursor*duration};});
+  };
+  const handleAudioLoaded=(qi,duration)=>{
+    const transcript=test.questions[qi]?.transcript||"";
+    setAudioMeta(prev=>({...prev,[qi]:{duration,sentences:buildSentenceTokens(transcript,duration)}}));
+  };
+  const handleTimeUpdate=(qi,t)=>{
+    const meta=audioMeta[qi];
+    if(!meta||!meta.sentences.length)return;
+    let idx=meta.sentences.findIndex(s=>t>=s.start&&t<s.end);
+    if(idx===-1&&t>=meta.sentences[meta.sentences.length-1].start)idx=meta.sentences.length-1;
+    if(idx!==-1)setActiveSentence(prev=>{
+      if(prev[qi]===idx)return prev;
+      const el=sentenceElRefs.current[qi+"_"+idx];
+      if(el)el.scrollIntoView({block:"nearest",behavior:"smooth"});
+      return{...prev,[qi]:idx};
+    });
+  };
+  const handleAudioEnded=(qi)=>setActiveSentence(prev=>({...prev,[qi]:-1}));
   const total=test.questions.length;
   const answered=Object.keys(ans).length;
   const allDone=answered===total;
@@ -1858,7 +1897,7 @@ const TestRunner=({test,onBack,onEditQuestion})=>{
                     <span style={{background:revealed?(isCorrect?"#dcfce7":"#fee2e2"):"#f4f3f0",color:revealed?(isCorrect?C.green:C.red):"#888",borderRadius:10,fontWeight:700,fontSize:13,padding:"2px 8px",flexShrink:0,marginTop:2}}>{qi+1}</span>
                     <div style={{fontSize:14,fontWeight:500,color:"#1a1a1a",lineHeight:1.55}}>{q.q}</div>
                   </div>
-                  <button onClick={()=>setEditQ({qi,q:q.q,opts:[...q.opts],ans:q.ans,passage:q.passage||"",audio:q.audio||"",image:q.image||"",transcript:q.transcript||""})} style={{background:"none",border:"none",cursor:"pointer",color:"#ccc",fontSize:15,flexShrink:0,padding:2}}>✏️</button>
+                  
                 </div>
 
                 {/* Passage (CE) */}
@@ -1867,7 +1906,12 @@ const TestRunner=({test,onBack,onEditQuestion})=>{
                 {/* Audio + image (CO) */}
                 {isCO&&q.image&&<img src={q.image} alt="" style={{width:"100%",borderRadius:10,marginBottom:8,display:"block",objectFit:"cover",maxHeight:180}}/>}
                 {isCO&&q.audio&&<div style={{marginBottom:8}}>
-                  <audio controls controlsList="nodownload" src={q.audio} style={{width:"100%",height:36,borderRadius:8}}/>
+                  <audio controls controlsList="nodownload" src={q.audio} style={{width:"100%",height:36,borderRadius:8}}
+                    ref={el=>{if(el)audioRefs.current[qi]=el;}}
+                    onLoadedMetadata={e=>handleAudioLoaded(qi,e.target.duration)}
+                    onTimeUpdate={e=>handleTimeUpdate(qi,e.target.currentTime)}
+                    onEnded={()=>handleAudioEnded(qi)}
+                  />
                 </div>}
 
                 {/* Options */}
@@ -1905,15 +1949,63 @@ const TestRunner=({test,onBack,onEditQuestion})=>{
                     <span style={{color:C.gray}}>Bonne réponse : </span>
                     <span style={{fontWeight:600,color:C.green}}>{LETTERS[q.ans]}. {q.opts[q.ans]}</span>
                   </div>}
-                  {isCO&&q.transcript&&<div style={{marginTop:8,paddingLeft:0}}>
-                    <div style={{background:"#fff",border:"1px solid #bfdbfe",borderRadius:10,padding:"8px 12px"}}>
-                      <div style={{fontSize:11,fontWeight:600,color:"#60a5fa",marginBottom:4,letterSpacing:.3}}>📄 SCRIPT AUDIO</div>
-                      {q.transcript
-                        ? <div style={{fontSize:13,color:"#1e3a5f",lineHeight:1.6}} dangerouslySetInnerHTML={{__html:q.transcript.replace(new RegExp(q.opts[q.ans].replace(/[.*+?^${}()|\[\]\\]/g,"\\$&"),"gi"),m=>"<mark style='background:#fef08a;color:#713f12;border-radius:2px;padding:0 2px;font-weight:600;'>"+m+"</mark>")}}/>
-                        : <div style={{fontSize:13,color:"#94a3b8",lineHeight:1.6,fontStyle:"italic"}}>Script non disponible pour cette question.</div>
-                      }
-                    </div>
-                  </div>}
+                  {isCO&&q.transcript&&(()=>{
+                    const meta=audioMeta[qi];
+                    const activeSi=activeSentence[qi]??-1;
+                    const isPlaying=activeSi>=0;
+                    const ansLetter=(q.opts[q.ans]||"").trim();
+                    const isLetterOpts=/^[A-D]$/.test(ansLetter);
+                    const getAnsContent=(tr,letter)=>{
+                      if(!letter||!tr||!isLetterOpts)return"";
+                      const m=tr.match(new RegExp("(?<![A-Za-z])"+letter.replace(/[.*+?^${}()|\[\]\\]/g,"\\$&")+"\s*[.:\-]\s*(.*?)(?=\s*[A-D]\s*[.:\-]|$)","s"));
+                      return m?m[1].trim():"";
+                    };
+                    const ansContent=getAnsContent(q.transcript,ansLetter);
+                    const hlAnswer=txt=>{
+                      if(!isLetterOpts||!ansContent||ansContent.length<2)return txt;
+                      const esc=ansContent.slice(0,40).replace(/[.*+?^${}()|\[\]\\]/g,"\\$&");
+                      return txt.replace(new RegExp(esc,"gi"),m=>"<mark style='background:#fef08a;color:#713f12;border-radius:3px;padding:0 2px;font-weight:700;'>"+m+"</mark>");
+                    };
+                    if(meta&&meta.sentences.length){
+                      return(
+                        <div style={{marginTop:8}}>
+                          <div style={{background:"#fff",border:"1px solid #bfdbfe",borderRadius:10,padding:"10px 14px",maxHeight:220,overflowY:"auto"}}>
+                            <div style={{fontSize:11,fontWeight:600,color:"#60a5fa",marginBottom:8,letterSpacing:.3,display:"flex",alignItems:"center",gap:6}}>
+                              📄 SCRIPT AUDIO
+                              {isPlaying&&<span style={{display:"inline-flex",gap:3,alignItems:"center"}}>
+                                <span style={{width:5,height:5,borderRadius:"50%",background:"#3b82f6",animation:"kpulse 0.8s ease-in-out infinite"}}/>
+                                <span style={{width:5,height:5,borderRadius:"50%",background:"#3b82f6",animation:"kpulse 0.8s ease-in-out infinite",animationDelay:"0.2s"}}/>
+                                <span style={{width:5,height:5,borderRadius:"50%",background:"#3b82f6",animation:"kpulse 0.8s ease-in-out infinite",animationDelay:"0.4s"}}/>
+                              </span>}
+                            </div>
+                            {meta.sentences.map((s,si)=>{
+                              const isActive=si===activeSi;
+                              const isPast=activeSi>=0&&si<activeSi;
+                              return(
+                                <div key={si}
+                                  ref={el=>{sentenceElRefs.current[qi+"_"+si]=el;}}
+                                  style={{fontSize:13,lineHeight:1.75,marginBottom:4,padding:"4px 8px",borderRadius:6,
+                                    borderLeft:isActive?"3px solid #3b82f6":"3px solid transparent",
+                                    background:isActive?"#eff6ff":isPast?"#f8fafc":"transparent",
+                                    color:isActive?"#1e40af":isPast?"#94a3b8":"#1e3a5f",
+                                    fontWeight:isActive?600:400,opacity:isPast?0.55:1,transition:"all 0.25s ease"}}
+                                  dangerouslySetInnerHTML={{__html:hlAnswer(s.text)}}
+                                />
+                              );
+                            })}
+                          </div>
+                        </div>
+                      );
+                    }
+                    return(
+                      <div style={{marginTop:8}}>
+                        <div style={{background:"#fff",border:"1px solid #bfdbfe",borderRadius:10,padding:"8px 12px"}}>
+                          <div style={{fontSize:11,fontWeight:600,color:"#60a5fa",marginBottom:4,letterSpacing:.3}}>📄 SCRIPT AUDIO</div>
+                          <div style={{fontSize:13,color:"#1e3a5f",lineHeight:1.6}} dangerouslySetInnerHTML={{__html:hlAnswer(q.transcript)}}/>
+                        </div>
+                      </div>
+                    );
+                  })()}
                 </div>
               </div>}
             </div>
@@ -1938,9 +2030,11 @@ const Writing=({plan,aiUsage,setAiUsage,onUpgrade,cw,onAdd,userApiKey})=>{
   const [ans,setAns]=useState("");const [fb,setFb]=useState(null);const [loading,setLoading]=useState(false);const [saved,setSaved]=useState(false);const [showAdd,setShowAdd]=useState(false);
   const [openThemes,setOpenThemes]=useState({});
   const p=PLANS[plan];const isPaid=plan!=="starter";
+  const writeKey=tab==="tache1"?"write_t1":tab==="tache2"?"write_t2":"write_t3";
+  const writeLimit=p?.[tab==="tache1"?"writeT1":tab==="tache2"?"writeT2":"writeT3"]||0;
   const prompts=all.filter(pr=>pr.task===tab);
   const getFeedback=async()=>{
-    if(!userApiKey&&aiUsage.write>=p.writeAI){onUpgrade();return;}
+    if(!userApiKey&&(aiUsage[writeKey]||0)>=writeLimit){onUpgrade();return;}
     if(!ans.trim())return;
     setLoading(true);setFb(null);
     try{
@@ -1977,7 +2071,7 @@ KEY PHILOSOPHY: A few grammar errors can still yield B2 if the text is natural, 
       const clean=txt.replace(/```json|```/g,"").trim();
       const parsed=JSON.parse(clean);
       setFb(parsed);
-      if(!userApiKey)setAiUsage(u=>({...u,write:u.write+1}));
+      if(!userApiKey)setAiUsage(u=>({...u,[writeKey]:(u[writeKey]||0)+1}));
     }catch(e){
       console.error("Feedback error:",e);
       setFb({score_global:0,niveau:"—",criteres:{},points_forts:[],erreurs:[{original:"",correction:"",explication:"Erreur: "+e.message}],conseil_prioritaire:"Vérifiez votre clé API dans les paramètres.",phrase_modele:""});
@@ -2028,7 +2122,7 @@ KEY PHILOSOPHY: A few grammar errors can still yield B2 if the text is natural, 
             <span style={{fontSize:14,color:C.gray}}>{ans.trim().split(/\s+/).filter(Boolean).length} mots</span>
             <div style={{display:"flex",gap:8}}>
               <Btn ch={saved?"✓ Sauvegardé":"Sauvegarder"} v="ghost" sm onClick={()=>setSaved(true)} dis={!ans.trim()}/>
-              {(isPaid||userApiKey)?<Btn ch={loading?"Analyse...":(isPaid&&aiUsage.write>=p.writeAI)?"🔒 Limite":"Feedback IA"} v="purple" sm onClick={getFeedback} dis={loading||!ans.trim()}/>
+              {(isPaid||userApiKey)?<Btn ch={loading?"Analyse...":(isPaid&&(aiUsage[writeKey]||0)>=writeLimit)?"🔒 Limite":"Feedback IA"} v="purple" sm onClick={getFeedback} dis={loading||!ans.trim()}/>
               :<Btn ch="🔒 Feedback IA — Débloquer" v="purple" sm onClick={onUpgrade}/>}
             </div>
           </div>
@@ -2494,7 +2588,13 @@ function App(){
   const [showUpgrade,setShowUpgrade]=useState(false);
   const [upgradeReason,setUpgradeReason]=useState("");
   const [activeTest,setActiveTest]=useState(null);
-  const [aiUsage,setAiUsage]=useState({speak:0,write:0,coach:0});
+  const [aiUsage,setAiUsage]=useState(()=>{
+    try{const saved=JSON.parse(localStorage.getItem('tcf_ai_usage')||'{}');const today=new Date().toDateString();
+      if(saved.date===today)return{speak:saved.speak||0,coach_t2:saved.coach_t2||0,coach_t3:saved.coach_t3||0,write_t1:saved.write_t1||0,write_t2:saved.write_t2||0,write_t3:saved.write_t3||0};
+    }catch(e){}
+    return{speak:0,coach_t2:0,coach_t3:0,write_t1:0,write_t2:0,write_t3:0};
+  });
+  useEffect(()=>{localStorage.setItem('tcf_ai_usage',JSON.stringify({...aiUsage,date:new Date().toDateString()}));},[aiUsage]);
   const [ct,setCt]=useState([]);
   const [cw,setCw]=useState([]);
   const [ctests,setCtests]=useState([]);
@@ -2557,7 +2657,16 @@ function App(){
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+class ErrorBoundary extends React.Component{
+  constructor(props){super(props);this.state={hasError:false,error:null};}
+  static getDerivedStateFromError(e){return{hasError:true,error:e};}
+  componentDidCatch(e,i){console.error(e,i);}
+  render(){
+    if(this.state.hasError)return(<div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",minHeight:"100vh",gap:16,padding:"2rem",textAlign:"center"}}><div style={{fontSize:48}}>⚠️</div><div style={{fontSize:18,fontWeight:600}}>Une erreur est survenue</div><div style={{fontSize:14,color:"#64748b"}}>{this.state.error?.message||"Erreur inattendue"}</div><button onClick={()=>this.setState({hasError:false,error:null})} style={{background:"#16a34a",color:"#fff",border:"none",borderRadius:8,padding:"10px 24px",fontSize:15,cursor:"pointer"}}>↺ Réessayer</button></div>);
+    return this.props.children;
+  }
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<ErrorBoundary><App/></ErrorBoundary>);
 </script>
 </body>
 </html>
