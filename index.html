@@ -1171,8 +1171,6 @@ const SpeakingCoach=({topic,sit,userApiKey,plan,onUpgrade,aiUsage,setAiUsage,max
   const coachLimit=p?.coachAI||0;
   const coachUsed=aiUsage?.coach||0;
   const canUse=userApiKey||(isPaid&&coachUsed<coachLimit);
-  const scoreColor=s=>s>=8?C.green:s>=6?C.amber:C.red;
-  const niveauColor=n=>n==="C1"?C.purple:n==="B2"?C.green:n==="B1"?C.amber:C.red;
 
   const startRec=async()=>{
     if(!canUse){onUpgrade(isPaid?"Limite quotidienne atteinte — passez au plan supérieur":"Débloquez le Coach vocal IA");return;}
