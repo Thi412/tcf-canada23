@@ -2,12 +2,38 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<meta name="description" content="Préparez le TCF Canada avec l'IA : 47 tests CE, 45 tests CO avec scripts audio. Atteignez CLB 7.">
+<meta name="keywords" content="TCF Canada, CLB 7, luyện TCF Canada, ôn thi TCF Canada, định cư Canada">
+<meta name="robots" content="index, follow">
+<meta name="google-site-verification" content="0HJBVwcvVvXLZ1VkjWZz5U7IVLws5KN8JTeYK5CQe0k" />
+<meta name="google-site-verification" content="hzLRSEUOnOq-tMqVIK3lZ4vq9F1WgIVAc2Nxos6YiSE" />
+<link rel="canonical" href="https://tcf.thiendieducation.com/">
+<meta property="og:title" content="TCF Canada — Préparation complète avec IA">
+<meta property="og:description" content="47 CE + 45 CO avec scripts. IA oral et écrit. CLB 7.">
+<meta property="og:url" content="https://tcf.thiendieducation.com/">
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="TCF Canada">
+<meta name="theme-color" content="#16a34a">
 <title>TCF Canada — Préparation complète</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
 <style>
+@media(max-width:600px){
+  body{overflow-x:hidden;}
+  *{box-sizing:border-box;}
+  img{max-width:100%!important;height:auto!important;}
+  audio{width:100%!important;}
+  button{min-height:44px!important;}
+  input,textarea{font-size:16px!important;}
+  .sidebar-desktop{display:none!important;}
+  .mobile-topbar{display:flex!important;}
+  .mobile-drawer{display:block!important;}
+  .main-content{padding-top:56px!important;padding-left:12px!important;padding-right:12px!important;}
+  .pricing-grid{grid-template-columns:1fr!important;}
+}
 @keyframes kpulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -1062,8 +1088,23 @@ const UpgradeModal=({onClose,currentPlan,setPlan,reason,initialPlan})=>{
 // LANG loaded from plain script
 
 const NAV=[{id:"dashboard",icon:"⊞",label:"Tableau de bord",en:"Dashboard"},{id:"speaking",icon:"🎤",label:"Expression orale",en:"Speaking"},{id:"reading",icon:"📖",label:"Compréhension écrite",en:"Reading"},{id:"listening",icon:"🎧",label:"Compréhension orale",en:"Listening"},{id:"writing",icon:"✏️",label:"Expression écrite",en:"Writing"},{id:"grammaire",icon:"🔤",label:"Grammaire",en:"Grammar"},{id:"pricing",icon:"💎",label:"Plans & Tarifs",en:"Plans & Pricing"}];
+const MobileNav=({page,setPage})=>{
+  const [open,setOpen]=useState(false);
+  const NAV=[{id:"dashboard",icon:"⊞",label:"Tableau de bord"},{id:"speak",icon:"🎤",label:"Expression orale"},{id:"read",icon:"📖",label:"Compréhension écrite"},{id:"listen",icon:"🎧",label:"Compréhension orale"},{id:"write",icon:"✏️",label:"Expression écrite"},{id:"grammar",icon:"📝",label:"Grammaire"},{id:"pricing",icon:"💎",label:"Plans & Tarifs"}];
+  return(<>
+    <div className="mobile-topbar" style={{display:"none",position:"fixed",top:0,left:0,right:0,zIndex:999,background:"#fff",borderBottom:"1px solid #e5e7eb",padding:"10px 16px",alignItems:"center",justifyContent:"space-between"}}>
+      <div style={{fontWeight:700,fontSize:16,color:"#16a34a"}}>🍁 TCF Canada</div>
+      <button onClick={()=>setOpen(o=>!o)} style={{background:"none",border:"none",fontSize:22,cursor:"pointer",padding:"4px 8px",color:"#374151"}}>☰</button>
+    </div>
+    {open&&<div onClick={()=>setOpen(false)} style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.45)",zIndex:1000}}/>}
+    <div className="mobile-drawer" style={{display:"none",position:"fixed",top:0,left:open?0:-220,width:210,height:"100vh",background:"#fff",zIndex:1001,transition:"left 0.25s ease",overflowY:"auto",padding:"1rem 0"}}>
+      <div style={{padding:"0.75rem 1.25rem 1.25rem"}}><div style={{fontWeight:700,fontSize:17,color:"#16a34a"}}>🍁 TCF Canada</div><div style={{fontSize:12,color:"#94a3b8",marginTop:2}}>Préparation complète</div></div>
+      {NAV.map(item=>(<div key={item.id} onClick={()=>{setPage(item.id);setOpen(false);}} style={{display:"flex",alignItems:"center",gap:10,padding:"12px 1.25rem",cursor:"pointer",background:page===item.id?"#f0fdf4":"transparent",borderLeft:page===item.id?"3px solid #16a34a":"3px solid transparent",color:page===item.id?"#16a34a":"#374151",fontSize:15,fontWeight:page===item.id?600:400}}><span>{item.icon}</span><span>{item.label}</span></div>))}
+    </div>
+  </>);
+};
 const Sidebar=({page,setPage,plan,aiUsage,onUpgrade,lang,toggleLang})=>{const p=PLANS[plan];return(
-  <div style={{width:200,background:"#fff",borderRight:`0.5px solid ${C.border}`,display:"flex",flexDirection:"column",minHeight:"100vh",padding:"1rem 0",flexShrink:0}}>
+  <div className="sidebar-desktop" style={{width:200,background:"#fff",borderRight:`0.5px solid ${C.border}`,display:"flex",flexDirection:"column",minHeight:"100vh",padding:"1rem 0",flexShrink:0}}>
     <div style={{padding:"0.5rem 1.25rem 1.5rem"}}><div style={{fontWeight:600,fontSize:18,color:C.green}}>🍁 TCF Canada</div><div style={{fontSize:13,color:C.gray}}>Préparation complète</div></div>
     <div style={{flex:1,overflowY:"auto"}}>{NAV.map(n=><button key={n.id} onClick={()=>setPage(n.id)} style={{display:"flex",alignItems:"center",gap:8,width:"100%",padding:"8px 1.25rem",background:page===n.id?C.green+"18":"transparent",border:"none",borderLeft:page===n.id?`3px solid ${C.green}`:"3px solid transparent",color:page===n.id?C.green:"#555",fontSize:14.5,fontWeight:page===n.id?500:400,cursor:"pointer",textAlign:"left"}}><span>{n.icon}</span>{n.label}</button>)}</div>
     <div style={{padding:"1rem 1.25rem",borderTop:`0.5px solid ${C.border}`}}>
@@ -1254,7 +1295,7 @@ JSON uniquement:
       const d=await res.json();
       const txt=d.choices?.[0]?.message?.content||"{}";
       const clean=txt.replace(/```json|```/g,"").trim();
-      setFeedback(JSON.parse(clean));
+      try{setFeedback(JSON.parse(clean));}catch(je){setFeedback({score:null,raw:clean});}
       setStatus("done");
       if(!userApiKey&&setAiUsage)setAiUsage(u=>({...u,[tacheKey]:(u[tacheKey]||0)+1}));
     }catch(e){
@@ -2493,7 +2534,7 @@ const Pricing=({plan,setPlan,onUpgrade,isLanding})=>{
 
       {/* Tutor profile */}
       <div style={{background:"#fff",border:"1px solid #e2e8f0",borderRadius:14,padding:"14px 18px",marginBottom:"1.5rem",display:"flex",alignItems:"center",gap:14,boxShadow:"0 1px 4px rgba(0,0,0,.04)"}}>
-        <div style={{width:44,height:44,borderRadius:"50%",background:"linear-gradient(135deg,#dbeafe,#ede9fe)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14,fontWeight:700,color:"#2563eb",flexShrink:0}}>TN</div>
+        <div style={{width:44,height:44,borderRadius:"50%",flexShrink:0}}><img src="https://raw.githubusercontent.com/Thi412/tcf-canada23/main/avatar.jpg" alt="Mme Théa Nguyen" style={{width:44,height:44,borderRadius:"50%",objectFit:"cover",border:"2px solid #bfdbfe"}}/></div>
         <div>
           <div style={{fontWeight:600,fontSize:14,color:"#0f172a",marginBottom:2}}>Mme Théa Nguyen</div>
           <div style={{fontSize:12,color:"#64748b",lineHeight:1.6}}>Master's in FLE · University of Antilles &nbsp;·&nbsp; TCF Canada CLB 8 &nbsp;·&nbsp; French instruction in English</div>
@@ -2501,7 +2542,7 @@ const Pricing=({plan,setPlan,onUpgrade,isLanding})=>{
       </div>
 
       {/* Cards */}
-      <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:16,marginBottom:"1.5rem",alignItems:"start"}}>
+      <div className="pricing-grid" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:16,marginBottom:"1.5rem",alignItems:"start"}}>
         {pricingCards.map(({key,name,badge,price,period,tagline,sub,features,hero,dark,btnLabel,btnStyle})=>{
           const isCurrent=plan===key;
           const cardStyle=hero?{
@@ -2649,7 +2690,8 @@ function App(){
   return(
     <div style={{display:"flex",minHeight:"100vh",background:"#f4f3f0",fontFamily:"-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"}}>
       {!isLanding&&<Sidebar page={page} setPage={nav} plan={plan} aiUsage={aiUsage} onUpgrade={()=>openUpgrade()} lang={lang} toggleLang={toggleLang}/>}
-      <main style={{flex:1,padding:isLanding?"0":"1.75rem 2rem",overflowY:"auto",minWidth:0}}>{renderPage()}</main>
+      {!isLanding&&<MobileNav page={page} setPage={nav}/>}
+      <main className="main-content" style={{flex:1,padding:isLanding?"0":"1.75rem 2rem",overflowY:"auto",minWidth:0}}>{renderPage()}</main>
       {showUpgrade&&<UpgradeModal onClose={()=>setShowUpgrade(false)} currentPlan={plan} setPlan={p=>{savePlan(p);setAiUsage({speak:0,write:0,coach:0});}} reason={upgradeReason} initialPlan={upgradeTarget}/>}
       {testModal&&<TestAdminPanel type={testModal.type} editTest={testModal.editTest} onSave={handleSaveTest} onClose={()=>setTestModal(null)}/>}
     </div>
