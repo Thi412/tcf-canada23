@@ -1264,6 +1264,7 @@ JSON uniquement:
   const fmt=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
   const durLabel=maxDur>=120?fmt(maxDur):maxDur+"s";
   const niveauColor=n=>n==="C1"?C.purple:n==="B2"?C.green:n==="B1"?C.amber:C.red;
+  const scoreColor=s=>s>=8?C.green:s>=6?C.amber:C.red;
 
   return(<div style={{border:`1.5px solid ${"#0ea5e9"}44`,borderRadius:14,overflow:"hidden",marginTop:16}}>
     <div style={{background:"linear-gradient(135deg,#0ea5e908,#0ea5e918)",padding:"12px 16px",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
