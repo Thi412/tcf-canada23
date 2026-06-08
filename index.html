@@ -1601,7 +1601,6 @@ const TestList=({type,plan,onStart,onAddTest,onEditTest,onDeleteTest,customTests
         <div style={{background:C.purple+"15",border:`1px solid ${C.purple}44`,borderRadius:10,padding:"8px 14px",fontSize:14}}>
           <span style={{color:C.purple,fontWeight:600}}>{avg}%</span><span style={{color:C.gray}}> moyenne</span>
         </div>
-        <button onClick={()=>{if(window.confirm("Effacer l'historique ?")){{try{const all=JSON.parse(localStorage.getItem("tcf_results")||"[]");localStorage.setItem("tcf_results",JSON.stringify(all.filter(r=>r.type!==type)));onRefresh&&onRefresh();}catch(e){}}}}} style={{background:"none",border:`1px solid ${C.border}`,borderRadius:10,padding:"8px 12px",fontSize:13,cursor:"pointer",color:C.gray}}>🗑 Effacer</button>
       </div>;
     })()}
     <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:"1.5rem"}}>
